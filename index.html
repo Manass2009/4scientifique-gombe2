@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4ème Scientifique A - Institut de la Gombe 2</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+        body { background-color: #f8f9fa; color: #1f1f1f; padding-bottom: 40px; }
+
+        /* HEADER GOOGLE LIGHT */
+        .app-header { display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; background: #ffffff; border-bottom: 1px solid #e0e0e0; position: sticky; top: 0; z-index: 100; }
+        .app-title { font-size: 18px; font-weight: 700; color: #1a73e8; letter-spacing: -0.3px; }
+        .app-subtitle { font-size: 12px; color: #5f6368; font-weight: 500; }
+        .user-pill { background: #e8f0fe; color: #1967d2; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+
+        /* ONGLETS NAV */
+        .feed-tabs { display: flex; gap: 8px; padding: 12px 16px; background: #ffffff; overflow-x: auto; white-space: nowrap; scrollbar-width: none; border-bottom: 1px solid #e6e8eb; position: sticky; top: 61px; z-index: 90; }
+        .feed-tab { background: #f1f3f4; color: #5f6368; border: none; padding: 9px 18px; border-radius: 20px; font-size: 13px; font-weight: 600; cursor: pointer; transition: 0.2s; }
+        .feed-tab.active { background: #1a73e8; color: #ffffff; }
+
+        .feed-container { padding: 16px; display: flex; flex-direction: column; gap: 16px; max-width: 600px; margin: 0 auto; }
+
+        /* CARTES GOOGLE DISCOVER */
+        .feed-card { background: #ffffff; border-radius: 20px; overflow: hidden; border: 1px solid #e6e8eb; box-shadow: 0 1px 6px rgba(32,33,36,0.06); }
+        .feed-card-img { width: 100%; height: 250px; object-fit: cover; display: block; cursor: pointer; transition: transform 0.2s; }
+        .feed-card-img:hover { transform: scale(1.01); }
+        .feed-card-content { padding: 18px; }
+        .feed-card-tag { font-size: 11px; font-weight: 700; color: #1a73e8; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+        .feed-card-title { font-size: 19px; font-weight: 700; color: #202124; line-height: 1.3; margin-bottom: 8px; }
+        .feed-card-desc { font-size: 14px; color: #4a4d51; line-height: 1.5; margin-bottom: 10px; }
+
+        /* LISTE DES OBJECTIFS */
+        .goals-list { list-style: none; margin-top: 10px; display: flex; flex-direction: column; gap: 8px; }
+        .goals-list li { font-size: 13px; color: #3c4043; display: flex; align-items: center; gap: 8px; background: #f8f9fa; padding: 10px 12px; border-radius: 12px; }
+
+        /* CADRES & DIRECTION */
+        .cadres-stream { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+        .cadre-row { display: flex; align-items: center; gap: 14px; background: #f8f9fa; padding: 12px 14px; border-radius: 14px; border: 1px solid #f1f3f4; }
+        .cadre-avatar { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; background: #e8eaed; flex-shrink: 0; cursor: pointer; }
+        .cadre-info h4 { font-size: 15px; color: #202124; font-weight: 600; }
+        .cadre-info p { font-size: 12px; color: #70757a; margin-top: 2px; }
+
+        /* GRILLE DES COURS */
+        .courses-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; margin-top: 10px; }
+        .course-card { background: #f8f9fa; border: 1px solid #e0e0e0; border-radius: 14px; padding: 16px 12px; text-align: center; }
+        .course-icon { font-size: 28px; margin-bottom: 6px; }
+        .course-card h4 { font-size: 14px; font-weight: 700; color: #202124; }
+        .course-card p { font-size: 11px; color: #70757a; margin-top: 4px; }
+
+        /* MODAL PREVIEW IMAGE GRAND ÉCRAN */
+        .image-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 2000; display: none; align-items: center; justify-content: center; padding: 20px; }
+        .image-modal img { max-width: 100%; max-height: 85vh; border-radius: 12px; object-fit: contain; }
+        .close-modal { position: absolute; top: 20px; right: 20px; color: white; font-size: 30px; font-weight: bold; cursor: pointer; }
+
+        /* LOGIN OVERLAY */
+        .login-overlay { position: fixed; inset: 0; background: #ffffff; z-index: 1000; padding: 24px; display: flex; flex-direction: column; justify-content: center; }
+        .login-box { max-width: 360px; margin: 0 auto; width: 100%; text-align: center; }
+        .login-input { width: 100%; background: #f8f9fa; border: 1px solid #dadce0; color: #202124; padding: 14px; border-radius: 12px; font-size: 14px; margin-bottom: 8px; outline: none; }
+        .login-btn { width: 100%; background: #1a73e8; color: #ffffff; border: none; padding: 14px; border-radius: 12px; font-weight: bold; font-size: 15px; cursor: pointer; box-shadow: 0 2px 6px rgba(26,115,232,0.3); margin-top: 8px; }
+        .error-msg { color: #d93025; font-size: 12px; text-align: left; margin-bottom: 10px; display: none; }
+    </style>
+</head>
+<body>
+
+    <div id="image-modal" class="image-modal" onclick="fermerPhoto()">
+        <span class="close-modal">&times;</span>
+        <img id="modal-img-target" src="" alt="Agrandissement">
+    </div>
+
+    <div id="auth-screen" class="login-overlay">
+        <div class="login-box">
+            <h2 style="color:#1a73e8; font-size:24px; margin-bottom:4px; font-weight:800;">INSTITUT DE LA GOMBE 2</h2>
+            <p style="color:#5f6368; font-size:13px; margin-bottom:28px;">Portail Officiel • 4ème Scientifique A</p>
+            
+            <input type="text" id="user-fullname" placeholder="Nom et Prénom" class="login-input">
+            
+            <input type="tel" id="user-phone" placeholder="Numéro Téléphone (ex: 0812345678)" class="login-input">
+            <div id="phone-error" class="error-msg">⚠️ Entrez un numéro RDC valide (Vodacom, Airtel, Orange, Africell)</div>
+
+            <button class="login-btn" onclick="seConnecter()">ACCÉDER AU PORTAIL</button>
+        </div>
+    </div>
+
+    <div id="main-site" style="display:none;">
+        <header class="app-header">
+            <div>
+                <div class="app-title">4ème Scientifique A</div>
+                <div class="app-subtitle">Institut de la Gombe 2</div>
+            </div>
+            <div style="display:flex; align-items:center; gap:8px;">
+                <div id="user-pill" class="user-pill">Élève</div>
+                <button onclick="deconnexion()" style="background:#f1f3f4; border:none; padding:6px 10px; border-radius:12px; font-size:11px; cursor:pointer;">Sortir</button>
+            </div>
+        </header>
+
+        <nav class="feed-tabs">
+            <button class="feed-tab active" onclick="voirOnglet('accueil', event)">Fil d'actualité</button>
+            <button class="feed-tab" onclick="voirOnglet('cours', event)">Cours</button>
+            <button class="feed-tab" onclick="voirOnglet('news', event)">Communiqués</button>
+            <button class="feed-tab" onclick="voirOnglet('galerie', event)">Galerie</button>
+        </nav>
+
+        <div class="feed-container tab-content" id="tab-accueil">
+            <article class="feed-card">
+                <div class="feed-card-content">
+                    <div class="feed-card-tag">👋 Bienvenue à tous</div>
+                    <h2 class="feed-card-title">Portail d'Excellence & D'Entraide</h2>
+                    <p class="feed-card-desc">
+                        Chers élèves de la 4ème Scientifique A, ce site est votre espace numérique officiel pour réussir ensemble notre année scolaire à l'Institut de la Gombe 2.
+                    </p>
+                    <ul class="goals-list">
+                        <li>📚 <b>Accès direct aux cours :</b> Consultez et téléchargez les chapitres de chaque matière.</li>
+                        <li>📢 <b>Communiqués instantanés :</b> Soyez informés en temps réel des annonces de la classe.</li>
+                        <li>🖼️ <b>Galerie de la promotion :</b> Immortalisez nos moments forts et nos souvenirs d'étude.</li>
+                        <li>💡 <b>Entraide & Progrès :</b> Un outil conçu pour avancer ensemble vers la réussite.</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="feed-card">
+                <img src="mon_profil.jpg" class="feed-card-img" onclick="agrandirPhoto(this.src)" onerror="this.src='https://via.placeholder.com/600x320/1a73e8/ffffff?text=Manass%C3%A9+Ntambwa'">
+                <div class="feed-card-content">
+                    <div class="feed-card-tag">👑 Fondateur & Concepteur</div>
+                    <h2 class="feed-card-title">MANASSÉ NTAMBWA LUSHIKU</h2>
+                    <p class="feed-card-desc">
+                        Élève et passionné de technologie, j'ai conçu et développé ce site pour moderniser notre classe et centraliser toutes nos ressources scolaires. Mon objectif est que chaque élève de la 4ème Scientifique A dispose d'un outil simple, rapide et accessible sur téléphone pour réviser, suivre les nouvelles et réussir haut la main.
+                    </p>
+                    <small style="color:#1a73e8; font-weight:600;">👉 Touche la photo pour l'agrandir</small>
+                </div>
+            </article>
+
+            <article class="feed-card">
+                <div class="feed-card-content">
+                    <div class="feed-card-tag">📋 Organisation</div>
+                    <h2 class="feed-card-title">Cadres de la Classe</h2>
+                    <div class="cadres-stream">
+                        <div class="cadre-row">
+                            <div class="cadre-avatar" style="display:flex; align-items:center; justify-content:center; font-size:22px; background:#e8f0fe;">👨‍🏫</div>
+                            <div class="cadre-info">
+                                <h4>Titulaire / Conseiller</h4>
+                                <p>À renseigner</p>
+                            </div>
+                        </div>
+                        <div class="cadre-row">
+                            <div class="cadre-avatar" style="display:flex; align-items:center; justify-content:center; font-size:22px; background:#fef7e0;">👑</div>
+                            <div class="cadre-info">
+                                <h4>Chef de Classe (CP)</h4>
+                                <p>À renseigner</p>
+                            </div>
+                        </div>
+                        <div class="cadre-row">
+                            <img src="cpa.jpg" class="cadre-avatar" onclick="agrandirPhoto(this.src)" onerror="this.src='https://via.placeholder.com/100/e8f0fe/1a73e8?text=CPA'">
+                            <div class="cadre-info">
+                                <h4>Assistant CP (CPA)</h4>
+                                <p>OLVIE NGANGA</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <div class="feed-container tab-content" id="tab-cours" style="display:none;">
+            <article class="feed-card">
+                <div class="feed-card-content">
+                    <div class="feed-card-tag">📚 PROGRAMME D'ÉTUDES</div>
+                    <h2 class="feed-card-title">Matières Scientifiques</h2>
+                    <p class="feed-card-desc">Accédez aux synthèses, exercices et résumés de cours enregistrés pour la classe :</p>
+                    
+                    <div class="courses-grid">
+                        <div class="course-card">
+                            <div class="course-icon">📐</div>
+                            <h4>Algèbre</h4>
+                            <p>0 document</p>
+                        </div>
+                        <div class="course-card">
+                            <div class="course-icon">📈</div>
+                            <h4>Analyse</h4>
+                            <p>0 document</p>
+                        </div>
+                        <div class="course-card">
+                            <div class="course-icon">📏</div>
+                            <h4>Géométrie</h4>
+                            <p>0 document</p>
+                        </div>
+                        <div class="course-card">
+                            <div class="course-icon">⚡</div>
+                            <h4>Physique</h4>
+                            <p>0 document</p>
+                        </div>
+                        <div class="course-card">
+                            <div class="course-icon">🧪</div>
+                            <h4>Chimie</h4>
+                            <p>0 document</p>
+                        </div>
+                        <div class="course-card">
+                            <div class="course-icon">🧬</div>
+                            <h4>Biologie</h4>
+                            <p>0 document</p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <div class="feed-container tab-content" id="tab-news" style="display:none;">
+            <article class="feed-card">
+                <div class="feed-card-content">
+                    <div class="feed-card-tag">📢 JOURNAL DE LA CLASSE</div>
+                    <h2 class="feed-card-title">Annonces & Communiqués</h2>
+                    <p class="feed-card-desc">Retrouvez ici toutes les informations importantes communiquées par le Chef de Classe et l'Administration.</p>
+                    <div style="background:#f8f9fa; padding:14px; border-radius:12px; text-align:center; color:#70757a; font-size:13px; margin-top:10px;">
+                        Aucun communiqué publié pour le moment.
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <div class="feed-container tab-content" id="tab-galerie" style="display:none;">
+            <article class="feed-card">
+                <div class="feed-card-content">
+                    <div class="feed-card-tag">🖼️ ALBUM PHOTO</div>
+                    <h2 class="feed-card-title">Souvenirs de la Promotion</h2>
+                    <p class="feed-card-desc">Photos de classe, événements et moments mémorables de la 4ème Scientifique A.</p>
+                    
+                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-top:10px;">
+                        <img src="mon_profil.jpg" style="width:100%; height:140px; object-fit:cover; border-radius:12px; cursor:pointer;" onclick="agrandirPhoto(this.src)" onerror="this.src='https://via.placeholder.com/300?text=Photo+1'">
+                        <img src="cpa.jpg" style="width:100%; height:140px; object-fit:cover; border-radius:12px; cursor:pointer;" onclick="agrandirPhoto(this.src)" onerror="this.src='https://via.placeholder.com/300?text=Photo+2'">
+                    </div>
+                </div>
+            </article>
+        </div>
+
+    </div>
+
+    <script>
+        // Vérification de la connexion enregistrée
+        document.addEventListener("DOMContentLoaded", function() {
+            let userConnecte = localStorage.getItem("user_session_gombe");
+            if(userConnecte) {
+                ouvrirSite(userConnecte);
+            }
+        });
+
+        // Fonction pour vérifier le numéro RDC
+        function validerNumeroRDC(numero) {
+            // Nettoyer les espaces ou tirets
+            let numClean = numero.replace(/[\s\-\+]/g, '');
+            
+            // Si commence par 243, enlever 243
+            if(numClean.startsWith('243')) {
+                numClean = '0' + numClean.substring(3);
+            }
+            
+            // Préfixes RDC valides : Vodacom (081,082,083), Airtel (097,098,099), Orange (084,085,089,090), Africell (091)
+            let regexRDC = /^(081|082|083|084|085|089|090|091|097|098|099)\d{7}$/;
+            return regexRDC.test(numClean);
+        }
+
+        function seConnecter() {
+            let name = document.getElementById('user-fullname').value.trim();
+            let phone = document.getElementById('user-phone').value.trim();
+            let errorBox = document.getElementById('phone-error');
+
+            if(!name) {
+                alert('Veuillez entrer votre Nom et Prénom');
+                return;
+            }
+
+            if(!validerNumeroRDC(phone)) {
+                errorBox.style.display = 'block';
+                return;
+            } else {
+                errorBox.style.display = 'none';
+            }
+
+            // Sauvegarder la session pour éviter de se réinscrire
+            localStorage.setItem("user_session_gombe", name);
+            ouvrirSite(name);
+        }
+
+        function ouvrirSite(nom) {
+            document.getElementById('auth-screen').style.display = 'none';
+            document.getElementById('main-site').style.display = 'block';
+            document.getElementById('user-pill').innerText = nom;
+        }
+
+        function deconnexion() {
+            localStorage.removeItem("user_session_gombe");
+            location.reload();
+        }
+
+        function voirOnglet(nomOnglet, ev) {
+            document.querySelectorAll('.tab-content').forEach(el => el.style.display = 'none');
+            document.getElementById('tab-' + nomOnglet).style.display = 'flex';
+            
+            document.querySelectorAll('.feed-tab').forEach(btn => btn.classList.remove('active'));
+            if(ev) ev.target.classList.add('active');
+        }
+
+        function agrandirPhoto(src) {
+            document.getElementById('modal-img-target').src = src;
+            document.getElementById('image-modal').style.display = 'flex';
+        }
+
+        function fermerPhoto() {
+            document.getElementById('image-modal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

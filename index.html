@@ -7,61 +7,93 @@
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
         
-        /* DESIGN EN BLANC / MODE CLAIR */
-        body { background-color: #f4f6f8; color: #1e293b; padding: 15px; }
+        body { background-color: #f4f6f8; color: #1e293b; padding: 12px; }
 
-        header { margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; }
-        header h2 { font-size: 1.1rem; color: #1a73e8; }
-        header p { font-size: 0.85rem; color: #64748b; }
+        /* HEADER CORRIGÉ & FLEXIBLE */
+        header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            gap: 10px; 
+            margin-bottom: 15px; 
+            padding: 4px 0;
+        }
 
-        .user-badge { background: #e0f2fe; color: #0284c7; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; }
-        .btn-sortir { background: #e2e8f0; color: #475569; border: none; padding: 6px 12px; border-radius: 20px; font-size: 0.85rem; cursor: pointer; }
+        .header-title { flex: 1; min-width: 0; }
+        .header-title h2 { font-size: 1rem; color: #1a73e8; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .header-title p { font-size: 0.78rem; color: #64748b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+        .header-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+
+        .user-badge { 
+            background: #e0f2fe; 
+            color: #0284c7; 
+            padding: 6px 10px; 
+            border-radius: 20px; 
+            font-size: 0.78rem; 
+            font-weight: 600; 
+            white-space: nowrap;
+        }
+
+        .btn-sortir { 
+            background: #e2e8f0; 
+            color: #334155; 
+            border: none; 
+            padding: 6px 12px; 
+            border-radius: 20px; 
+            font-size: 0.78rem; 
+            font-weight: 600;
+            cursor: pointer; 
+            white-space: nowrap;
+            transition: background 0.2s;
+        }
+        .btn-sortir:active { background: #cbd5e1; }
 
         /* NAVIGATION BAR */
-        .nav-bar { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 15px; position: sticky; top: 0; background-color: #f4f6f8; z-index: 100; padding-top: 5px; }
-        .nav-btn { background-color: #ffffff; color: #64748b; padding: 8px 16px; border-radius: 20px; border: 1px solid #cbd5e1; font-size: 0.9rem; white-space: nowrap; cursor: pointer; font-weight: 500; }
+        .nav-bar { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 12px; position: sticky; top: 0; background-color: #f4f6f8; z-index: 100; padding-top: 4px; }
+        .nav-btn { background-color: #ffffff; color: #64748b; padding: 8px 14px; border-radius: 20px; border: 1px solid #cbd5e1; font-size: 0.85rem; white-space: nowrap; cursor: pointer; font-weight: 500; }
         .nav-btn.active { background-color: #1a73e8; color: #ffffff; border-color: #1a73e8; font-weight: bold; }
 
         /* SECTIONS / TAB CONTENT */
         .tab-content { display: none; }
         .tab-content.active { display: block; }
 
-        .card { background-color: #ffffff; border-radius: 16px; padding: 18px; margin-bottom: 20px; border: 1px solid #e2e8f0; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+        .card { background-color: #ffffff; border-radius: 16px; padding: 18px; margin-bottom: 16px; border: 1px solid #e2e8f0; box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
         .card-img { width: 100%; height: auto; display: block; border-radius: 12px; margin-top: 10px; }
 
         .tag { font-size: 0.75rem; font-weight: bold; color: #1a73e8; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
-        .card-title { font-size: 1.25rem; font-weight: bold; margin-bottom: 10px; color: #0f172a; }
+        .card-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 10px; color: #0f172a; }
         .card-text { font-size: 0.9rem; color: #475569; line-height: 1.5; margin-bottom: 12px; }
 
-        .feature-item { display: flex; align-items: flex-start; margin-bottom: 15px; }
-        .feature-icon { font-size: 1.3rem; margin-right: 12px; margin-top: 2px; }
-        .feature-text strong { color: #0f172a; font-size: 0.92rem; }
-        .feature-text span { color: #64748b; font-size: 0.88rem; }
+        .feature-item { display: flex; align-items: flex-start; margin-bottom: 14px; }
+        .feature-icon { font-size: 1.2rem; margin-right: 10px; margin-top: 2px; }
+        .feature-text strong { color: #0f172a; font-size: 0.9rem; }
+        .feature-text span { color: #64748b; font-size: 0.85rem; }
 
-        .list-item { display: flex; align-items: center; background-color: #f8fafc; padding: 12px 15px; border-radius: 12px; margin-top: 10px; border: 1px solid #f1f5f9; }
-        .list-icon { font-size: 1.4rem; margin-right: 15px; width: 40px; height: 40px; background-color: #e2e8f0; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-        .list-info h4 { font-size: 0.95rem; color: #0f172a; }
+        .list-item { display: flex; align-items: center; background-color: #f8fafc; padding: 12px; border-radius: 12px; margin-top: 10px; border: 1px solid #f1f5f9; }
+        .list-icon { font-size: 1.3rem; margin-right: 12px; width: 38px; height: 38px; background-color: #e2e8f0; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .list-info h4 { font-size: 0.9rem; color: #0f172a; }
         .list-info p { font-size: 0.8rem; color: #64748b; }
 
         /* GRILLE DES COURS */
-        .cours-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; margin-top: 15px; }
-        .cours-box { background-color: #ffffff; border: 1px solid #cbd5e1; border-radius: 14px; padding: 15px; text-align: center; transition: transform 0.2s; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+        .cours-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; margin-top: 15px; }
+        .cours-box { background-color: #ffffff; border: 1px solid #cbd5e1; border-radius: 14px; padding: 14px 10px; text-align: center; transition: transform 0.2s; cursor: pointer; }
         .cours-box:active { transform: scale(0.97); }
-        .cours-icon { font-size: 2rem; margin-bottom: 8px; }
-        .cours-title { font-size: 0.95rem; font-weight: bold; color: #0f172a; margin-bottom: 4px; }
-        .cours-sub { font-size: 0.75rem; color: #1a73e8; font-weight: 500; }
+        .cours-icon { font-size: 1.8rem; margin-bottom: 6px; }
+        .cours-title { font-size: 0.88rem; font-weight: bold; color: #0f172a; margin-bottom: 3px; }
+        .cours-sub { font-size: 0.72rem; color: #1a73e8; font-weight: 500; }
     </style>
 </head>
 <body>
 
     <header>
-        <div>
+        <div class="header-title">
             <h2>4ème Scientifique A</h2>
             <p>Institut de la Gombe 2</p>
         </div>
-        <div style="display: flex; gap: 8px; align-items: center;">
+        <div class="header-actions">
             <span class="user-badge">Manasse ntambwa</span>
-            <button class="btn-sortir">Sortir</button>
+            <button class="btn-sortir" onclick="deconnexion()">Sortir</button>
         </div>
     </header>
 
@@ -111,7 +143,7 @@
                 <p class="card-text">
                     Élève et passionné de technologie, j'ai conçu et développé ce site pour moderniser notre classe et centraliser toutes nos ressources scolaires. Mon objectif est que chaque élève de la 4ème Scientifique A dispose d'un outil simple, rapide et accessible sur téléphone pour réviser, suivre les nouvelles et réussir haut la main.
                 </p>
-                <p style="color: #1a73e8; font-weight: 500; font-size: 0.9rem;">
+                <p style="color: #1a73e8; font-weight: 500; font-size: 0.88rem;">
                     👉 Touche la photo pour l'agrandir
                 </p>
 
@@ -239,6 +271,12 @@
 
             document.getElementById('tab-' + tabName).classList.add('active');
             btn.classList.add('active');
+        }
+
+        function deconnexion() {
+            if (confirm("Voulez-vous vraiment sortir du site ?")) {
+                alert("Vous êtes déconnecté.");
+            }
         }
     </script>
 </body>

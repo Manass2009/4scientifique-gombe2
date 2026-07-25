@@ -9,7 +9,6 @@
         
         body { background-color: #f4f6f8; color: #1e293b; padding: 12px; }
 
-        /* HEADER CORRIGÉ & FLEXIBLE */
         header { 
             display: flex; 
             justify-content: space-between; 
@@ -189,53 +188,14 @@
                 <p class="card-text">Sélectionnez une matière pour voir les chapitres et téléchargez les PDF :</p>
 
                 <div class="cours-grid">
-                    <div class="cours-box">
-                        <div class="cours-icon">📐</div>
-                        <div class="cours-title">Mathématiques</div>
-                        <div class="cours-sub">PDF / Exercices</div>
-                    </div>
-
-                    <div class="cours-box">
-                        <div class="cours-icon">🏛️</div>
-                        <div class="cours-title">Éducation Civique (ECM)</div>
-                        <div class="cours-sub">PDF Disponible</div>
-                    </div>
-
-                    <div class="cours-box">
-                        <div class="cours-icon">⚡</div>
-                        <div class="cours-title">Physique</div>
-                        <div class="cours-sub">Chapitres</div>
-                    </div>
-
-                    <div class="cours-box">
-                        <div class="cours-icon">🧪</div>
-                        <div class="cours-title">Chimie</div>
-                        <div class="cours-sub">Chapitres</div>
-                    </div>
-
-                    <div class="cours-box">
-                        <div class="cours-icon">🧬</div>
-                        <div class="cours-title">Biologie</div>
-                        <div class="cours-sub">Chapitres</div>
-                    </div>
-
-                    <div class="cours-box">
-                        <div class="cours-icon">💻</div>
-                        <div class="cours-title">Informatique</div>
-                        <div class="cours-sub">Projets</div>
-                    </div>
-
-                    <div class="cours-box">
-                        <div class="cours-icon">📖</div>
-                        <div class="cours-title">Français</div>
-                        <div class="cours-sub">Lectures</div>
-                    </div>
-
-                    <div class="cours-box">
-                        <div class="cours-icon">🌍</div>
-                        <div class="cours-title">Anglais</div>
-                        <div class="cours-sub">Vocabulaire</div>
-                    </div>
+                    <div class="cours-box"><div class="cours-icon">📐</div><div class="cours-title">Mathématiques</div><div class="cours-sub">PDF / Exercices</div></div>
+                    <div class="cours-box"><div class="cours-icon">🏛️</div><div class="cours-title">Éducation Civique (ECM)</div><div class="cours-sub">PDF Disponible</div></div>
+                    <div class="cours-box"><div class="cours-icon">⚡</div><div class="cours-title">Physique</div><div class="cours-sub">Chapitres</div></div>
+                    <div class="cours-box"><div class="cours-icon">🧪</div><div class="cours-title">Chimie</div><div class="cours-sub">Chapitres</div></div>
+                    <div class="cours-box"><div class="cours-icon">🧬</div><div class="cours-title">Biologie</div><div class="cours-sub">Chapitres</div></div>
+                    <div class="cours-box"><div class="cours-icon">💻</div><div class="cours-title">Informatique</div><div class="cours-sub">Projets</div></div>
+                    <div class="cours-box"><div class="cours-icon">📖</div><div class="cours-title">Français</div><div class="cours-sub">Lectures</div></div>
+                    <div class="cours-box"><div class="cours-icon">🌍</div><div class="cours-title">Anglais</div><div class="cours-sub">Vocabulaire</div></div>
                 </div>
             </section>
         </div>
@@ -274,8 +234,13 @@
         }
 
         function deconnexion() {
-            if (confirm("Voulez-vous vraiment sortir du site ?")) {
-                alert("Vous êtes déconnecté.");
+            if (confirm("Voulez-vous vraiment vous déconnecter et recommencer à zéro ?")) {
+                // Efface toutes les données locales en mémoire
+                localStorage.clear();
+                sessionStorage.clear();
+                
+                // Recharge la page depuis le début (zéro) en forçant le rechargement complet
+                window.location.href = window.location.href.split('?')[0] + '?t=' + new Date().getTime();
             }
         }
     </script>

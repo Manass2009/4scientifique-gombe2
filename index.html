@@ -20,6 +20,9 @@
 
         header {
             margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         header h2 {
@@ -30,6 +33,24 @@
         header p {
             font-size: 0.85rem;
             color: #aaa;
+        }
+
+        .user-badge {
+            background: #1e293b;
+            color: #4a9eff;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .btn-sortir {
+            background: #2a2a2a;
+            color: #ccc;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
         }
 
         /* NAVIGATION BAR */
@@ -60,7 +81,7 @@
         .card {
             background-color: #1e1e1e;
             border-radius: 16px;
-            overflow: hidden;
+            padding: 18px;
             margin-bottom: 20px;
             border: 1px solid #2a2a2a;
         }
@@ -68,13 +89,8 @@
         .card-img {
             width: 100%;
             height: auto;
-            max-height: 250px;
-            object-fit: cover;
             display: block;
-        }
-
-        .card-body {
-            padding: 18px;
+            border-radius: 12px;
         }
 
         .tag {
@@ -96,7 +112,35 @@
         .card-text {
             font-size: 0.9rem;
             color: #bbb;
-            line-height: 1.4;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+
+        /* FEATURES LIST (BLOC AVEC ICÔNES DU HAUT) */
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .feature-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .feature-icon {
+            font-size: 1.3rem;
+            margin-right: 12px;
+            margin-top: 2px;
+        }
+
+        .feature-text strong {
+            color: #fff;
+            font-size: 0.92rem;
+        }
+
+        .feature-text span {
+            color: #aaa;
+            font-size: 0.88rem;
         }
 
         /* CADRES DE LA CLASSE */
@@ -110,7 +154,7 @@
         }
 
         .list-icon {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             margin-right: 15px;
             width: 40px;
             height: 40px;
@@ -135,8 +179,14 @@
 <body>
 
     <header>
-        <h2>4ème Scientifique A</h2>
-        <p>Institut de la Gombe 2</p>
+        <div>
+            <h2>4ème Scientifique A</h2>
+            <p>Institut de la Gombe 2</p>
+        </div>
+        <div style="display: flex; gap: 8px; align-items: center;">
+            <span class="user-badge">Manasse</span>
+            <button class="btn-sortir">Sortir</button>
+        </div>
     </header>
 
     <nav class="nav-bar">
@@ -148,43 +198,76 @@
 
     <main>
         <section class="card">
-            <img src="createur.jpg" alt="Manassé Ntambwa Lushiku" class="card-img" onerror="this.src='https://via.placeholder.com/600x300/222/fff?text=Manass%C3%A9+Ntambwa'">
-            <div class="card-body">
-                <div class="tag">FONDATEUR & CONCEPTEUR</div>
-                <h1 class="card-title">MANASSÉ NTAMBWA LUSHIKU</h1>
-                <p class="card-text">
-                    Bienvenue sur la plateforme officielle d'entraide de la 4ème Scientifique A. Retrouvez ici tous les contenus, cours et actualités de notre promotion.
-                </p>
+            <div class="feature-item">
+                <div class="feature-icon">📚</div>
+                <div class="feature-text">
+                    <strong>Accès direct aux cours :</strong> <span>Consultez et téléchargez les chapitres de chaque matière.</span>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">📢</div>
+                <div class="feature-text">
+                    <strong>Communiqués instantanés :</strong> <span>Soyez informés en temps réel des annonces de la classe.</span>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🖼️</div>
+                <div class="feature-text">
+                    <strong>Galerie de la promotion :</strong> <span>Immortalisez nos moments forts et nos souvenirs d'étude.</span>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">💡</div>
+                <div class="feature-text">
+                    <strong>Entraide & Progrès :</strong> <span>Un outil conçu pour avancer ensemble vers la réussite.</span>
+                </div>
             </div>
         </section>
 
         <section class="card">
-            <div class="card-body">
-                <div class="tag">ORGANISATION</div>
-                <h2 class="card-title">Cadres de la Classe</h2>
+            <a href="createur.jpg" target="_blank">
+                <img src="createur.jpg" alt="Manassé Ntambwa" class="card-img" style="margin-bottom: 15px; max-height: 280px; object-fit: cover;" onerror="this.style.display='none'">
+            </a>
+            
+            <div class="tag">👑 FONDATEUR & CONCEPTEUR</div>
+            <h1 class="card-title">MANASSÉ NTAMBWA LUSHIKU</h1>
+            <p class="card-text">
+                Élève et passionné de technologie, j'ai conçu et développé ce site pour moderniser notre classe et centraliser toutes nos ressources scolaires. Mon objectif est que chaque élève de la 4ème Scientifique A dispose d'un outil simple, rapide et accessible sur téléphone pour réviser, suivre les nouvelles et réussir haut la main.
+            </p>
+            <p style="color: #4a9eff; font-weight: 500; font-size: 0.9rem; margin-bottom: 12px;">
+                👉 Touche la photo pour l'agrandir
+            </p>
 
-                <div class="list-item">
-                    <div class="list-icon">👨‍🏫</div>
-                    <div class="list-info">
-                        <h4>Titulaire / Conseiller</h4>
-                        <p>À renseigner</p>
-                    </div>
+            <a href="actualite.png" target="_blank">
+                <img src="actualite.png" alt="Nos Objectifs Principaux" class="card-img" style="margin-top: 10px;">
+            </a>
+        </section>
+
+        <section class="card">
+            <div class="tag">📋 ORGANISATION</div>
+            <h2 class="card-title">Cadres de la Classe</h2>
+
+            <div class="list-item">
+                <div class="list-icon">👨‍🏫</div>
+                <div class="list-info">
+                    <h4>Titulaire / Conseiller</h4>
+                    <p>À renseigner</p>
                 </div>
+            </div>
 
-                <div class="list-item">
-                    <div class="list-icon">👑</div>
-                    <div class="list-info">
-                        <h4>Chef de Classe (CP)</h4>
-                        <p>À renseigner</p>
-                    </div>
+            <div class="list-item">
+                <div class="list-icon">👑</div>
+                <div class="list-info">
+                    <h4>Chef de Classe (CP)</h4>
+                    <p>À renseigner</p>
                 </div>
+            </div>
 
-                <div class="list-item">
-                    <div class="list-icon">👤</div>
-                    <div class="list-info">
-                        <h4>Assistant CP (CPA)</h4>
-                        <p>Nom du CPA</p>
-                    </div>
+            <div class="list-item">
+                <div class="list-icon">⚪</div>
+                <div class="list-info">
+                    <h4>Assistant CP (CPA)</h4>
+                    <p>Nom du CPA</p>
                 </div>
             </div>
         </section>

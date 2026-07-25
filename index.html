@@ -14,50 +14,27 @@
     </header>
 
     <nav class="nav-bar">
+        <a href="#accueil" class="active">Fil d'actualité</a>
+        <a href="#cours">Cours</a>
         <a href="#inscription">Inscription</a>
-        <a href="#cours" class="active">Cours</a>
-        <a href="#actualites">Communiqués</a>
     </nav>
 
     <main class="container">
 
-        <section id="inscription" class="card">
-            <h2>✍️ Inscription</h2>
-            <p>Remplissez vos informations ci-dessous :</p>
-            
-            <form action="https://formspree.io/f/TON_CODE_FORMSPREE" method="POST" onsubmit="return verifierTelephone()">
-                
-                <div style="margin-bottom: 12px;">
-                    <label>Nom :</label><br>
-                    <input type="text" name="nom" required style="width: 100%; padding: 10px; margin-top: 5px;">
-                </div>
-
-                <div style="margin-bottom: 12px;">
-                    <label>Postnom :</label><br>
-                    <input type="text" name="postnom" required style="width: 100%; padding: 10px; margin-top: 5px;">
-                </div>
-
-                <div style="margin-bottom: 12px;">
-                    <label>Prénom :</label><br>
-                    <input type="text" name="prenom" required style="width: 100%; padding: 10px; margin-top: 5px;">
-                </div>
-
-                <div style="margin-bottom: 12px;">
-                    <label>Numéro de téléphone (Orange, Vodacom, Airtel, Africell) :</label><br>
-                    <input type="tel" id="telephone" name="telephone" placeholder="ex: 084... ou 099..." required style="width: 100%; padding: 10px; margin-top: 5px;">
-                    <small id="erreur-tel" style="color: red; display: none; margin-top: 5px;"></small>
-                </div>
-
-                <button type="submit" class="btn" style="background-color: #28a745; color: white; border: none; padding: 12px; cursor: pointer; border-radius: 6px; width: 100%; font-weight: bold;">
-                    S'inscrire
-                </button>
-            </form>
+        <section id="accueil" class="card" style="text-align: center;">
+            <h2>Bienvenue sur notre Plateforme</h2>
+            <div class="creator-profile" style="margin: 20px 0;">
+                <img src="createur.jpg" alt="Créateur du site" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid #007bff;">
+                <h3 style="margin-top: 10px;">Manasse Ntambwa</h3>
+                <p style="color: #aaa; font-size: 0.9rem;">Créateur & Administrateur</p>
+            </div>
+            <p>Retrouvez ici toutes les informations, annonces et ressources de la classe.</p>
         </section>
 
         <section id="cours" class="card">
             <span class="badge">PROGRAMME D'ÉTUDES</span>
             <h2>Matières Scientifiques & Littéraires</h2>
-            <p>Accédez aux synthèses, exercices et résumés de cours enregistrés pour la classe :</p>
+            <p>Accédez aux synthèses, exercices et résumés de cours enregistrés :</p>
 
             <div class="grid-cours">
                 <div class="item-cours">
@@ -97,7 +74,7 @@
                 </div>
 
                 <a href="education_civique.pdf" target="_blank" style="text-decoration: none; color: inherit;">
-                    <div class="item-cours" style="border: 1px solid #007bff;">
+                    <div class="item-cours" style="border: 2px solid #007bff;">
                         <div class="icon">🏛️</div>
                         <h3>Éd. Civique & Morale</h3>
                         <p style="color: #007bff; font-weight: bold;">📄 Ouvrir le cours (PDF)</p>
@@ -106,8 +83,37 @@
             </div>
         </section>
 
-        <section id="actualites">
-            <div id="actu-principale"></div>
+        <section id="inscription" class="card">
+            <h2>✍️ Inscription</h2>
+            <p>Remplissez vos informations ci-dessous :</p>
+            
+            <form action="https://formspree.io/f/TON_CODE_FORMSPREE" method="POST" onsubmit="return verifierTelephone()">
+                
+                <div style="margin-bottom: 12px;">
+                    <label>Nom :</label><br>
+                    <input type="text" name="nom" required style="width: 100%; padding: 10px; margin-top: 5px;">
+                </div>
+
+                <div style="margin-bottom: 12px;">
+                    <label>Postnom :</label><br>
+                    <input type="text" name="postnom" required style="width: 100%; padding: 10px; margin-top: 5px;">
+                </div>
+
+                <div style="margin-bottom: 12px;">
+                    <label>Prénom :</label><br>
+                    <input type="text" name="prenom" required style="width: 100%; padding: 10px; margin-top: 5px;">
+                </div>
+
+                <div style="margin-bottom: 12px;">
+                    <label>Numéro de téléphone (Orange, Vodacom, Airtel, Africell) :</label><br>
+                    <input type="tel" id="telephone" name="telephone" placeholder="ex: 084... ou 099..." required style="width: 100%; padding: 10px; margin-top: 5px;">
+                    <small id="erreur-tel" style="color: red; display: none; margin-top: 5px;"></small>
+                </div>
+
+                <button type="submit" class="btn" style="background-color: #28a745; color: white; border: none; padding: 12px; cursor: pointer; border-radius: 6px; width: 100%; font-weight: bold;">
+                    S'inscrire
+                </button>
+            </form>
         </section>
 
     </main>

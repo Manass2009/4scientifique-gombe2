@@ -324,3 +324,66 @@
     </a>
 </div>
 
+<!DOCTYPE html>
+<html>
+<head>
+    ...
+</head>
+<body>
+
+    <section id="inscription" class="card" style="margin: 20px 0; padding: 20px;">
+        <h2>✍️ Inscription</h2>
+        <p>Remplissez vos informations ci-dessous :</p>
+        
+        <form action="https://formspree.io/f/TON_CODE_FORMSPREE" method="POST" onsubmit="return verifierTelephone()">
+            
+            <div style="margin-bottom: 10px;">
+                <label>Nom :</label><br>
+                <input type="text" name="nom" required style="width: 100%; padding: 8px; margin-top: 5px;">
+            </div>
+
+            <div style="margin-bottom: 10px;">
+                <label>Postnom :</label><br>
+                <input type="text" name="postnom" required style="width: 100%; padding: 8px; margin-top: 5px;">
+            </div>
+
+            <div style="margin-bottom: 10px;">
+                <label>Prénom :</label><br>
+                <input type="text" name="prenom" required style="width: 100%; padding: 8px; margin-top: 5px;">
+            </div>
+
+            <div style="margin-bottom: 10px;">
+                <label>Numéro de téléphone (Orange, Airtel, Vodacom, Africell) :</label><br>
+                <input type="tel" id="telephone" name="telephone" placeholder="ex: 084... ou 099..." required style="width: 100%; padding: 8px; margin-top: 5px;">
+                <small id="erreur-tel" style="color: red; display: none;"></small>
+            </div>
+
+            <button type="submit" class="btn" style="background-color: #28a745; color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px;">
+                S'inscrire
+            </button>
+        </form>
+    </section>
+
+    <script>
+    function verifierTelephone() {
+        var tel = document.getElementById('telephone').value.trim();
+        var erreur = document.getElementById('erreur-tel');
+        
+        tel = tel.replace(/\s+/g, '');
+
+        // Vérification des préfixes RDC (Orange, Vodacom, Airtel, Africell)
+        var regexRDC = /^(080|081|082|083|084|085|088|089|090|091|097|098|099)\d{7}$/;
+
+        if (!regexRDC.test(tel)) {
+            erreur.innerText = "⚠️ Numéro invalide ! Veuillez entrer un numéro valide à 10 chiffres (ex: 084XXXXXXX, 099XXXXXXX, 090XXXXXXX).";
+            erreur.style.display = "block";
+            return false;
+        }
+
+        erreur.style.display = "none";
+        return true;
+    }
+    </script>
+    </body>
+</html>
+

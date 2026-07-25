@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>4ème Scientifique A - Institut de la Gombe 2</title>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
         body { background-color: #121212; color: #ffffff; padding: 15px; }
 
         header { margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; }
@@ -13,11 +13,16 @@
         header p { font-size: 0.85rem; color: #aaa; }
 
         .user-badge { background: #1e293b; color: #4a9eff; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 500; }
-        .btn-sortir { background: #2a2a2a; color: #ccc; border: none; padding: 6px 12px; border-radius: 20px; font-size: 0.85rem; }
+        .btn-sortir { background: #2a2a2a; color: #ccc; border: none; padding: 6px 12px; border-radius: 20px; font-size: 0.85rem; cursor: pointer; }
 
-        .nav-bar { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 15px; }
-        .nav-btn { background-color: #222; color: #ccc; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 0.9rem; white-space: nowrap; }
+        /* NAVIGATION BAR */
+        .nav-bar { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 15px; position: sticky; top: 0; background-color: #121212; z-index: 100; padding-top: 5px; }
+        .nav-btn { background-color: #222; color: #ccc; padding: 8px 16px; border-radius: 20px; border: none; font-size: 0.9rem; white-space: nowrap; cursor: pointer; }
         .nav-btn.active { background-color: #1a73e8; color: #fff; font-weight: bold; }
+
+        /* SECTIONS / TAB CONTENT */
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
 
         .card { background-color: #1e1e1e; border-radius: 16px; padding: 18px; margin-bottom: 20px; border: 1px solid #2a2a2a; }
         .card-img { width: 100%; height: auto; display: block; border-radius: 12px; margin-top: 10px; }
@@ -51,89 +56,131 @@
     </header>
 
     <nav class="nav-bar">
-        <a href="#" class="nav-btn active">Fil d'actualité</a>
-        <a href="#cours" class="nav-btn">Cours</a>
-        <a href="#communiques" class="nav-btn">Communiqués</a>
-        <a href="#galerie" class="nav-btn">Galerie</a>
+        <button class="nav-btn active" onclick="switchTab('fil', this)">Fil d'actualité</button>
+        <button class="nav-btn" onclick="switchTab('cours', this)">Cours</button>
+        <button class="nav-btn" onclick="switchTab('communiques', this)">Communiqués</button>
+        <button class="nav-btn" onclick="switchTab('galerie', this)">Galerie</button>
     </nav>
 
     <main>
-        <section class="card">
-            <div class="feature-item">
-                <div class="feature-icon">📚</div>
-                <div class="feature-text">
-                    <strong>Accès direct aux cours :</strong> <span>Consultez et téléchargez les chapitres de chaque matière.</span>
+        <div id="tab-fil" class="tab-content active">
+            <section class="card">
+                <div class="feature-item">
+                    <div class="feature-icon">📚</div>
+                    <div class="feature-text">
+                        <strong>Accès direct aux cours :</strong> <span>Consultez et téléchargez les chapitres de chaque matière.</span>
+                    </div>
                 </div>
-            </div>
-            <div class="feature-item">
-                <div class="feature-icon">📢</div>
-                <div class="feature-text">
-                    <strong>Communiqués instantanés :</strong> <span>Soyez informés en temps réel des annonces de la classe.</span>
+                <div class="feature-item">
+                    <div class="feature-icon">📢</div>
+                    <div class="feature-text">
+                        <strong>Communiqués instantanés :</strong> <span>Soyez informés en temps réel des annonces de la classe.</span>
+                    </div>
                 </div>
-            </div>
-            <div class="feature-item">
-                <div class="feature-icon">🖼️</div>
-                <div class="feature-text">
-                    <strong>Galerie de la promotion :</strong> <span>Immortalisez nos moments forts et nos souvenirs d'étude.</span>
+                <div class="feature-item">
+                    <div class="feature-icon">🖼️</div>
+                    <div class="feature-text">
+                        <strong>Galerie de la promotion :</strong> <span>Immortalisez nos moments forts et nos souvenirs d'étude.</span>
+                    </div>
                 </div>
-            </div>
-            <div class="feature-item">
-                <div class="feature-icon">💡</div>
-                <div class="feature-text">
-                    <strong>Entraide & Progrès :</strong> <span>Un outil conçu pour avancer ensemble vers la réussite.</span>
+                <div class="feature-item">
+                    <div class="feature-icon">💡</div>
+                    <div class="feature-text">
+                        <strong>Entraide & Progrès :</strong> <span>Un outil conçu pour avancer ensemble vers la réussite.</span>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <section class="card">
-            <a href="createur.jpg" target="_blank">
-                <img src="createur.jpg" alt="Manassé Ntambwa" class="card-img" style="margin-bottom: 15px; max-height: 320px; object-fit: cover;">
-            </a>
+            <section class="card">
+                <a href="createur.jpg" target="_blank">
+                    <img src="createur.jpg" alt="Manassé Ntambwa" class="card-img" style="margin-bottom: 15px; max-height: 320px; object-fit: cover;">
+                </a>
 
-            <div class="tag">👑 FONDATEUR & CONCEPTEUR</div>
-            <h1 class="card-title">MANASSÉ NTAMBWA LUSHIKU</h1>
-            <p class="card-text">
-                Élève et passionné de technologie, j'ai conçu et développé ce site pour moderniser notre classe et centraliser toutes nos ressources scolaires. Mon objectif est que chaque élève de la 4ème Scientifique A dispose d'un outil simple, rapide et accessible sur téléphone pour réviser, suivre les nouvelles et réussir haut la main.
-            </p>
-            <p style="color: #4a9eff; font-weight: 500; font-size: 0.9rem;">
-                👉 Touche la photo pour l'agrandir
-            </p>
+                <div class="tag">👑 FONDATEUR & CONCEPTEUR</div>
+                <h1 class="card-title">MANASSÉ NTAMBWA LUSHIKU</h1>
+                <p class="card-text">
+                    Élève et passionné de technologie, j'ai conçu et développé ce site pour moderniser notre classe et centraliser toutes nos ressources scolaires. Mon objectif est que chaque élève de la 4ème Scientifique A dispose d'un outil simple, rapide et accessible sur téléphone pour réviser, suivre les nouvelles et réussir haut la main.
+                </p>
+                <p style="color: #4a9eff; font-weight: 500; font-size: 0.9rem;">
+                    👉 Touche la photo pour l'agrandir
+                </p>
 
-            <a href="actualite.png" target="_blank">
-                <img src="actualite.png" alt="Nos Objectifs Principaux" class="card-img" style="margin-top: 15px;">
-            </a>
-        </section>
+                <a href="actualite.png" target="_blank">
+                    <img src="actualite.png" alt="Nos Objectifs Principaux" class="card-img" style="margin-top: 15px;">
+                </a>
+            </section>
 
-        <section class="card">
-            <div class="tag">📋 ORGANISATION</div>
-            <h2 class="card-title">Cadres de la Classe</h2>
+            <section class="card">
+                <div class="tag">📋 ORGANISATION</div>
+                <h2 class="card-title">Cadres de la Classe</h2>
 
-            <div class="list-item">
-                <div class="list-icon">👨‍🏫</div>
-                <div class="list-info">
-                    <h4>Titulaire / Conseiller</h4>
-                    <p>À renseigner</p>
+                <div class="list-item">
+                    <div class="list-icon">👨‍🏫</div>
+                    <div class="list-info">
+                        <h4>Titulaire / Conseiller</h4>
+                        <p>À renseigner</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="list-item">
-                <div class="list-icon">👑</div>
-                <div class="list-info">
-                    <h4>Chef de Classe (CP)</h4>
-                    <p>À renseigner</p>
+                <div class="list-item">
+                    <div class="list-icon">👑</div>
+                    <div class="list-info">
+                        <h4>Chef de Classe (CP)</h4>
+                        <p>À renseigner</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="list-item">
-                <div class="list-icon">⚪</div>
-                <div class="list-info">
-                    <h4>Assistant CP (CPA)</h4>
-                    <p>OLVIE NGANGA</p>
+                <div class="list-item">
+                    <div class="list-icon">⚪</div>
+                    <div class="list-info">
+                        <h4>Assistant CP (CPA)</h4>
+                        <p>OLVIE NGANGA</p>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </div>
+
+        <div id="tab-cours" class="tab-content">
+            <section class="card">
+                <div class="tag">📚 ESPACE DE TRAVAIL</div>
+                <h2 class="card-title">Cours & Matières</h2>
+                <p class="card-text">Les chapitres et exercices de 4ème Scientifique A seront disponibles ici.</p>
+            </section>
+        </div>
+
+        <div id="tab-communiques" class="tab-content">
+            <section class="card">
+                <div class="tag">📢 ANNONCES</div>
+                <h2 class="card-title">Communiqués Officiels</h2>
+                <p class="card-text">Retrouvez ici les informations de la classe et de l'institut.</p>
+            </section>
+        </div>
+
+        <div id="tab-galerie" class="tab-content">
+            <section class="card">
+                <div class="tag">🖼️ PHOTOS</div>
+                <h2 class="card-title">Galerie de la Classe</h2>
+                <p class="card-text">Les photos des activités scolaires et des événements.</p>
+            </section>
+        </div>
     </main>
 
+    <script>
+        function switchTab(tabName, btn) {
+            var contents = document.querySelectorAll('.tab-content');
+            contents.forEach(function(content) {
+                content.classList.remove('active');
+            });
+
+            var buttons = document.querySelectorAll('.nav-btn');
+            buttons.forEach(function(b) {
+                b.classList.remove('active');
+            });
+
+            document.getElementById('tab-' + tabName).classList.add('active');
+            btn.classList.add('active');
+        }
+    </script>
 </body>
 </html>
 

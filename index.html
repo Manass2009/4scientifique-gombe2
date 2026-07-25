@@ -387,3 +387,105 @@
     </body>
 </html>
 
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Site Web</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Bienvenue sur notre Plateforme</h1>
+    </header>
+
+    <section id="inscription" class="card" style="margin: 20px auto; padding: 20px; max-width: 600px;">
+        <h2>✍️ Inscription</h2>
+        <p>Inscrivez-vous pour accéder à toutes les ressources :</p>
+        
+        <form action="https://formspree.io/f/TON_CODE_FORMSPREE" method="POST" onsubmit="return verifierTelephone()">
+            
+            <div style="margin-bottom: 12px;">
+                <label><strong>Nom :</strong></label><br>
+                <input type="text" name="nom" required style="width: 100%; padding: 8px; margin-top: 5px;">
+            </div>
+
+            <div style="margin-bottom: 12px;">
+                <label><strong>Postnom :</strong></label><br>
+                <input type="text" name="postnom" required style="width: 100%; padding: 8px; margin-top: 5px;">
+            </div>
+
+            <div style="margin-bottom: 12px;">
+                <label><strong>Prénom :</strong></label><br>
+                <input type="text" name="prenom" required style="width: 100%; padding: 8px; margin-top: 5px;">
+            </div>
+
+            <div style="margin-bottom: 12px;">
+                <label><strong>Téléphone (Orange, Vodacom, Airtel, Africell) :</strong></label><br>
+                <input type="tel" id="telephone" name="telephone" placeholder="ex: 084... ou 099..." required style="width: 100%; padding: 8px; margin-top: 5px;">
+                <small id="erreur-tel" style="color: red; display: none; margin-top: 5px; font-weight: bold;"></small>
+            </div>
+
+            <button type="submit" class="btn" style="background-color: #28a745; color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px; width: 100%;">
+                S'inscrire
+            </button>
+        </form>
+    </section>
+
+    <section id="actualites">
+        <div id="actu-principale"></div>
+    </section>
+
+    <section id="cours">
+        <h2>📚 Vos Cours</h2>
+        
+        <div class="grille-cours" style="display: flex; flex-wrap: wrap; gap: 15px;">
+            
+            <div class="card-cours">
+                <h3>🧮 Algèbre</h3>
+                <p>Retrouvez ici les cours et exercices d'algèbre.</p>
+            </div>
+
+            <div class="card-cours">
+                <h3>📈 Analyse</h3>
+                <p>Retrouvez ici les cours et exercices d'analyse.</p>
+            </div>
+
+            <div class="card-cours">
+                <h3>🏛️ Éducation Civique et Morale</h3>
+                <p>Programme national d'Éducation Civique et Morale (Secondaire).</p>
+                <a href="education_civique.pdf" target="_blank" class="btn-pdf" style="display: inline-block; padding: 8px 12px; background-color: #007bff; color: white; text-decoration: none; border-radius: 4px; margin-top: 8px;">
+                    📄 Ouvrir le cours (PDF)
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <script>
+    function verifierTelephone() {
+        var tel = document.getElementById('telephone').value.trim();
+        var erreur = document.getElementById('erreur-tel');
+        
+        tel = tel.replace(/\s+/g, '');
+
+        // Validation des numéros RDC
+        var regexRDC = /^(080|081|082|083|084|085|088|089|090|091|097|098|099)\d{7}$/;
+
+        if (!regexRDC.test(tel)) {
+            erreur.innerText = "⚠️ Numéro invalide ! Entrez un numéro RDC valide à 10 chiffres (ex: 084XXXXXXX, 099XXXXXXX).";
+            erreur.style.display = "block";
+            return false;
+        }
+
+        erreur.style.display = "none";
+        return true;
+    }
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

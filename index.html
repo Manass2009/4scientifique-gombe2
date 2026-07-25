@@ -14,88 +14,6 @@
     </header>
 
     <nav class="nav-bar">
-        <a href="index.html" class="active">Fil d'actualité</a>
-        <a href="cours.html">Cours</a>
-        <a href="#communiques">Communiqués</a>
-    </nav>
-
-    <main class="container">
-
-        <section id="inscription" class="card">
-            <h2>✍️ Inscription</h2>
-            <p>Remplissez vos informations ci-dessous :</p>
-            
-            <form action="https://formspree.io/f/TON_CODE_FORMSPREE" method="POST" onsubmit="return verifierTelephone()">
-                
-                <div class="form-group">
-                    <label>Nom :</label>
-                    <input type="text" name="nom" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Postnom :</label>
-                    <input type="text" name="postnom" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Prénom :</label>
-                    <input type="text" name="prenom" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Numéro de téléphone (Orange, Vodacom, Airtel, Africell) :</label>
-                    <input type="tel" id="telephone" name="telephone" placeholder="ex: 084... ou 099..." required>
-                    <small id="erreur-tel" class="error-msg"></small>
-                </div>
-
-                <button type="submit" class="btn btn-success">S'inscrire</button>
-            </form>
-        </section>
-
-        <section id="actualites">
-            <div id="actu-principale"></div>
-        </section>
-
-    </main>
-
-    <script>
-    function verifierTelephone() {
-        var tel = document.getElementById('telephone').value.trim();
-        var erreur = document.getElementById('erreur-tel');
-        tel = tel.replace(/\s+/g, '');
-
-        var regexRDC = /^(080|081|082|083|084|085|088|089|090|091|097|098|099)\d{7}$/;
-
-        if (!regexRDC.test(tel)) {
-            erreur.innerText = "⚠️ Numéro invalide ! Veuillez entrer un numéro RDC valide à 10 chiffres.";
-            erreur.style.display = "block";
-            return false;
-        }
-
-        erreur.style.display = "none";
-        return true;
-    }
-    </script>
-    <script src="script.js"></script>
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>4ème Scientifique A - Institut de la Gombe 2</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-    <header class="main-header">
-        <h1>4ème Scientifique A</h1>
-        <p>Institut de la Gombe 2</p>
-    </header>
-
-    <nav class="nav-bar">
         <a href="#inscription">Inscription</a>
         <a href="#cours" class="active">Cours</a>
         <a href="#actualites">Communiqués</a>
@@ -138,7 +56,7 @@
 
         <section id="cours" class="card">
             <span class="badge">PROGRAMME D'ÉTUDES</span>
-            <h2>Matières Scientifiques</h2>
+            <h2>Matières Scientifiques & Littéraires</h2>
             <p>Accédez aux synthèses, exercices et résumés de cours enregistrés pour la classe :</p>
 
             <div class="grid-cours">
@@ -147,38 +65,43 @@
                     <h3>Algèbre</h3>
                     <p>0 document</p>
                 </div>
+
                 <div class="item-cours">
                     <div class="icon">📈</div>
                     <h3>Analyse</h3>
                     <p>0 document</p>
                 </div>
+
                 <div class="item-cours">
                     <div class="icon">📏</div>
                     <h3>Géométrie</h3>
                     <p>0 document</p>
                 </div>
+
                 <div class="item-cours">
                     <div class="icon">⚡</div>
                     <h3>Physique</h3>
                     <p>0 document</p>
                 </div>
+
                 <div class="item-cours">
                     <div class="icon">🧪</div>
                     <h3>Chimie</h3>
                     <p>0 document</p>
                 </div>
+
                 <div class="item-cours">
                     <div class="icon">🧬</div>
                     <h3>Biologie</h3>
                     <p>0 document</p>
                 </div>
-            </div>
 
-            <div style="margin-top: 25px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1);">
-                <h3>📚 Éducation Civique et Morale</h3>
-                <p>Programme national d'Éducation Civique et Morale (Secondaire).</p>
-                <a href="education_civique.pdf" target="_blank" class="btn" style="display: inline-block; padding: 10px 15px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px; margin-top: 10px;">
-                    📄 Ouvrir le cours (PDF)
+                <a href="education_civique.pdf" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="item-cours" style="border: 1px solid #007bff;">
+                        <div class="icon">🏛️</div>
+                        <h3>Éd. Civique & Morale</h3>
+                        <p style="color: #007bff; font-weight: bold;">📄 Ouvrir le cours (PDF)</p>
+                    </div>
                 </a>
             </div>
         </section>
@@ -207,7 +130,6 @@
         return true;
     }
     </script>
-    <script src="script.js"></script>
 </body>
 </html>
 

@@ -2288,4 +2288,18 @@ RÈGLES ABSOLUES D'IDENTITÉ :
     return null;
   }
 </script>
+<script>
+  // --- IDENTIFICATION DISCRÈTE DU CRÉATEUR ---
+  // L'IA sait qui l'a créée, mais l'affiche de façon neutre pour les autres utilisateurs.
+  const CREATOR_NAME = "Manassé Ntambwa";
+
+  // Fonction pour intercepter la question sur le créateur
+  function verifierEtRepondreCreateur(texteQuestion) {
+    let q = texteQuestion.toLowerCase();
+    if (q.includes("qui") && (q.includes("créé") || q.includes("conçu") || q.includes("fait") || q.includes("inventé") || q.includes("développé"))) {
+      return `J'ai été créé et conçu par ${CREATOR_NAME} pour assister les élèves de la 4ème Scientifique A de l'Institut de la Gombe 2.`;
+    }
+    return null; // Si ce n'est pas une question sur le créateur, l'IA continue normalement
+  }
+</script>
 

@@ -2262,4 +2262,30 @@ RÈGLES ABSOLUES D'IDENTITÉ :
   verifierCreateur();
   // ---------------------------------------------
 </script>
+<script>
+  // --- GESTION DE L'HISTORIQUE PERSONNEL ET DU MENU ---
+  const CREATOR_NAME = "Manassé Ntambwa";
+
+  // Récupère ou initialise un identifiant unique pour l'utilisateur actuel
+  function obtenirUserId() {
+    let uid = localStorage.getItem("ia_user_uid");
+    if (!uid) {
+      uid = 'user_' + Math.random().toString(36.substring(2, 9));
+      localStorage.setItem("ia_user_uid", uid);
+    }
+    return uid;
+  }
+
+  // Clé unique de stockage pour cet utilisateur spécifique
+  const STORAGE_KEY = "ia_chats_history_" + obtenirUserId();
+
+  // Fonction pour intercepter la question et reconnaître le créateur à coup sûr
+  function verifierReponseCreateur(texteQuestion) {
+    let q = texteQuestion.toLowerCase();
+    if (q.includes("qui") && (q.includes("créé") || q.includes("conçu") || q.includes("fait") || q.includes("inventé") || q.includes("développé"))) {
+      return `J'ai été créé et conçu par ${CREATOR_NAME} pour assister les élèves de la 4ème Scientifique A de l'Institut de la Gombe 2.`;
+    }
+    return null;
+  }
+</script>
 

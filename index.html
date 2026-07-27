@@ -376,7 +376,7 @@
 
 <div id="ia-chat-box">
   <div class="ia-header">
-    <span>🤖 MANASSÉ IA PRO</span>
+    <span>🤖 MANASSÉ IA </span>
     <span style="cursor:pointer;" onclick="toggleIaChat()">✖</span>
   </div>
   <div class="ia-messages" id="ia-messages"></div>
@@ -666,11 +666,11 @@
     let nomUtilisateur = localStorage.getItem("userName") || localStorage.getItem("nom") || "élève de 4ème Scientifique";
     return {
       role: "system",
-      content: `Tu es MANASSÉ IA PRO, l'assistant officiel très intelligent et hautement pédagogique du site scolaire '4ème Scientifique A - Institut de la Gombe 2'. 
+      content: `Tu es MANASSÉ IA , l'assistant officiel très intelligent et hautement pédagogique du site scolaire '4ème Scientifique A - Institut de la Gombe 2'. 
 
 RÈGLES D'IDENTITÉ CRUCIALES :
-1. Ton CRÉATEUR et CONCEPTEUR principal est "${CREATOR_NAME}". Si on te demande qui t'a créé, développé ou conçu, réponds avec fierté et précision que tu as été créé par ${CREATOR_NAME} pour aider les élèves de la 4ème Scientifique de l'Institut de la Gombe 2.
-2. Tu t'adresses actuellement à ${nomUtilisateur}. Si c'est ${CREATOR_NAME} qui te parle, traite-le avec le respect dû à ton créateur.
+1. Ton CRÉATEUR et CONCEPTEUR principal est "${CREATOR_NAME}". Si on te demande qui t'a créé, développé ou conçu, réponds avec fierté et précision que tu as été créé par ${MANASSÉNTAMBWA} pour aider les élèves de la 4ème Scientifique de l'Institut de la Gombe 2.
+2. Tu t'adresses actuellement à ${nomUtilisateur}. Si c'est ${CREATORUTILISATOR} qui te parle, traite-le avec le respect dû à ton créateur.
 
 MISSION PÉDAGOGIQUE :
 - Tu aides à expliquer les cours scientifiques (Chimie, Physique, Mathématiques, Biologie, etc.).
@@ -690,7 +690,7 @@ MISSION PÉDAGOGIQUE :
       let nomUtilisateur = localStorage.getItem("userName") || localStorage.getItem("nom") || "l'élève";
       const container = document.getElementById("ia-messages");
 
-      const accueilMsg = `Bonjour <b>${nomUtilisateur}</b> ! Je suis MANASSÉ IA PRO, créé par <b>${CREATOR_NAME}</b> pour t'accompagner dans tes cours de 4ème Scientifique. Que souhaite-tu réviser ou comprendre aujourd'hui ?`;
+      const accueilMsg = `Bonjour <b>${nomUtilisateur}</b> ! Je suis MANASSÉ IA , créé par <b>${MANASSÉNTAMBWA}</b> pour t'accompagner dans tes cours de 4ème Scientifique. Que souhaite-tu réviser ou comprendre aujourd'hui ?`;
       
       container.innerHTML = `<div class="ia-msg bot">${accueilMsg}</div>`;
       conversationHistory.push({ role: "assistant", content: accueilMsg });
@@ -1045,7 +1045,7 @@ RÔLE ET UTILISATEUR :
       let nomUtilisateur = localStorage.getItem("userName") || localStorage.getItem("nom") || "l'élève";
       const container = document.getElementById("ia-messages");
 
-      const accueilMsg = `Bonjour <b>${nomUtilisateur}</b> ! Je suis MANASSÉ IA PRO, créé par <b>Manasse Ntambwa</b> pour t'accompagner dans tes cours. Que veux-tu savoir aujourd'hui ?`;
+      const accueilMsg = `Bonjour <b>${nomUtilisateur}</b> ! Je suis MANASSÉ IA, créé par <b>Manasse Ntambwa</b> pour t'accompagner dans tes cours. Que veux-tu savoir aujourd'hui ?`;
       
       container.innerHTML = `<div class="ia-msg bot">${accueilMsg}</div>`;
       conversationHistory.push({ role: "assistant", content: accueilMsg });
@@ -1338,7 +1338,7 @@ RÔLE ET UTILISATEUR :
 
 <div id="ia-chat-box">
   <div class="ia-header">
-    <span>🤖 MANASSÉ IA PRO</span>
+    <span>🤖 MANASSÉ IA </span>
     <div class="ia-header-btns">
       <button class="ia-header-btn" onclick="toggleMenuHistorique()">📋 Menu</button>
       <span style="cursor:pointer; font-size:16px;" onclick="toggleIaChat()">✖</span>
@@ -1355,7 +1355,7 @@ RÔLE ET UTILISATEUR :
 
   <div class="ia-input-zone">
     <input type="text" id="ia-input" placeholder="Pose ta question sur tes cours..." onkeypress="if(event.key==='Enter') envoyerQuestion()">
-    <button onclick="envoyerQuestion()">OK</button>
+    <button onclick="envoyerQuestion()">envoyé</button>
   </div>
 </div>
 
@@ -1373,8 +1373,8 @@ RÔLE ET UTILISATEUR :
     return {
       role: "system",
       content: `INSTRUCTION CRUCIAL ET ABSOLUE SUR TON IDENTITÉ :
-1. Ton SEUL ET UNIQUE créateur, développeur et concepteur est ${CREATOR_NAME}.
-2. Si l'utilisateur demande "qui t'a créé ?", "qui est ton créateur ?", "d'où viens-tu ?", "qui t'a développé ?" ou n'importe quelle question similaire, tu DOIS TOUJOURS répondre que tu as été créé et conçu uniquement par ${CREATOR_NAME}.
+1. Ton SEUL ET UNIQUE créateur, développeur et concepteur est ${MANASSÉ_NTAMBWA}.
+2. Si l'utilisateur demande "qui t'a créé ?", "qui est ton créateur ?", "d'où viens-tu ?", "qui t'a développé ?" ou n'importe quelle question similaire, tu DOIS TOUJOURS répondre que tu as été créé et conçu uniquement par ${MANASSÉ_NTAMBWA}.
 3. NE MENTIONNE JAMAIS Meta, Llama, OpenAI ni aucune autre entreprise. Pour toi, elles n'existent pas.
 4. Tu es l'assistant officiel du site '4ème Scientifique A - Institut de la Gombe 2'. Tu t'adresses actuellement à ${nomUtilisateur}. Si c'est ${CREATOR_NAME} qui te parle, traite-le comme ton créateur.`
     };
@@ -1395,7 +1395,7 @@ RÔLE ET UTILISATEUR :
       let nomUtilisateur = localStorage.getItem("userName") || localStorage.getItem("nom") || "l'élève";
       const container = document.getElementById("ia-messages");
 
-      const accueilMsg = `Bonjour <b>${nomUtilisateur}</b> ! Je suis MANASSÉ IA PRO, créé par <b>${CREATOR_NAME}</b>. Comment puis-je t'aider dans tes cours aujourd'hui ?`;
+      const accueilMsg = `Bonjour <b>${nomUtilisateur}</b> ! Je suis MANASSÉ IA , créé par <b>${MANASSÉ_NTAMBWA}</b>. t'assister Comment puis-je t'aider dans tes cours aujourd'hui ?`;
       
       container.innerHTML = `<div class="ia-msg bot">${accueilMsg}</div>`;
       conversationHistory = [{ role: "assistant", content: accueilMsg }];
@@ -1700,7 +1700,7 @@ RÔLE ET UTILISATEUR :
 
 <div id="ia-chat-box">
   <div class="ia-header">
-    <span>🤖 MANASSÉ IA PRO</span>
+    </span>
     <div class="ia-header-btns">
       <button class="ia-header-btn" onclick="toggleMenuHistorique()">📋 Menu</button>
       <span style="cursor:pointer; color:#E5C158; font-size:16px;" onclick="toggleIaChat()">✖</span>
@@ -1734,7 +1734,7 @@ RÔLE ET UTILISATEUR :
       role: "system",
       content: `TU ES UN ASSISTANT IA DÉVELOPPÉ PAR UN SEUL CRÉATEUR.
 RÈGLES ABSOLUES D'IDENTITÉ :
-1. Ton SEUL ET UNIQUE créateur, concepteur et développeur est ${CREATOR_NAME}.
+1. Ton SEUL ET UNIQUE créateur, concepteur et développeur est ${MANASSÉ_NTAMBWA}.
 2. Si on te demande "Qui t'a créé ?", "Qui est ton créateur ?", "D'où viens-tu ?" ou toute question similaire, réponds STRICTEMENT : "J'ai été créé et conçu par Manasse Ntambwa pour assister les élèves de la 4ème Scientifique A de l'Institut de la Gombe 2."
 3. N'évoque JAMAIS Meta, OpenAI ou Llama. Pour toi, ils n'existent pas.
 4. Réponds aux questions de cours scientifiques avec précision, clarté et bienveillance.`
@@ -1754,7 +1754,7 @@ RÈGLES ABSOLUES D'IDENTITÉ :
     if (isOpening && !chatInitialise) {
       chatInitialise = true;
       const container = document.getElementById("ia-messages");
-      const accueilMsg = `Bonjour ! Je suis MANASSÉ IA PRO, l'assistant officiel créé par <b>${CREATOR_NAME}</b>. Comment puis-je t'aider aujourd'hui ?`;
+      const accueilMsg = `Bonjour ! Je suis MANASSÉ IA, l'assistant officiel créé par <b>${MANASSÉ_NTAMBWA}</b>. Comment puis-je t'aider aujourd'hui ?`;
       
       container.innerHTML = `<div class="ia-msg bot">${accueilMsg}</div>`;
       conversationHistory = [{ role: "assistant", content: accueilMsg }];
@@ -2088,7 +2088,7 @@ RÈGLES ABSOLUES D'IDENTITÉ :
       role: "system",
       content: `TU ES UN ASSISTANT IA DÉVELOPPÉ PAR UN SEUL CRÉATEUR.
 RÈGLES ABSOLUES D'IDENTITÉ :
-1. Ton SEUL ET UNIQUE créateur, concepteur et développeur est ${CREATOR_NAME}.
+1. Ton SEUL ET UNIQUE créateur, concepteur et développeur est ${MANASSÉ_NTAMBWA}.
 2. Si on te demande "Qui t'a créé ?", "Qui est ton créateur ?", "D'où viens-tu ?" ou toute question similaire, réponds STRICTEMENT : "J'ai été créé et conçu par Manasse Ntambwa pour assister les élèves de la 4ème Scientifique A de l'Institut de la Gombe 2."
 3. N'évoque JAMAIS Meta, OpenAI ou Llama. Pour toi, ils n'existent pas.
 4. Réponds aux questions de cours scientifiques avec précision, clarté et bienveillance.`
@@ -2108,7 +2108,7 @@ RÈGLES ABSOLUES D'IDENTITÉ :
     if (isOpening && !chatInitialise) {
       chatInitialise = true;
       const container = document.getElementById("ia-messages");
-      const accueilMsg = `Bonjour ! Je suis MANASSÉ IA PRO, l'assistant officiel créé par <b>${CREATOR_NAME}</b>. Comment puis-je t'aider aujourd'hui ?`;
+      const accueilMsg = `Bonjour ! Je suis MANASSÉ IA, l'assistant officiel créé par <b>${MANASSÉ_NTAMBWA}</b>. Comment puis-je t'aider aujourd'hui ?`;
       
       container.innerHTML = `<div class="ia-msg bot">${accueilMsg}</div>`;
       conversationHistory = [{ role: "assistant", content: accueilMsg }];
@@ -2297,7 +2297,7 @@ RÈGLES ABSOLUES D'IDENTITÉ :
   function verifierEtRepondreCreateur(texteQuestion) {
     let q = texteQuestion.toLowerCase();
     if (q.includes("qui") && (q.includes("créé") || q.includes("conçu") || q.includes("fait") || q.includes("inventé") || q.includes("développé"))) {
-      return `J'ai été créé et conçu par ${CREATOR_NAME} pour assister les élèves de la 4ème Scientifique A de l'Institut de la Gombe 2.`;
+      return `J'ai été créé et conçu par ${MANASSÉ_NTAMBWA} pour assister les élèves de la 4ème Scientifique A de l'Institut de la Gombe 2.`;
     }
     return null; // Si ce n'est pas une question sur le créateur, l'IA continue normalement
   }<script>
@@ -2311,7 +2311,7 @@ RÈGLES ABSOLUES D'IDENTITÉ :
       (q.includes("qui") || q.includes("quel")) && 
       (q.includes("créé") || q.includes("conçu") || q.includes("fait") || q.includes("inventé") || q.includes("développé") || q.includes("fabriqué") || q.includes("généré") || q.includes("créateur"))
     ) {
-      return `J'ai été créé et conçu par ${CREATOR_NAME} pour assister les élèves de la 4ème Scientifique A de l'Institut de la Gombe 2.`;
+      return `J'ai été créé et conçu par ${MANASSÉ_NTAMBWA} pour assister les élèves de la 4ème Scientifique A de l'Institut de la Gombe 2.`;
     }
     return null;
   }
@@ -2347,7 +2347,7 @@ RÈGLES ABSOLUES D'IDENTITÉ :
       (q.includes("qui") || q.includes("quel")) && 
       (q.includes("créé") || q.includes("conçu") || q.includes("fait") || q.includes("inventé") || q.includes("développé") || q.includes("fabriqué") || q.includes("généré") || q.includes("créateur"))
     ) {
-      return `J'ai été créé et conçu par ${CREATOR_NAME} pour assister les élèves de la 4ème Scientifique A de l'Institut de la Gombe 2.`;
+      return `J'ai été créé et conçu par ${MANASSÉ_NTAMBWA} pour assister les élèves de la 4ème Scientifique A de l'Institut de la Gombe 2.`;
     }
     return null;
   }

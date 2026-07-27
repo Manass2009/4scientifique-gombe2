@@ -2331,4 +2331,25 @@ RÈGLES ABSOLUES D'IDENTITÉ :
 </script>
 
 </scr
+<script>
+  // --- NETTOYAGE AUTOMATIQUE DE L'ANCIENNE MÉMOIRE ---
+  // Supprime l'ancien nom forcé qui restait bloqué dans le navigateur
+  localStorage.removeItem("userName");
+  localStorage.removeItem("ia_user_uid");
+
+  // --- CONFIGURATION DE L'IA ET DU CRÉATEUR ---
+  const CREATOR_NAME = "Manassé Ntambwa";
+
+  // Fonction pour intercepter toutes les variantes de questions sur le créateur
+  function verifierReponseCreateur(texteQuestion) {
+    let q = texteQuestion.toLowerCase();
+    if (
+      (q.includes("qui") || q.includes("quel")) && 
+      (q.includes("créé") || q.includes("conçu") || q.includes("fait") || q.includes("inventé") || q.includes("développé") || q.includes("fabriqué") || q.includes("généré") || q.includes("créateur"))
+    ) {
+      return `J'ai été créé et conçu par ${CREATOR_NAME} pour assister les élèves de la 4ème Scientifique A de l'Institut de la Gombe 2.`;
+    }
+    return null;
+  }
+</script>
 

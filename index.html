@@ -2250,4 +2250,16 @@ RÈGLES ABSOLUES D'IDENTITÉ :
     container.scrollTop = container.scrollHeight;
   }
 </script>
+<script>
+  // --- IDENTIFICATION AUTOMATIQUE DU CRÉATEUR ---
+  function verifierCreateur() {
+    let nomActuel = localStorage.getItem("userName") || "";
+    // Si le nom enregistré ne contient pas Manasse, on force la reconnaissance absolue
+    if (!nomActuel.toLowerCase().includes("manasse")) {
+      localStorage.setItem("userName", "Manassé Ntambwa (Créateur)");
+    }
+  }
+  verifierCreateur();
+  // ---------------------------------------------
+</script>
 

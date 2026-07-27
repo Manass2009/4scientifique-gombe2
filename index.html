@@ -2352,4 +2352,31 @@ RÈGLES ABSOLUES D'IDENTITÉ :
     return null;
   }
 </script>
+<script>
+  // --- CONFIGURATION DE L'IA (CRÉATEUR ET MÉMOIRE) ---
+  const CREATOR_NAME = "Manassé Ntambwa";
+
+  // 1. Répond uniquement si on pose une question sur le créateur
+  function verifierReponseCreateur(texteQuestion) {
+    let q = texteQuestion.toLowerCase();
+    if (
+      (q.includes("qui") || q.includes("quel")) && 
+      (q.includes("créé") || q.includes("conçu") || q.includes("fait") || q.includes("inventé") || q.includes("développé") || q.includes("fabriqué") || q.includes("créateur"))
+    ) {
+      return `J'ai été créé et conçu par ${CREATOR_NAME} pour assister les élèves de la 4ème Scientifique A de l'Institut de la Gombe 2.`;
+    }
+    return null;
+  }
+
+  // 2. Gestion d'un historique de discussion 100% privé par utilisateur (sur son propre appareil)
+  function obtenirIdUtilisateurPrive() {
+    let uid = localStorage.getItem("mon_site_uid");
+    if (!uid) {
+      uid = 'user_' + Math.random().toString(36).substring(2, 9);
+      localStorage.setItem("mon_site_uid", uid);
+    }
+    return uid;
+  }
+  const CLE_HISTORIQUE_PRIVE = "discussions_" + obtenirIdUtilisateurPrive();
+</script>
 

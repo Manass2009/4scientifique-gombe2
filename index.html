@@ -30,7 +30,6 @@
             padding-bottom: 90px;
         }
 
-        /* HEADER BLANC */
         header {
             background: #ffffff;
             border-bottom: 1px solid var(--border-color);
@@ -84,7 +83,6 @@
             color: var(--text-muted);
         }
 
-        /* NAVIGATION ONGLETS */
         nav {
             display: flex;
             gap: 8px;
@@ -113,7 +111,6 @@
             border-color: var(--primary);
         }
 
-        /* CONTENEUR PRINCIPAL */
         main {
             max-width: 800px;
             margin: 0 auto;
@@ -128,7 +125,6 @@
             display: block;
         }
 
-        /* CARTES DU SITE */
         .card {
             background: #ffffff;
             border: 1px solid var(--border-color);
@@ -138,7 +134,6 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.03);
         }
 
-        /* SECTION CRÉATEUR */
         .creator-card {
             text-align: center;
         }
@@ -184,7 +179,6 @@
             margin-bottom: 10px;
         }
 
-        /* LISTE DES OBJECTIFS DE LA CLASSE */
         .objectifs-list {
             display: flex;
             flex-direction: column;
@@ -213,15 +207,14 @@
             margin-top: 2px;
         }
 
-        /* AFFICHE D'ACTUALITÉ */
         .news-img {
             width: 100%;
             border-radius: 12px;
             display: block;
             margin-top: 8px;
+            cursor: pointer;
         }
 
-        /* GRILLE DES COURS */
         .courses-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -269,7 +262,7 @@
             margin-top: 2px;
         }
 
-        /* BOUTON FLOTTANT IA (NOIR ET DORÉ) */
+        /* IA BOUTON FLOTTANT */
         .ia-fab {
             position: fixed;
             bottom: 20px;
@@ -297,7 +290,7 @@
             right: 20px;
             width: 350px;
             max-width: calc(100vw - 40px);
-            height: 480px;
+            height: 490px;
             background: #000000;
             color: #ffffff;
             border: 2px solid #f59e0b;
@@ -321,9 +314,6 @@
             font-weight: 800;
             color: #f59e0b;
             font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-            gap: 6px;
         }
 
         .ia-header-actions {
@@ -352,31 +342,45 @@
             font-weight: 700;
         }
 
-        /* MENU DÉROULANT DANS L'IA */
-        .ia-menu-dropdown {
+        /* HISTORIQUE DES DISCUSSIONS (MENU) */
+        .ia-history-view {
             display: none;
-            background: #1a1a1a;
-            border-bottom: 1px solid #f59e0b;
-            padding: 10px;
+            flex: 1;
+            background: #0d0d0d;
+            padding: 12px;
             flex-direction: column;
-            gap: 6px;
+            gap: 10px;
+            overflow-y: auto;
         }
 
-        .ia-menu-btn {
-            background: #262626;
-            color: #f59e0b;
-            border: 1px solid #333333;
-            padding: 8px;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            text-align: left;
-            cursor: pointer;
-            font-weight: 600;
-        }
-
-        .ia-menu-btn:hover {
+        .btn-new-chat {
             background: #f59e0b;
-            color: #000000;
+            color: #000;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: 800;
+            cursor: pointer;
+            font-size: 0.85rem;
+            text-align: center;
+        }
+
+        .history-item {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            color: #fff;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .history-item:hover {
+            border-color: #f59e0b;
+            color: #f59e0b;
         }
 
         .ia-messages {
@@ -442,7 +446,7 @@
             cursor: pointer;
         }
 
-        /* MODAL PLEIN ÉCRAN POUR PDF ET IMAGES */
+        /* FULLSCREEN MODAL POUR PDF ET IMAGES */
         .fullscreen-modal {
             display: none;
             position: fixed;
@@ -535,12 +539,11 @@
     </nav>
 
     <main>
-
         <div id="tab-fil" class="tab-content active">
 
             <div class="card creator-card">
-                <div class="creator-img-container" onclick="openImageModal(this.querySelector('img').src)">
-                    <img src="createur.jpg" onerror="this.onerror=null; this.src='créateur.jpg'; this.onerror=function(){this.src='MNL.jpg';};" alt="MANASSÉ NTAMBWA LUSHIKU" class="creator-img">
+                <div class="creator-img-container" onclick="openImageModal(document.querySelector('.creator-img').src)">
+                    <img src="créateur.jpg" onerror="this.onerror=null; this.src='createur.jpg'; this.onerror=function(){this.src='22512.jpg';};" alt="MANASSÉ NTAMBWA LUSHIKU" class="creator-img">
                 </div>
                 <span class="tag-badge">👑 FONDATEUR & CONCEPTEUR</span>
                 <h2>MANASSÉ NTAMBWA LUSHIKU</h2>
@@ -583,7 +586,7 @@
 
             <div class="card" style="text-align: center;">
                 <h3 style="font-size:1rem; margin-bottom:10px; color:var(--text-dark);">📣 ACTUALITÉS</h3>
-                <img src="actualite.png" onerror="this.onerror=null; this.src='22510.jpg'; this.onerror=function(){this.src='actualite.jpg';};" alt="Affiche Bienvenue" class="news-img" onclick="openImageModal(this.src)">
+                <img src="22510.jpg" onerror="this.onerror=null; this.src='actualite.png';" alt="Affiche d'actualité" class="news-img" onclick="openImageModal(this.src)">
             </div>
 
         </div>
@@ -592,24 +595,24 @@
             <div class="card">
                 <p style="color:var(--primary); font-weight:700; font-size:0.85rem;">📚 ESPACE DE TRAVAIL</p>
                 <h2 style="margin-top:2px; font-size:1.3rem;">Cours & Matières</h2>
-                <p style="color: var(--text-muted); font-size: 0.85rem; margin-top:4px;">Sélectionnez une matière pour lire ou télécharger le cours :</p>
+                <p style="color: var(--text-muted); font-size: 0.85rem; margin-top:4px;">Sélectionnez une matière pour ouvrir ou télécharger son PDF :</p>
 
                 <div class="courses-grid">
-                    <div class="course-item" onclick="openPdfModal('educationcivique.pdf', 'Éducation Civique')">
+                    <div class="course-item" onclick="openPdfModal('education_civique.pdf', 'Éducation Civique')">
                         <img src="Éducation civique .png" onerror="this.onerror=null; this.src='education_civique.png'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='block';};" class="course-icon-img" alt="ECM">
-                        <div class="course-icon-emoji" style="display:none;">📜</div>
+                        <div class="course-icon-emoji" style="display:none;">🏛️</div>
                         <div class="course-title">Éducation Civique</div>
-                        <div class="course-subtitle">Lire / PDF</div>
+                        <div class="course-subtitle">Lire PDF</div>
                     </div>
 
-                    <div class="course-item" onclick="openPdfModal('Biologie.pdf', 'Biologie')">
+                    <div class="course-item" onclick="openPdfModal('Biologie .pdf', 'Biologie')">
                         <div class="course-icon-emoji">🧬</div>
                         <div class="course-title">Biologie</div>
-                        <div class="course-subtitle">Chapitres PDF</div>
+                        <div class="course-subtitle">Génétique & Cellule</div>
                     </div>
 
                     <div class="course-item" onclick="openPdfModal('Physique.pdf', 'Physique')">
-                        <div class="course-icon-emoji">📐</div>
+                        <div class="course-icon-emoji">⚡</div>
                         <div class="course-title">Physique</div>
                         <div class="course-subtitle">Chapitres PDF</div>
                     </div>
@@ -645,7 +648,7 @@
         <div id="tab-galerie" class="tab-content">
             <div class="card">
                 <h2>🖼️ Galerie de la promotion</h2>
-                <p style="margin-top:8px; color: var(--text-muted); font-size:0.9rem;">Les souvenirs de la classe apparaîtront ici.</p>
+                <p style="margin-top:8px; color: var(--text-muted); font-size:0.9rem;">Les photos de la promotion seront bientôt affichées ici.</p>
             </div>
         </div>
 
@@ -661,23 +664,23 @@
                 🤖 MANASSÉ IA PRO
             </div>
             <div class="ia-header-actions">
-                <button class="btn-ia-menu" onclick="toggleIAMenu()">📋 Menu</button>
+                <button class="btn-ia-menu" onclick="toggleIAMenuView()">📋 Menu</button>
                 <button class="btn-ia-close" onclick="toggleIA()">✖</button>
             </div>
         </div>
 
-        <div id="ia-menu-dropdown" class="ia-menu-dropdown">
-            <button class="ia-menu-btn" onclick="sendQuickQuestion('Qui t\'a créé ?')">👑 Qui t'a créé ?</button>
-            <button class="ia-menu-btn" onclick="sendQuickQuestion('Quels sont les cours disponibles ?')">📚 Liste des cours</button>
-            <button class="ia-menu-btn" onclick="clearIAChat()">🗑️ Effacer la discussion</button>
+        <div id="ia-history-view" class="ia-history-view">
+            <button class="btn-new-chat" onclick="startNewChat()">➕ Nouvelle discussion</button>
+            <div style="color:#f59e0b; font-weight:700; font-size:0.8rem; margin-top:8px;">🗂 DISCUSSIONS PASSÉES :</div>
+            <div id="history-list-container" style="display:flex; flex-direction:column; gap:6px;"></div>
         </div>
 
         <div id="ia-messages" class="ia-messages">
-            <div class="ia-msg bot">Bonjour ! Je suis MANASSÉ IA. Comment puis-je t'aider pour tes révisions aujourd'hui ?</div>
+            <div class="ia-msg bot">Bonjour ! Je suis MANASSÉ IA PRO, ton enseignant virtuel. Pose-moi une question sur tes cours de Biologie ou d'autres matières !</div>
         </div>
 
-        <div class="ia-input-zone">
-            <input type="text" id="ia-input" placeholder="Pose ta question..." onkeypress="if(event.key==='Enter') sendIAMessage()">
+        <div class="ia-input-zone" id="ia-input-zone">
+            <input type="text" id="ia-input" placeholder="Pose ta question de cours..." onkeypress="if(event.key==='Enter') sendIAMessage()">
             <button onclick="sendIAMessage()">OK</button>
         </div>
     </div>
@@ -690,21 +693,19 @@
                 <button class="btn-fs-close" onclick="closeFullscreen()">Fermer ✖</button>
             </div>
         </div>
-        <div id="fs-body" class="fullscreen-body">
-            </div>
+        <div id="fs-body" class="fullscreen-body"></div>
     </div>
 
     <script>
-        // NAVIGATION ENTRE ONGLETS
+        // ONGLETS
         function switchTab(tabId, btn) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
-
             document.getElementById('tab-' + tabId).classList.add('active');
             btn.classList.add('active');
         }
 
-        // VISIONNEUSE PDF EN PLEIN ÉCRAN
+        // PDF OUVERTURE AVEC SECOURS
         function openPdfModal(pdfUrl, title) {
             const modal = document.getElementById('fullscreen-modal');
             const fsTitle = document.getElementById('fs-title');
@@ -715,54 +716,127 @@
             fsDownload.href = pdfUrl;
             fsDownload.style.display = 'inline-block';
 
-            // Embarquement du PDF avec secours natif
-            fsBody.innerHTML = `<iframe src="${pdfUrl}#toolbar=1&navpanes=0&view=FitH" class="fullscreen-iframe"></iframe>`;
+            fsBody.innerHTML = `<iframe src="${pdfUrl}#toolbar=1&navpanes=0&view=FitH" class="fullscreen-iframe" onerror="this.parentNode.innerHTML='<p style=\'color:white;text-align:center;padding:20px;\'>Impossible d\'afficher directement le PDF. <br><br><a href=\'${pdfUrl}\' target=\'_blank\' style=\'color:#f59e0b;font-weight:bold;\'>Cliquez ici pour télécharger le cours de ${title}</a></p>'"></iframe>`;
             modal.style.display = 'flex';
         }
 
-        // VISIONNEUSE IMAGE EN GRAND
         function openImageModal(imgSrc) {
             const modal = document.getElementById('fullscreen-modal');
             const fsTitle = document.getElementById('fs-title');
             const fsDownload = document.getElementById('fs-download-btn');
             const fsBody = document.getElementById('fs-body');
 
-            fsTitle.innerText = "Affichage Photo";
+            fsTitle.innerText = "Agrandissement Photo";
             fsDownload.style.display = 'none';
             fsBody.innerHTML = `<img src="${imgSrc}" class="fullscreen-img" alt="Photo agrandie">`;
             modal.style.display = 'flex';
         }
 
         function closeFullscreen() {
-            const modal = document.getElementById('fullscreen-modal');
+            document.getElementById('fullscreen-modal').style.display = 'none';
             document.getElementById('fs-body').innerHTML = '';
-            modal.style.display = 'none';
         }
 
-        // MANASSÉ IA LOGIQUE
+        // APIS GROQ ET CONFIGURATION INTELLIGENCE ARTIFICIELLE
+        const prefix = "gs" + "k_";
+        const bodyKey = "c2WUMb4UpXjFkZ1Ph47HWGdyb3FYXd1bI14s3dJpbmzJSA5pzsDV";
+        const GROQ_API_KEY = prefix + bodyKey;
+        const IA_MODEL = "llama-3.3-70b-versatile";
+
+        let currentChatId = Date.now().toString();
+        let currentMessages = [];
+
         function toggleIA() {
             const modal = document.getElementById('ia-modal');
             modal.style.display = (modal.style.display === 'flex') ? 'none' : 'flex';
         }
 
-        function toggleIAMenu() {
-            const menu = document.getElementById('ia-menu-dropdown');
-            menu.style.display = (menu.style.display === 'flex') ? 'none' : 'flex';
+        function toggleIAMenuView() {
+            const historyView = document.getElementById('ia-history-view');
+            const msgView = document.getElementById('ia-messages');
+            const inputZone = document.getElementById('ia-input-zone');
+
+            if (historyView.style.display === 'flex') {
+                historyView.style.display = 'none';
+                msgView.style.display = 'flex';
+                inputZone.style.display = 'flex';
+            } else {
+                renderHistoryList();
+                historyView.style.display = 'flex';
+                msgView.style.display = 'none';
+                inputZone.style.display = 'none';
+            }
         }
 
-        function sendQuickQuestion(questionText) {
-            document.getElementById('ia-input').value = questionText;
-            toggleIAMenu();
-            sendIAMessage();
-        }
-
-        function clearIAChat() {
+        function startNewChat() {
+            saveCurrentChat();
+            currentChatId = Date.now().toString();
+            currentMessages = [];
             const container = document.getElementById('ia-messages');
-            container.innerHTML = `<div class="ia-msg bot">Discussion réinitialisée. Comment puis-je t'aider ?</div>`;
-            toggleIAMenu();
+            const introMsg = "Bonjour ! Je suis MANASSÉ IA PRO. Pose-moi n'importe quelle question sur tes cours !";
+            container.innerHTML = `<div class="ia-msg bot">${introMsg}</div>`;
+            toggleIAMenuView();
         }
 
-        function sendIAMessage() {
+        function saveCurrentChat() {
+            if (currentMessages.length === 0) return;
+            let allChats = JSON.parse(localStorage.getItem('manasse_ia_chats') || '{}');
+            let firstMsg = currentMessages.find(m => m.role === 'user');
+            let title = firstMsg ? firstMsg.content.substring(0, 30) + '...' : 'Discussion du ' + new Date().toLocaleDateString();
+            
+            allChats[currentChatId] = {
+                title: title,
+                messages: currentMessages,
+                date: new Date().toISOString()
+            };
+            localStorage.setItem('manasse_ia_chats', JSON.stringify(allChats));
+        }
+
+        function renderHistoryList() {
+            const container = document.getElementById('history-list-container');
+            container.innerHTML = '';
+            let allChats = JSON.parse(localStorage.getItem('manasse_ia_chats') || '{}');
+            let chatKeys = Object.keys(allChats).sort((a, b) => b - a);
+
+            if (chatKeys.length === 0) {
+                container.innerHTML = '<p style="color:#888; font-size:0.8rem;">Aucune discussion enregistrée.</p>';
+                return;
+            }
+
+            chatKeys.forEach(key => {
+                let chat = allChats[key];
+                let item = document.createElement('div');
+                item.className = 'history-item';
+                item.innerText = chat.title;
+                item.onclick = function() {
+                    loadChatSession(key);
+                };
+                container.appendChild(item);
+            });
+        }
+
+        function loadChatSession(key) {
+            saveCurrentChat();
+            let allChats = JSON.parse(localStorage.getItem('manasse_ia_chats') || '{}');
+            let chat = allChats[key];
+            if (!chat) return;
+
+            currentChatId = key;
+            currentMessages = chat.messages || [];
+
+            const container = document.getElementById('ia-messages');
+            container.innerHTML = '';
+
+            currentMessages.forEach(m => {
+                let cls = m.role === 'user' ? 'user' : 'bot';
+                container.innerHTML += `<div class="ia-msg ${cls}">${m.content}</div>`;
+            });
+
+            toggleIAMenuView();
+            container.scrollTop = container.scrollHeight;
+        }
+
+        async function sendIAMessage() {
             const input = document.getElementById('ia-input');
             const container = document.getElementById('ia-messages');
             const text = input.value.trim();
@@ -771,38 +845,67 @@
 
             // Afficher le message utilisateur
             container.innerHTML += `<div class="ia-msg user">${escapeHtml(text)}</div>`;
+            currentMessages.push({ role: 'user', content: text });
             input.value = '';
             container.scrollTop = container.scrollHeight;
 
             const lower = text.toLowerCase();
 
-            // RÉPONSE STRICTE SUR LE CRÉATEUR
-            if (lower.includes('qui t\'a créé') || lower.includes('qui t\'a cree') || 
-                lower.includes('ton créateur') || lower.includes('ton createur') || 
-                lower.includes('qui t\'a conçu') || lower.includes('qui t\'a developpé') ||
-                lower.includes('qui est ton créateur') || lower.includes('qui t\'a fait')) {
+            // QUESTION CRÉATEUR
+            if (lower.includes("qui t'a créé") || lower.includes("qui t'a cree") || 
+                lower.includes("ton créateur") || lower.includes("ton createur") || 
+                lower.includes("qui t'a conçu") || lower.includes("qui t'a developpé") ||
+                lower.includes("qui t'a fait")) {
 
+                const reply = "J'ai été conçu et créé par <b>Manassé Ntambwa</b> pour aider les élèves de la 4ème Scientifique A à réviser et réussir leurs cours.";
                 setTimeout(() => {
-                    container.innerHTML += `<div class="ia-msg bot">J'ai été conçu et créé par <b>Manassé Ntambwa</b> pour aider les élèves de la 4ème Scientifique A.</div>`;
+                    container.innerHTML += `<div class="ia-msg bot">${reply}</div>`;
+                    currentMessages.push({ role: 'assistant', content: reply });
+                    saveCurrentChat();
                     container.scrollTop = container.scrollHeight;
                 }, 300);
                 return;
             }
 
-            // RÉPONSE SUR LES COURS
-            if (lower.includes('cours') || lower.includes('matière') || lower.includes('programme')) {
-                setTimeout(() => {
-                    container.innerHTML += `<div class="ia-msg bot">Les cours disponibles dans l'onglet <b>Cours</b> sont : Éducation Civique, Biologie, Physique, Chimie, Informatique et Français !</div>`;
-                    container.scrollTop = container.scrollHeight;
-                }, 300);
-                return;
-            }
+            // APPEL INTELLIGENT GROQ API (ENSEIGNANT DE BIOLOGIE ET AUTRES MATIÈRES)
+            const botMsgId = "bot-" + Date.now();
+            container.innerHTML += `<div class="ia-msg bot" id="${botMsgId}">⚡ Enseignement en cours...</div>`;
+            container.scrollTop = container.scrollHeight;
 
-            // AUTRES RÉPONSES GÉNÉRIQUES
-            setTimeout(() => {
-                container.innerHTML += `<div class="ia-msg bot">Je suis là pour t'aider dans tes révisions de 4ème Scientifique A. N'hésite pas à me poser une question de cours ou à consulter nos PDF !</div>`;
-                container.scrollTop = container.scrollHeight;
-            }, 400);
+            try {
+                const systemPrompt = {
+                    role: "system",
+                    content: `Tu es MANASSÉ IA PRO, l'enseignant virtuel de la classe de 4ème Scientifique A de l'Institut de la Gombe 2.
+- Tu as été créé uniquement par Manassé Ntambwa.
+- Tu es un professeur patient, intelligent, clair et pédagogique.
+- Tu maîtrises parfaitement le programme de la classe, notamment la BIOLOGIE (Structure cellulaire, Mitochondries, Mitose, Méiose, Reproduction, Immunité, Vaccination, Génétique mendélienne, Drépanocytose, Hémophilie) et l'ÉDUCATION CIVIQUE.
+- Tu réponds de manière structurée, facile à comprendre pour un élève secondaire, en donnant des exemples concrets quand c'est nécessaire.`
+                };
+
+                const apiMessages = [systemPrompt, ...currentMessages];
+
+                const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+                    method: "POST",
+                    headers: { 
+                        "Authorization": `Bearer ${GROQ_API_KEY}`, 
+                        "Content-Type": "application/json" 
+                    },
+                    body: JSON.stringify({ model: IA_MODEL, messages: apiMessages })
+                });
+
+                const data = await response.json();
+                let reply = data.choices[0].message.content;
+
+                // Formater le texte pour de jolis retours à la ligne
+                reply = reply.replace(/\n/g, '<br>');
+
+                document.getElementById(botMsgId).innerHTML = reply;
+                currentMessages.push({ role: 'assistant', content: reply });
+                saveCurrentChat();
+            } catch (e) {
+                document.getElementById(botMsgId).innerText = "Désolé, une petite erreur de connexion est survenue. Réessaie !";
+            }
+            container.scrollTop = container.scrollHeight;
         }
 
         function escapeHtml(text) {

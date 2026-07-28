@@ -7,12 +7,14 @@
     <style>
         :root {
             --primary: #1d4ed8;
-            --primary-dark: #1e40af;
-            --bg-light: #f8fafc;
+            --primary-light: #eff6ff;
+            --gold: #f59e0b;
+            --gold-hover: #d97706;
+            --bg-site: #ffffff;
             --card-bg: #ffffff;
-            --text-main: #0f172a;
+            --text-dark: #0f172a;
             --text-muted: #475569;
-            --border: #e2e8f0;
+            --border-color: #e2e8f0;
         }
 
         * {
@@ -23,14 +25,15 @@
         }
 
         body {
-            background-color: var(--bg-light);
-            color: var(--text-main);
-            padding-bottom: 80px;
+            background-color: #f8fafc;
+            color: var(--text-dark);
+            padding-bottom: 90px;
         }
 
+        /* HEADER BLANC */
         header {
             background: #ffffff;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid var(--border-color);
             padding: 12px 16px;
             position: sticky;
             top: 0;
@@ -46,9 +49,9 @@
         }
 
         .title-grp h1 {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             color: var(--primary);
-            font-weight: 700;
+            font-weight: 800;
         }
 
         .title-grp p {
@@ -81,7 +84,7 @@
             color: var(--text-muted);
         }
 
-        /* Navigation Onglets */
+        /* NAVIGATION ONGLETS */
         nav {
             display: flex;
             gap: 8px;
@@ -94,8 +97,8 @@
 
         .tab-btn {
             background: #ffffff;
-            border: 1px solid var(--border);
-            padding: 8px 16px;
+            border: 1px solid var(--border-color);
+            padding: 8px 18px;
             border-radius: 20px;
             font-size: 0.9rem;
             font-weight: 600;
@@ -110,7 +113,7 @@
             border-color: var(--primary);
         }
 
-        /* Conteneur principal */
+        /* CONTENEUR PRINCIPAL */
         main {
             max-width: 800px;
             margin: 0 auto;
@@ -125,28 +128,36 @@
             display: block;
         }
 
-        /* Cartes & Blocs */
+        /* CARTES DU SITE */
         .card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
+            background: #ffffff;
+            border: 1px solid var(--border-color);
             border-radius: 16px;
-            padding: 16px;
+            padding: 18px;
             margin-bottom: 16px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
         }
 
-        /* Section Créateur */
+        /* SECTION CRÉATEUR */
         .creator-card {
             text-align: center;
         }
 
+        .creator-img-container {
+            width: 100%;
+            max-height: 420px;
+            overflow: hidden;
+            border-radius: 12px;
+            margin-bottom: 14px;
+            background: #e2e8f0;
+            cursor: pointer;
+        }
+
         .creator-img {
             width: 100%;
-            max-height: 400px;
+            height: 100%;
             object-fit: cover;
-            border-radius: 12px;
-            margin-bottom: 12px;
-            background: #e2e8f0;
+            display: block;
         }
 
         .tag-badge {
@@ -155,180 +166,233 @@
             color: #b45309;
             font-size: 0.8rem;
             font-weight: 700;
-            padding: 4px 8px;
-            border-radius: 6px;
+            padding: 4px 10px;
+            border-radius: 8px;
             margin-bottom: 8px;
         }
 
         .creator-card h2 {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             margin-bottom: 8px;
+            color: var(--text-dark);
         }
 
         .creator-card p {
             font-size: 0.9rem;
             color: var(--text-muted);
             line-height: 1.5;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
-        /* Section Actualité */
+        /* LISTE DES OBJECTIFS DE LA CLASSE */
+        .objectifs-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .objectif-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .objectif-icon {
+            font-size: 1.4rem;
+            line-height: 1;
+        }
+
+        .objectif-text b {
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+
+        .objectif-text p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 2px;
+        }
+
+        /* AFFICHE D'ACTUALITÉ */
         .news-img {
             width: 100%;
             border-radius: 12px;
-            margin-top: 12px;
+            display: block;
+            margin-top: 8px;
         }
 
-        /* Grille des Cours */
+        /* GRILLE DES COURS */
         .courses-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 12px;
-            margin-top: 12px;
+            margin-top: 14px;
         }
 
         .course-item {
             background: #ffffff;
-            border: 1px solid var(--border);
-            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
             padding: 16px;
             text-align: center;
             cursor: pointer;
-            transition: transform 0.1s, border-color 0.2s;
-        }
-
-        .course-item:active {
-            transform: scale(0.98);
+            transition: all 0.2s;
         }
 
         .course-item:hover {
             border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(29, 78, 216, 0.08);
         }
 
-        .course-icon {
-            width: 48px;
-            height: 48px;
+        .course-icon-img {
+            width: 44px;
+            height: 44px;
             object-fit: contain;
             margin-bottom: 8px;
+        }
+
+        .course-icon-emoji {
+            font-size: 2.2rem;
+            margin-bottom: 6px;
         }
 
         .course-title {
             font-weight: 700;
             font-size: 0.95rem;
-            color: var(--text-main);
-            margin-bottom: 4px;
+            color: var(--text-dark);
         }
 
         .course-subtitle {
             font-size: 0.8rem;
             color: var(--primary);
+            margin-top: 2px;
         }
 
-        /* Bouton Flottant IA */
+        /* BOUTON FLOTTANT IA (NOIR ET DORÉ) */
         .ia-fab {
             position: fixed;
             bottom: 20px;
             right: 20px;
             background: #000000;
-            color: #ffffff;
+            color: #f59e0b;
             border: 2px solid #f59e0b;
-            padding: 10px 18px;
+            padding: 10px 20px;
             border-radius: 30px;
-            font-weight: 700;
+            font-weight: 800;
             font-size: 0.9rem;
             display: flex;
             align-items: center;
             gap: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
             cursor: pointer;
-            z-index: 90;
+            z-index: 99;
         }
 
-        /* Modal PDF Plein Écran Natif */
-        .pdf-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: #000000;
-            z-index: 1000;
-            flex-direction: column;
-        }
-
-        .pdf-header {
-            background: #1e293b;
-            color: #ffffff;
-            padding: 12px 16px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .pdf-title {
-            font-weight: 600;
-            font-size: 1rem;
-        }
-
-        .btn-close-pdf {
-            background: #ef4444;
-            color: #ffffff;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-weight: 700;
-            cursor: pointer;
-        }
-
-        .pdf-frame {
-            width: 100%;
-            height: calc(100vh - 55px);
-            border: none;
-            background: #ffffff;
-        }
-
-        /* Modal IA */
+        /* FENÊTRE MANASSÉ IA PRO (NOIR ET DORÉ) */
         .ia-modal {
             display: none;
             position: fixed;
             bottom: 80px;
             right: 20px;
-            width: 340px;
+            width: 350px;
             max-width: calc(100vw - 40px);
-            height: 450px;
-            background: #111827;
+            height: 480px;
+            background: #000000;
             color: #ffffff;
             border: 2px solid #f59e0b;
-            border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-            z-index: 95;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+            z-index: 100;
             flex-direction: column;
             overflow: hidden;
         }
 
         .ia-header {
-            background: #1f2937;
-            padding: 12px;
+            background: #111111;
+            padding: 12px 14px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid #374151;
+            border-bottom: 1px solid #333333;
+        }
+
+        .ia-header-title {
+            font-weight: 800;
+            color: #f59e0b;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .ia-header-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-ia-menu {
+            background: #f59e0b;
+            color: #000000;
+            border: none;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+
+        .btn-ia-close {
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 1.2rem;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        /* MENU DÉROULANT DANS L'IA */
+        .ia-menu-dropdown {
+            display: none;
+            background: #1a1a1a;
+            border-bottom: 1px solid #f59e0b;
+            padding: 10px;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .ia-menu-btn {
+            background: #262626;
+            color: #f59e0b;
+            border: 1px solid #333333;
+            padding: 8px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            text-align: left;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .ia-menu-btn:hover {
+            background: #f59e0b;
+            color: #000000;
         }
 
         .ia-messages {
             flex: 1;
-            padding: 12px;
+            padding: 14px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 12px;
             font-size: 0.85rem;
+            background: #050505;
         }
 
         .ia-msg {
-            padding: 8px 12px;
-            border-radius: 10px;
+            padding: 10px 14px;
+            border-radius: 12px;
             max-width: 85%;
             line-height: 1.4;
         }
@@ -337,28 +401,32 @@
             background: #f59e0b;
             color: #000000;
             align-self: flex-end;
-            font-weight: 600;
+            font-weight: 700;
+            border-bottom-right-radius: 2px;
         }
 
         .ia-msg.bot {
-            background: #374151;
+            background: #1f1f1f;
             color: #ffffff;
             align-self: flex-start;
+            border: 1px solid #333333;
+            border-bottom-left-radius: 2px;
         }
 
         .ia-input-zone {
             display: flex;
-            padding: 8px;
-            background: #1f2937;
-            gap: 6px;
+            padding: 10px;
+            background: #111111;
+            gap: 8px;
+            border-top: 1px solid #222222;
         }
 
         .ia-input-zone input {
             flex: 1;
-            background: #374151;
-            border: none;
+            background: #222222;
+            border: 1px solid #333333;
             color: #ffffff;
-            padding: 8px 12px;
+            padding: 10px 12px;
             border-radius: 8px;
             outline: none;
             font-size: 0.85rem;
@@ -368,10 +436,79 @@
             background: #f59e0b;
             border: none;
             color: #000000;
-            font-weight: 700;
-            padding: 8px 12px;
+            font-weight: 800;
+            padding: 10px 14px;
             border-radius: 8px;
             cursor: pointer;
+        }
+
+        /* MODAL PLEIN ÉCRAN POUR PDF ET IMAGES */
+        .fullscreen-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            flex-direction: column;
+        }
+
+        .fullscreen-header {
+            background: #111827;
+            color: #ffffff;
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .fullscreen-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-fs-download {
+            background: #f59e0b;
+            color: #000;
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .btn-fs-close {
+            background: #ef4444;
+            color: #ffffff;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .fullscreen-body {
+            flex: 1;
+            width: 100%;
+            height: calc(100vh - 55px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .fullscreen-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: #ffffff;
+        }
+
+        .fullscreen-img {
+            max-width: 95%;
+            max-height: 90vh;
+            object-fit: contain;
         }
     </style>
 </head>
@@ -391,75 +528,108 @@
     </header>
 
     <nav>
-        <button class="tab-btn active" onclick="switchTab('fil')">Fil d'actualité</button>
-        <button class="tab-btn" onclick="switchTab('cours')">Cours</button>
-        <button class="tab-btn" onclick="switchTab('communiques')">Communiqués</button>
-        <button class="tab-btn" onclick="switchTab('galerie')">Galerie</button>
+        <button class="tab-btn active" onclick="switchTab('fil', this)">Fil d'actualité</button>
+        <button class="tab-btn" onclick="switchTab('cours', this)">Cours</button>
+        <button class="tab-btn" onclick="switchTab('communiques', this)">Communiqués</button>
+        <button class="tab-btn" onclick="switchTab('galerie', this)">Galerie</button>
     </nav>
 
     <main>
+
         <div id="tab-fil" class="tab-content active">
+
             <div class="card creator-card">
-                <img src="créateur.jpg" onerror="this.onerror=null; this.src='22512.jpg';" alt="MANASSÉ NTAMBWA LUSHIKU" class="creator-img">
-                <br>
+                <div class="creator-img-container" onclick="openImageModal(this.querySelector('img').src)">
+                    <img src="createur.jpg" onerror="this.onerror=null; this.src='créateur.jpg'; this.onerror=function(){this.src='MNL.jpg';};" alt="MANASSÉ NTAMBWA LUSHIKU" class="creator-img">
+                </div>
                 <span class="tag-badge">👑 FONDATEUR & CONCEPTEUR</span>
                 <h2>MANASSÉ NTAMBWA LUSHIKU</h2>
                 <p>Élève et passionné de technologie, j'ai conçu et développé ce site pour moderniser notre classe et centraliser toutes nos ressources scolaires. Mon objectif est que chaque élève de la 4ème Scientifique A dispose d'un outil simple, rapide et accessible sur téléphone pour réviser, suivre les nouvelles et réussir haut la main.</p>
-                <p style="color: var(--primary); font-weight:600;">👉 Touche la photo pour l'agrandir</p>
+                <p style="color: var(--primary); font-weight:700; cursor:pointer;" onclick="openImageModal(document.querySelector('.creator-img').src)">👉 Touche la photo pour l'agrandir</p>
             </div>
 
             <div class="card">
-                <p><b>📚 Accès direct aux cours :</b> Consultez et téléchargez les chapitres de chaque matière.</p>
-                <p style="margin-top:8px;"><b>📢 Communiqués instantanés :</b> Soyez informés en temps réel des annonces de la classe.</p>
-                <p style="margin-top:8px;"><b>🖼️ Galerie de la promotion :</b> Immortalisez nos moments forts et souvenirs d'étude.</p>
+                <div class="objectifs-list">
+                    <div class="objectif-item">
+                        <span class="objectif-icon">📚</span>
+                        <div class="objectif-text">
+                            <b>Accès direct aux cours :</b>
+                            <p>Consultez et téléchargez les chapitres de chaque matière.</p>
+                        </div>
+                    </div>
+                    <div class="objectif-item">
+                        <span class="objectif-icon">📢</span>
+                        <div class="objectif-text">
+                            <b>Communiqués instantanés :</b>
+                            <p>Soyez informés en temps réel des annonces de la classe.</p>
+                        </div>
+                    </div>
+                    <div class="objectif-item">
+                        <span class="objectif-icon">🖼️</span>
+                        <div class="objectif-text">
+                            <b>Galerie de la promotion :</b>
+                            <p>Immortalisez nos moments forts et nos souvenirs d'étude.</p>
+                        </div>
+                    </div>
+                    <div class="objectif-item">
+                        <span class="objectif-icon">💡</span>
+                        <div class="objectif-text">
+                            <b>Entraide & Progrès :</b>
+                            <p>Un outil conçu pour avancer ensemble vers la réussite.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="card" style="text-align: center;">
-                <img src="22510.jpg" onerror="this.onerror=null; this.src='actualite.png';" alt="Bienvenue sur notre site" class="news-img">
+                <h3 style="font-size:1rem; margin-bottom:10px; color:var(--text-dark);">📣 ACTUALITÉS</h3>
+                <img src="actualite.png" onerror="this.onerror=null; this.src='22510.jpg'; this.onerror=function(){this.src='actualite.jpg';};" alt="Affiche Bienvenue" class="news-img" onclick="openImageModal(this.src)">
             </div>
+
         </div>
 
         <div id="tab-cours" class="tab-content">
             <div class="card">
-                <h3>📖 ESPACE DE TRAVAIL</h3>
-                <h2>Cours & Matières</h2>
-                <p style="color: var(--text-muted); font-size: 0.9rem; margin-top:4px;">Sélectionnez une matière pour voir les chapitres et consulter les PDF en plein écran :</p>
+                <p style="color:var(--primary); font-weight:700; font-size:0.85rem;">📚 ESPACE DE TRAVAIL</p>
+                <h2 style="margin-top:2px; font-size:1.3rem;">Cours & Matières</h2>
+                <p style="color: var(--text-muted); font-size: 0.85rem; margin-top:4px;">Sélectionnez une matière pour lire ou télécharger le cours :</p>
 
                 <div class="courses-grid">
-                    <div class="course-item" onclick="openPdf('Biologie .pdf', 'Biologie')">
-                        <div style="font-size:2rem;">🧬</div>
+                    <div class="course-item" onclick="openPdfModal('educationcivique.pdf', 'Éducation Civique')">
+                        <img src="Éducation civique .png" onerror="this.onerror=null; this.src='education_civique.png'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='block';};" class="course-icon-img" alt="ECM">
+                        <div class="course-icon-emoji" style="display:none;">📜</div>
+                        <div class="course-title">Éducation Civique</div>
+                        <div class="course-subtitle">Lire / PDF</div>
+                    </div>
+
+                    <div class="course-item" onclick="openPdfModal('Biologie.pdf', 'Biologie')">
+                        <div class="course-icon-emoji">🧬</div>
                         <div class="course-title">Biologie</div>
                         <div class="course-subtitle">Chapitres PDF</div>
                     </div>
 
-                    <div class="course-item" onclick="openPdf('Éducation civique .pdf', 'Éducation Civique')">
-                        <img src="Éducation civique .png" onerror="this.onerror=null; this.src='https://cdn-icons-png.flaticon.com/512/2231/2231467.png';" class="course-icon" alt="Éducation Civique">
-                        <div class="course-title">Éducation Civique</div>
+                    <div class="course-item" onclick="openPdfModal('Physique.pdf', 'Physique')">
+                        <div class="course-icon-emoji">📐</div>
+                        <div class="course-title">Physique</div>
                         <div class="course-subtitle">Chapitres PDF</div>
                     </div>
 
-                    <div class="course-item" onclick="openPdf('Physique.pdf', 'Physique')">
-                        <div style="font-size:2rem;">📐</div>
-                        <div class="course-title">Physique</div>
-                        <div class="course-subtitle">Chapitres</div>
-                    </div>
-
-                    <div class="course-item" onclick="openPdf('Chimie.pdf', 'Chimie')">
-                        <div style="font-size:2rem;">🏛️</div>
+                    <div class="course-item" onclick="openPdfModal('Chimie.pdf', 'Chimie')">
+                        <div class="course-icon-emoji">🧪</div>
                         <div class="course-title">Chimie</div>
-                        <div class="course-subtitle">Chapitres</div>
+                        <div class="course-subtitle">Chapitres PDF</div>
                     </div>
 
-                    <div class="course-item" onclick="openPdf('Informatique.pdf', 'Informatique')">
-                        <div style="font-size:2rem;">💻</div>
+                    <div class="course-item" onclick="openPdfModal('Informatique.pdf', 'Informatique')">
+                        <div class="course-icon-emoji">💻</div>
                         <div class="course-title">Informatique</div>
-                        <div class="course-subtitle">Projets</div>
+                        <div class="course-subtitle">Projets PDF</div>
                     </div>
 
-                    <div class="course-item" onclick="openPdf('Francais.pdf', 'Français')">
-                        <div style="font-size:2rem;">📖</div>
+                    <div class="course-item" onclick="openPdfModal('Francais.pdf', 'Français')">
+                        <div class="course-icon-emoji">📖</div>
                         <div class="course-title">Français</div>
-                        <div class="course-subtitle">Lectures</div>
+                        <div class="course-subtitle">Lectures PDF</div>
                     </div>
                 </div>
             </div>
@@ -468,16 +638,17 @@
         <div id="tab-communiques" class="tab-content">
             <div class="card">
                 <h2>📢 Communiqués de la classe</h2>
-                <p style="margin-top:8px; color: var(--text-muted);">Aucun nouveau communiqué pour le moment.</p>
+                <p style="margin-top:8px; color: var(--text-muted); font-size:0.9rem;">Aucun communiqué officiel pour le moment.</p>
             </div>
         </div>
 
         <div id="tab-galerie" class="tab-content">
             <div class="card">
                 <h2>🖼️ Galerie de la promotion</h2>
-                <p style="margin-top:8px; color: var(--text-muted);">Les photos de la promotion seront affichées ici.</p>
+                <p style="margin-top:8px; color: var(--text-muted); font-size:0.9rem;">Les souvenirs de la classe apparaîtront ici.</p>
             </div>
         </div>
+
     </main>
 
     <div class="ia-fab" onclick="toggleIA()">
@@ -486,65 +657,109 @@
 
     <div id="ia-modal" class="ia-modal">
         <div class="ia-header">
-            <span style="font-weight:700; color:#f59e0b;">🤖 MANASSÉ IA PRO</span>
-            <button onclick="toggleIA()" style="background:none; border:none; color:#fff; font-size:1.2rem; cursor:pointer;">✖</button>
+            <div class="ia-header-title">
+                🤖 MANASSÉ IA PRO
+            </div>
+            <div class="ia-header-actions">
+                <button class="btn-ia-menu" onclick="toggleIAMenu()">📋 Menu</button>
+                <button class="btn-ia-close" onclick="toggleIA()">✖</button>
+            </div>
         </div>
+
+        <div id="ia-menu-dropdown" class="ia-menu-dropdown">
+            <button class="ia-menu-btn" onclick="sendQuickQuestion('Qui t\'a créé ?')">👑 Qui t'a créé ?</button>
+            <button class="ia-menu-btn" onclick="sendQuickQuestion('Quels sont les cours disponibles ?')">📚 Liste des cours</button>
+            <button class="ia-menu-btn" onclick="clearIAChat()">🗑️ Effacer la discussion</button>
+        </div>
+
         <div id="ia-messages" class="ia-messages">
             <div class="ia-msg bot">Bonjour ! Je suis MANASSÉ IA. Comment puis-je t'aider pour tes révisions aujourd'hui ?</div>
         </div>
+
         <div class="ia-input-zone">
-            <input type="text" id="ia-input" placeholder="Pose ta question..." onkeypress="handleKeyPress(event)">
+            <input type="text" id="ia-input" placeholder="Pose ta question..." onkeypress="if(event.key==='Enter') sendIAMessage()">
             <button onclick="sendIAMessage()">OK</button>
         </div>
     </div>
 
-    <div id="pdf-modal" class="pdf-modal">
-        <div class="pdf-header">
-            <span id="pdf-title" class="pdf-title">Document PDF</span>
-            <button class="btn-close-pdf" onclick="closePdf()">Fermer ✖</button>
+    <div id="fullscreen-modal" class="fullscreen-modal">
+        <div class="fullscreen-header">
+            <span id="fs-title" style="font-weight:700;">Document</span>
+            <div class="fullscreen-actions">
+                <a id="fs-download-btn" href="#" target="_blank" class="btn-fs-download">Ouvrir / Télécharger 📥</a>
+                <button class="btn-fs-close" onclick="closeFullscreen()">Fermer ✖</button>
+            </div>
         </div>
-        <iframe id="pdf-frame" class="pdf-frame" src=""></iframe>
+        <div id="fs-body" class="fullscreen-body">
+            </div>
     </div>
 
     <script>
-        // NAVIGATION PAR ONGLETS
-        function switchTab(tabId) {
+        // NAVIGATION ENTRE ONGLETS
+        function switchTab(tabId, btn) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
 
             document.getElementById('tab-' + tabId).classList.add('active');
-            event.currentTarget.classList.add('active');
+            btn.classList.add('active');
         }
 
-        // AFFICHAGE PDF NATIVE EN PLEIN ÉCRAN
-        function openPdf(pdfUrl, title) {
-            const modal = document.getElementById('pdf-modal');
-            const frame = document.getElementById('pdf-frame');
-            const titleElem = document.getElementById('pdf-title');
+        // VISIONNEUSE PDF EN PLEIN ÉCRAN
+        function openPdfModal(pdfUrl, title) {
+            const modal = document.getElementById('fullscreen-modal');
+            const fsTitle = document.getElementById('fs-title');
+            const fsDownload = document.getElementById('fs-download-btn');
+            const fsBody = document.getElementById('fs-body');
 
-            titleElem.innerText = title;
-            // Force le rendu complet et le zoom d'ajustement natif
-            frame.src = pdfUrl + '#toolbar=1&navpanes=0&view=FitH';
+            fsTitle.innerText = title;
+            fsDownload.href = pdfUrl;
+            fsDownload.style.display = 'inline-block';
+
+            // Embarquement du PDF avec secours natif
+            fsBody.innerHTML = `<iframe src="${pdfUrl}#toolbar=1&navpanes=0&view=FitH" class="fullscreen-iframe"></iframe>`;
             modal.style.display = 'flex';
         }
 
-        function closePdf() {
-            const modal = document.getElementById('pdf-modal');
-            const frame = document.getElementById('pdf-frame');
-            frame.src = '';
+        // VISIONNEUSE IMAGE EN GRAND
+        function openImageModal(imgSrc) {
+            const modal = document.getElementById('fullscreen-modal');
+            const fsTitle = document.getElementById('fs-title');
+            const fsDownload = document.getElementById('fs-download-btn');
+            const fsBody = document.getElementById('fs-body');
+
+            fsTitle.innerText = "Affichage Photo";
+            fsDownload.style.display = 'none';
+            fsBody.innerHTML = `<img src="${imgSrc}" class="fullscreen-img" alt="Photo agrandie">`;
+            modal.style.display = 'flex';
+        }
+
+        function closeFullscreen() {
+            const modal = document.getElementById('fullscreen-modal');
+            document.getElementById('fs-body').innerHTML = '';
             modal.style.display = 'none';
         }
 
-        // CHAT MANASSÉ IA
+        // MANASSÉ IA LOGIQUE
         function toggleIA() {
             const modal = document.getElementById('ia-modal');
             modal.style.display = (modal.style.display === 'flex') ? 'none' : 'flex';
         }
 
-        function handleKeyPress(e) {
-            if (e.key === 'Enter') {
-                sendIAMessage();
-            }
+        function toggleIAMenu() {
+            const menu = document.getElementById('ia-menu-dropdown');
+            menu.style.display = (menu.style.display === 'flex') ? 'none' : 'flex';
+        }
+
+        function sendQuickQuestion(questionText) {
+            document.getElementById('ia-input').value = questionText;
+            toggleIAMenu();
+            sendIAMessage();
+        }
+
+        function clearIAChat() {
+            const container = document.getElementById('ia-messages');
+            container.innerHTML = `<div class="ia-msg bot">Discussion réinitialisée. Comment puis-je t'aider ?</div>`;
+            toggleIAMenu();
         }
 
         function sendIAMessage() {
@@ -554,18 +769,18 @@
 
             if (!text) return;
 
-            // Message Utilisateur
+            // Afficher le message utilisateur
             container.innerHTML += `<div class="ia-msg user">${escapeHtml(text)}</div>`;
             input.value = '';
             container.scrollTop = container.scrollHeight;
 
             const lower = text.toLowerCase();
 
-            // Réponse stricte sur le Créateur
+            // RÉPONSE STRICTE SUR LE CRÉATEUR
             if (lower.includes('qui t\'a créé') || lower.includes('qui t\'a cree') || 
                 lower.includes('ton créateur') || lower.includes('ton createur') || 
                 lower.includes('qui t\'a conçu') || lower.includes('qui t\'a developpé') ||
-                lower.includes('qui t\'a fait') || lower.includes('origine')) {
+                lower.includes('qui est ton créateur') || lower.includes('qui t\'a fait')) {
 
                 setTimeout(() => {
                     container.innerHTML += `<div class="ia-msg bot">J'ai été conçu et créé par <b>Manassé Ntambwa</b> pour aider les élèves de la 4ème Scientifique A.</div>`;
@@ -574,9 +789,18 @@
                 return;
             }
 
-            // Réponses de révision standard
+            // RÉPONSE SUR LES COURS
+            if (lower.includes('cours') || lower.includes('matière') || lower.includes('programme')) {
+                setTimeout(() => {
+                    container.innerHTML += `<div class="ia-msg bot">Les cours disponibles dans l'onglet <b>Cours</b> sont : Éducation Civique, Biologie, Physique, Chimie, Informatique et Français !</div>`;
+                    container.scrollTop = container.scrollHeight;
+                }, 300);
+                return;
+            }
+
+            // AUTRES RÉPONSES GÉNÉRIQUES
             setTimeout(() => {
-                container.innerHTML += `<div class="ia-msg bot">En tant qu'assistant de la 4ème Scientifique A, je te conseille de consulter le cours correspondant dans l'onglet <b>Cours</b> pour réviser cette matière !</div>`;
+                container.innerHTML += `<div class="ia-msg bot">Je suis là pour t'aider dans tes révisions de 4ème Scientifique A. N'hésite pas à me poser une question de cours ou à consulter nos PDF !</div>`;
                 container.scrollTop = container.scrollHeight;
             }, 400);
         }

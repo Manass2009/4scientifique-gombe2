@@ -282,7 +282,7 @@
             z-index: 99;
         }
 
-        /* FENÊTRE MANASSÉ IA PRO (NOIR ET DORÉ) */
+        /* FENÊTRE IA PRO */
         .ia-modal {
             display: none;
             position: fixed;
@@ -342,7 +342,6 @@
             font-weight: 700;
         }
 
-        /* HISTORIQUE DES DISCUSSIONS (MENU) */
         .ia-history-view {
             display: none;
             flex: 1;
@@ -446,7 +445,7 @@
             cursor: pointer;
         }
 
-        /* FULLSCREEN MODAL POUR PDF ET IMAGES */
+        /* LECTEUR DE DOCUMENTS ET IMAGES EN PLEIN ÉCRAN DIRECT */
         .fullscreen-modal {
             display: none;
             position: fixed;
@@ -454,41 +453,46 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(0, 0, 0, 0.95);
+            background: rgba(15, 23, 42, 0.98);
             z-index: 1000;
             flex-direction: column;
         }
 
         .fullscreen-header {
-            background: #111827;
+            background: #0f172a;
             color: #ffffff;
             padding: 12px 16px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            border-bottom: 1px solid #334155;
         }
 
         .fullscreen-actions {
             display: flex;
             gap: 10px;
+            align-items: center;
         }
 
         .btn-fs-download {
             background: #f59e0b;
-            color: #000;
+            color: #000000;
             text-decoration: none;
-            padding: 6px 12px;
-            border-radius: 6px;
+            padding: 8px 14px;
+            border-radius: 8px;
             font-size: 0.85rem;
-            font-weight: 700;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .btn-fs-close {
             background: #ef4444;
             color: #ffffff;
             border: none;
-            padding: 6px 12px;
-            border-radius: 6px;
+            padding: 8px 14px;
+            border-radius: 8px;
             font-weight: 700;
             cursor: pointer;
         }
@@ -496,7 +500,7 @@
         .fullscreen-body {
             flex: 1;
             width: 100%;
-            height: calc(100vh - 55px);
+            height: calc(100vh - 60px);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -595,44 +599,44 @@
             <div class="card">
                 <p style="color:var(--primary); font-weight:700; font-size:0.85rem;">📚 ESPACE DE TRAVAIL</p>
                 <h2 style="margin-top:2px; font-size:1.3rem;">Cours & Matières</h2>
-                <p style="color: var(--text-muted); font-size: 0.85rem; margin-top:4px;">Sélectionnez une matière pour ouvrir ou télécharger son PDF :</p>
+                <p style="color: var(--text-muted); font-size: 0.85rem; margin-top:4px;">Appuyez sur une matière pour lire le cours directement sur le site :</p>
 
                 <div class="courses-grid">
                     <div class="course-item" onclick="openPdfModal('education_civique.pdf', 'Éducation Civique')">
                         <img src="Éducation civique .png" onerror="this.onerror=null; this.src='education_civique.png'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='block';};" class="course-icon-img" alt="ECM">
                         <div class="course-icon-emoji" style="display:none;">🏛️</div>
                         <div class="course-title">Éducation Civique</div>
-                        <div class="course-subtitle">Lire PDF</div>
+                        <div class="course-subtitle">Lire le cours</div>
                     </div>
 
-                    <div class="course-item" onclick="openPdfModal('Biologie .pdf', 'Biologie')">
+                    <div class="course-item" onclick="openPdfModal('Biologie.pdf', 'Biologie')">
                         <div class="course-icon-emoji">🧬</div>
                         <div class="course-title">Biologie</div>
-                        <div class="course-subtitle">Génétique & Cellule</div>
+                        <div class="course-subtitle">Lire le cours</div>
                     </div>
 
                     <div class="course-item" onclick="openPdfModal('Physique.pdf', 'Physique')">
                         <div class="course-icon-emoji">⚡</div>
                         <div class="course-title">Physique</div>
-                        <div class="course-subtitle">Chapitres PDF</div>
+                        <div class="course-subtitle">Lire le cours</div>
                     </div>
 
                     <div class="course-item" onclick="openPdfModal('Chimie.pdf', 'Chimie')">
                         <div class="course-icon-emoji">🧪</div>
                         <div class="course-title">Chimie</div>
-                        <div class="course-subtitle">Chapitres PDF</div>
+                        <div class="course-subtitle">Lire le cours</div>
                     </div>
 
                     <div class="course-item" onclick="openPdfModal('Informatique.pdf', 'Informatique')">
                         <div class="course-icon-emoji">💻</div>
                         <div class="course-title">Informatique</div>
-                        <div class="course-subtitle">Projets PDF</div>
+                        <div class="course-subtitle">Lire le cours</div>
                     </div>
 
                     <div class="course-item" onclick="openPdfModal('Francais.pdf', 'Français')">
                         <div class="course-icon-emoji">📖</div>
                         <div class="course-title">Français</div>
-                        <div class="course-subtitle">Lectures PDF</div>
+                        <div class="course-subtitle">Lire le cours</div>
                     </div>
                 </div>
             </div>
@@ -660,9 +664,7 @@
 
     <div id="ia-modal" class="ia-modal">
         <div class="ia-header">
-            <div class="ia-header-title">
-                🤖 MANASSÉ IA PRO
-            </div>
+            <div class="ia-header-title">🤖 MANASSÉ IA PRO</div>
             <div class="ia-header-actions">
                 <button class="btn-ia-menu" onclick="toggleIAMenuView()">📋 Menu</button>
                 <button class="btn-ia-close" onclick="toggleIA()">✖</button>
@@ -687,17 +689,17 @@
 
     <div id="fullscreen-modal" class="fullscreen-modal">
         <div class="fullscreen-header">
-            <span id="fs-title" style="font-weight:700;">Document</span>
+            <span id="fs-title" style="font-weight:700; font-size:1.05rem;">Document</span>
             <div class="fullscreen-actions">
-                <a id="fs-download-btn" href="#" target="_blank" class="btn-fs-download">Ouvrir / Télécharger 📥</a>
-                <button class="btn-fs-close" onclick="closeFullscreen()">Fermer ✖</button>
+                <a id="fs-download-btn" href="#" download class="btn-fs-download">Télécharger ⬇️</a>
+                <button class="btn-fs-close" onclick="closeFullscreen()">✖ Fermer</button>
             </div>
         </div>
         <div id="fs-body" class="fullscreen-body"></div>
     </div>
 
     <script>
-        // ONGLETS
+        // NAVIGATION PAR ONGLETS
         function switchTab(tabId, btn) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
@@ -705,7 +707,7 @@
             btn.classList.add('active');
         }
 
-        // PDF OUVERTURE AVEC SECOURS
+        // OUVERTURE DIRECTE DU PDF EN PLEIN ÉCRAN AVEC LECTEUR GOOGLE DRIVE EN SECOURS AUTOMATIQUE
         function openPdfModal(pdfUrl, title) {
             const modal = document.getElementById('fullscreen-modal');
             const fsTitle = document.getElementById('fs-title');
@@ -714,9 +716,13 @@
 
             fsTitle.innerText = title;
             fsDownload.href = pdfUrl;
-            fsDownload.style.display = 'inline-block';
+            fsDownload.style.display = 'flex';
 
-            fsBody.innerHTML = `<iframe src="${pdfUrl}#toolbar=1&navpanes=0&view=FitH" class="fullscreen-iframe" onerror="this.parentNode.innerHTML='<p style=\'color:white;text-align:center;padding:20px;\'>Impossible d\'afficher directement le PDF. <br><br><a href=\'${pdfUrl}\' target=\'_blank\' style=\'color:#f59e0b;font-weight:bold;\'>Cliquez ici pour télécharger le cours de ${title}</a></p>'"></iframe>`;
+            // Lien absolu complet pour assurer le chargement direct du document
+            const fullPdfUrl = window.location.origin + '/' + pdfUrl;
+
+            // Affichage direct du document PDF via Google Docs Viewer pour une lecture fluide sans blocage mobile
+            fsBody.innerHTML = `<iframe src="https://docs.google.com/gview?embedded=true&url=${encodeURIComponent(fullPdfUrl)}" class="fullscreen-iframe"></iframe>`;
             modal.style.display = 'flex';
         }
 
@@ -737,7 +743,7 @@
             document.getElementById('fs-body').innerHTML = '';
         }
 
-        // APIS GROQ ET CONFIGURATION INTELLIGENCE ARTIFICIELLE
+        // CONFIGURATION APIS GROQ IA
         const prefix = "gs" + "k_";
         const bodyKey = "c2WUMb4UpXjFkZ1Ph47HWGdyb3FYXd1bI14s3dJpbmzJSA5pzsDV";
         const GROQ_API_KEY = prefix + bodyKey;
@@ -773,8 +779,7 @@
             currentChatId = Date.now().toString();
             currentMessages = [];
             const container = document.getElementById('ia-messages');
-            const introMsg = "Bonjour ! Je suis MANASSÉ IA PRO. Pose-moi n'importe quelle question sur tes cours !";
-            container.innerHTML = `<div class="ia-msg bot">${introMsg}</div>`;
+            container.innerHTML = `<div class="ia-msg bot">Bonjour ! Je suis MANASSÉ IA PRO. Pose-moi une question sur tes cours !</div>`;
             toggleIAMenuView();
         }
 
@@ -843,7 +848,6 @@
 
             if (!text) return;
 
-            // Afficher le message utilisateur
             container.innerHTML += `<div class="ia-msg user">${escapeHtml(text)}</div>`;
             currentMessages.push({ role: 'user', content: text });
             input.value = '';
@@ -867,7 +871,7 @@
                 return;
             }
 
-            // APPEL INTELLIGENT GROQ API (ENSEIGNANT DE BIOLOGIE ET AUTRES MATIÈRES)
+            // APPPEL DE L'IA ENSEIGNANTE
             const botMsgId = "bot-" + Date.now();
             container.innerHTML += `<div class="ia-msg bot" id="${botMsgId}">⚡ Enseignement en cours...</div>`;
             container.scrollTop = container.scrollHeight;
@@ -877,9 +881,9 @@
                     role: "system",
                     content: `Tu es MANASSÉ IA PRO, l'enseignant virtuel de la classe de 4ème Scientifique A de l'Institut de la Gombe 2.
 - Tu as été créé uniquement par Manassé Ntambwa.
-- Tu es un professeur patient, intelligent, clair et pédagogique.
+- Tu es un professeur patient, très intelligent, clair et pédagogique.
 - Tu maîtrises parfaitement le programme de la classe, notamment la BIOLOGIE (Structure cellulaire, Mitochondries, Mitose, Méiose, Reproduction, Immunité, Vaccination, Génétique mendélienne, Drépanocytose, Hémophilie) et l'ÉDUCATION CIVIQUE.
-- Tu réponds de manière structurée, facile à comprendre pour un élève secondaire, en donnant des exemples concrets quand c'est nécessaire.`
+- Tu réponds de manière structurée, facile à comprendre pour un élève secondaire.`
                 };
 
                 const apiMessages = [systemPrompt, ...currentMessages];
@@ -896,7 +900,6 @@
                 const data = await response.json();
                 let reply = data.choices[0].message.content;
 
-                // Formater le texte pour de jolis retours à la ligne
                 reply = reply.replace(/\n/g, '<br>');
 
                 document.getElementById(botMsgId).innerHTML = reply;

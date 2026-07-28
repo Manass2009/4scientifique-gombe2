@@ -61,9 +61,10 @@
         .card-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 10px; color: #0f172a; }
         .card-text { font-size: 0.9rem; color: #475569; line-height: 1.5; margin-bottom: 12px; }
 
+        /* OBJECTIFS DE LA CLASSE */
         .feature-item { display: flex; align-items: flex-start; margin-bottom: 14px; }
         .feature-icon { font-size: 1.2rem; margin-right: 10px; margin-top: 2px; }
-        .feature-text strong { color: #0f172a; font-size: 0.9rem; }
+        .feature-text strong { color: #0f172a; font-size: 0.9rem; display: block; }
         .feature-text span { color: #64748b; font-size: 0.85rem; }
 
         /* GRILLE DES COURS */
@@ -88,7 +89,7 @@
         .cours-title { font-size: 0.95rem; font-weight: bold; color: #0f172a; margin-bottom: 4px; }
         .cours-sub { font-size: 0.75rem; color: #1a73e8; font-weight: 500; }
 
-        /* MODAL LECTEUR COURS PDF DIRECT */
+        /* MODAL LECTEUR DU COURS INTEGRÉ */
         #modal-cours {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.85); z-index: 99999; flex-direction: column; justify-content: center; align-items: center; padding: 10px;
@@ -132,7 +133,6 @@
         .ia-input-zone input { flex: 1; background: #0D0D0D; border: none; padding: 12px; color: #FFFFFF; outline: none; }
         .ia-input-zone button { background: #E5C158; color: #000000; border: none; padding: 12px 16px; font-weight: bold; cursor: pointer; }
         #ia-menu-view { display: none; flex: 1; background: #0D0D0D; padding: 12px; flex-direction: column; gap: 10px; overflow-y: auto; }
-        .history-item { background: #1A1A1A; border: 1px solid #333; color: #E5C158; padding: 10px; border-radius: 8px; font-size: 12px; cursor: pointer; }
     </style>
 </head>
 <body>
@@ -157,14 +157,18 @@
 
     <main>
         <div id="tab-fil" class="tab-content active">
+            
             <section class="card" style="text-align: center;">
-                <a href="createur.png" target="_blank">
-                    <img src="createur.png" alt="Manassé Ntambwa - Créateur" class="card-img" onerror="this.onerror=null; this.src='22512.jpg';">
+                <a href="22512.jpg" target="_blank">
+                    <img id="img-createur-el" src="22512.jpg" alt="Manassé Ntambwa - Créateur" class="card-img">
                 </a>
                 <div class="tag" style="margin-top: 12px;">👑 FONDATEUR & CONCEPTEUR</div>
                 <h1 class="card-title" style="text-align: center;">MANASSÉ NTAMBWA LUSHIKU</h1>
                 <p class="card-text" style="text-align: center;">
-                    Élève et passionné de technologie, j'ai conçu et développé ce site pour moderniser notre classe et centraliser toutes nos ressources scolaires.
+                    Élève et passionné de technologie, j'ai conçu et développé ce site pour moderniser notre classe et centraliser toutes nos ressources scolaires. Mon objectif est que chaque élève de la 4ème Scientifique A dispose d'un outil simple, rapide et accessible sur téléphone pour réviser, suivre les nouvelles et réussir haut la main.
+                </p>
+                <p style="color: #1a73e8; font-weight: 500; font-size: 0.88rem; text-align: center;">
+                    👉 Touche la photo pour l'agrandir
                 </p>
             </section>
 
@@ -172,36 +176,65 @@
                 <div class="feature-item">
                     <div class="feature-icon">📚</div>
                     <div class="feature-text">
-                        <strong>Accès direct aux cours :</strong> <span>Consultez et téléchargez les chapitres de chaque matière.</span>
+                        <strong>Accès direct aux cours :</strong>
+                        <span>Consultez et téléchargez les chapitres de chaque matière.</span>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">📢</div>
+                    <div class="feature-text">
+                        <strong>Communiqués instantanés :</strong>
+                        <span>Soyez informés en temps réel des annonces de la classe.</span>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🖼️</div>
+                    <div class="feature-text">
+                        <strong>Galerie de la promotion :</strong>
+                        <span>Immortalisez nos moments forts et nos souvenirs d'étude.</span>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">💡</div>
+                    <div class="feature-text">
+                        <strong>Entraide & Progrès :</strong>
+                        <span>Un outil conçu pour avancer ensemble vers la réussite.</span>
                     </div>
                 </div>
             </section>
 
             <section class="card" style="text-align: center;">
-                <a href="actualite.png" target="_blank">
-                    <img src="actualite.png" alt="Actualité de la classe" class="card-img" onerror="this.onerror=null; this.src='22510.jpg';">
+                <a href="22510.jpg" target="_blank">
+                    <img src="22510.jpg" alt="Actualité de la classe" class="card-img" onerror="this.onerror=null; this.src='22510.jpg';">
                 </a>
                 <div class="tag" style="margin-top: 12px;">📢 ACTUALITÉS</div>
                 <h2 class="card-title" style="text-align: center;">Dernières Nouvelles</h2>
+                <p class="card-text" style="text-align: center;">Retrouve ici l'actualité et les annonces officielles de notre classe.</p>
             </section>
+
         </div>
 
         <div id="tab-cours" class="tab-content">
             <section class="card">
                 <div class="tag">📚 ESPACE DE TRAVAIL</div>
                 <h2 class="card-title">Cours & Matières</h2>
-                <p class="card-text">Sélectionnez une matière pour lire le cours :</p>
+                <p class="card-text">Sélectionnez une matière pour lire ou télécharger le cours :</p>
                 
                 <div class="cours-grid" id="grille-cours">
                     <div class="cours-box" onclick="ouvrirMatiere('Biologie')">
                         <div class="cours-icon">🧬</div>
                         <div class="cours-title">Biologie</div>
-                        <div class="cours-sub">Générale & Génétique (PDF)</div>
+                        <div class="cours-sub">Générale & Génétique</div>
                     </div>
                     <div class="cours-box" onclick="ouvrirMatiere('Mathématiques')">
                         <div class="cours-icon">📐</div>
                         <div class="cours-title">Mathématiques</div>
                         <div class="cours-sub">PDF / Exercices</div>
+                    </div>
+                    <div class="cours-box" onclick="ouvrirMatiere('Éducation Civique (ECM)')">
+                        <div class="cours-icon">🏛️</div>
+                        <div class="cours-title">Éducation Civique (ECM)</div>
+                        <div class="cours-sub">PDF Disponible</div>
                     </div>
                     <div class="cours-box" onclick="ouvrirMatiere('Physique')">
                         <div class="cours-icon">⚡</div>
@@ -212,6 +245,21 @@
                         <div class="cours-icon">🧪</div>
                         <div class="cours-title">Chimie</div>
                         <div class="cours-sub">Chapitres</div>
+                    </div>
+                    <div class="cours-box" onclick="ouvrirMatiere('Informatique')">
+                        <div class="cours-icon">💻</div>
+                        <div class="cours-title">Informatique</div>
+                        <div class="cours-sub">Projets</div>
+                    </div>
+                    <div class="cours-box" onclick="ouvrirMatiere('Français')">
+                        <div class="cours-icon">📖</div>
+                        <div class="cours-title">Français</div>
+                        <div class="cours-sub">Lectures</div>
+                    </div>
+                    <div class="cours-box" onclick="ouvrirMatiere('Anglais')">
+                        <div class="cours-icon">🌍</div>
+                        <div class="cours-title">Anglais</div>
+                        <div class="cours-sub">Vocabulaire</div>
                     </div>
                 </div>
             </section>
@@ -234,13 +282,12 @@
     <div id="modal-cours">
         <div class="modal-content-box">
             <div class="modal-header">
-                <span id="modal-titre">Biologie .pdf</span>
+                <span id="modal-titre">Document</span>
                 <span style="cursor:pointer; font-size:18px;" onclick="fermerModalCours()">✖</span>
             </div>
-            <div class="modal-body" id="modal-body-pdf">
-                </div>
+            <div class="modal-body" id="modal-body-pdf"></div>
             <div class="modal-footer">
-                <a id="btn-dl-pdf" href="#" download="Biologie_Generale_Et_Genetique.pdf" class="btn-telecharger">📥 Télécharger le PDF</a>
+                <a id="btn-dl-pdf" href="#" download="" class="btn-telecharger">📥 Télécharger le fichier</a>
                 <button class="btn-fermer-modal" onclick="fermerModalCours()">Fermer</button>
             </div>
         </div>
@@ -285,90 +332,34 @@
             alert("Déconnexion de la session.");
         }
 
-        // PAGES DU COURS COMPLET DE BIOLOGIE DU PDF
-        const pagesBiologiePDF = [
-            `
-            <div class="pdf-page-title">📄 PAGE 1 - PLAN GÉNÉRAL DU COURS</div>
-            <h2 style="color:#0f172a; margin-bottom:10px;">BIOLOGIE GÉNÉRALE & GÉNÉTIQUE</h2>
-            <p class="pdf-text"><b>Cours Complet & Synthèse Rédigée - Conforme au Cahier de Cours</b></p>
-            <div class="pdf-section-title">PLAN DU COURS :</div>
-            <ul class="pdf-list">
-                <li><b>CHAPITRE I :</b> STRUCTURE CELLULAIRE (Membrane, Cytoplasme, Organites, Noyau, Chromosomes)</li>
-                <li><b>CHAPITRE II :</b> DIVISION CELLULAIRE (Amitose, Mitose/Équationnelle, Méiose/Réductionnelle)</li>
-                <li><b>CHAPITRE III :</b> REPRODUCTION (Asexuée, Sexuée)</li>
-                <li><b>CHAPITRE IV :</b> IMMUNITÉ (Types, Dysfonctionnement/VIH, Vaccination & Sérothérapie)</li>
-                <li><b>CHAPITRE V :</b> HÉRÉDITÉ (Terminologie, Hérédité Mendélienne, Théorie Chromosomique)</li>
-                <li><b>CHAPITRE VI :</b> NOTIONS DE PROBABILITÉS</li>
-                <li><b>CHAPITRE VII :</b> HÉRÉDITÉ HUMAINE (Groupes Sanguins, Rhésus, Drépanocytose, Albinisme, Maladies liées au sexe)</li>
-            </ul>
-            `,
-            `
-            <div class="pdf-page-title">📄 PAGE 2 - CHAPITRE I & II</div>
-            <div class="pdf-section-title">CHAPITRE I: STRUCTURE CELLULAIRE</div>
-            <p class="pdf-text"><b>1.1. Membrane cellulaire :</b> Enveloppe semi-perméable qui entoure la cellule et régule les échanges d'eau et de nutriments.</p>
-            <p class="pdf-text"><b>1.2. Cytoplasme & Organites cellulaires :</b></p>
-            <ul class="pdf-list">
-                <li><b>Mitochondries :</b> Siège de la respiration cellulaire et production d'énergie ATP.</li>
-                <li><b>Ribosomes :</b> Organites responsables de la synthèse des protéines.</li>
-                <li><b>Réticulum Endoplasmique :</b> Transport intracellulaire des substances.</li>
-                <li><b>Appareil de Golgi :</b> Emballage et sécrétion des protéines.</li>
-                <li><b>Lysosomes :</b> Digestion intracellulaire des déchets.</li>
-            </ul>
-            <p class="pdf-text"><b>1.3. Noyau & Chromosomes :</b> Le noyau contient l'ADN. Les chromosomes sont les supports physiques de l'information génétique.</p>
-            
-            <div class="pdf-section-title" style="margin-top:15px;">CHAPITRE II: DIVISION CELLULAIRE</div>
-            <p class="pdf-text"><b>Mitose (Division Équationnelle) :</b> Permet la multiplication conforme à partir d'une cellule mère (2n) pour donner 2 cellules filles identiques (2n).</p>
-            <p class="pdf-text"><b>Méiose (Division Réductionnelle) :</b> Concerne les cellules germinales pour former des gamètes (n) à 23 chromosomes.</p>
-            `,
-            `
-            <div class="pdf-page-title">📄 PAGE 3 - CHAPITRE III & IV</div>
-            <div class="pdf-section-title">CHAPITRE III: REPRODUCTION</div>
-            <p class="pdf-text"><b>3.1. Reproduction Asexuée :</b> Se fait sans intervention de gamètes (Bouturage, Scissiporité, Bourgeonnement). Les descendants sont des clones.</p>
-            <p class="pdf-text"><b>3.2. Reproduction Sexuée :</b> Implique la rencontre de deux gamètes (Fécondation) pour créer une variabilité génétique unique.</p>
-            
-            <div class="pdf-section-title" style="margin-top:15px;">CHAPITRE IV: IMMUNITÉ</div>
-            <p class="pdf-text"><b>4.1. Immunités Innée et Acquise :</b> L'immunité naturelle (barrières physiques, phagocytose) vs l'immunité spécifique (Lymphocytes B et T).</p>
-            <p class="pdf-text"><b>4.2. Cas du VIH :</b> Le virus du SIDA détruit spécifiquement les Lymphocytes T4 (LT4), affaiblissant totalement le système défensif.</p>
-            <p class="pdf-text"><b>4.3. Vaccination & Sérothérapie :</b> Le vaccin stimule la mémoire immunitaire préventivement, tandis que le sérum fournit des anticorps immédiats en curatif.</p>
-            `,
-            `
-            <div class="pdf-page-title">📄 PAGE 4 - CHAPITRE V: HÉRÉDITÉ MENDÉLIENNE</div>
-            <div class="pdf-section-title">CHAPITRE V: HÉRÉDITÉ</div>
-            <p class="pdf-text"><b>Terminologie :</b></p>
-            <ul class="pdf-list">
-                <li><b>Gène :</b> Unité d'information génétique.</li>
-                <li><b>Allèle :</b> Forme alternative d'un gène.</li>
-                <li><b>Génotype :</b> Composition génétique (ex: AA, Aa, aa).</li>
-                <li><b>Phénotype :</b> Caractère observable (ex: [A]).</li>
-            </ul>
-            <p class="pdf-text"><b>Lois de Mendel :</b></p>
-            <p class="pdf-text">1ère Loi : Uniformité des hybrides de F1.<br>2ème Loi : Ségrégation indépendante des allèles en F2 (proportions 3/4, 1/4).</p>
-            `,
-            `
-            <div class="pdf-page-title">📄 PAGE 5 - CHAPITRE VI & VII: HÉRÉDITÉ HUMAINE</div>
-            <div class="pdf-section-title">CHAPITRE VII: HÉRÉDITÉ HUMAINE</div>
-            <p class="pdf-text">Le caryotype humain comporte 46 chromosomes (22 paires d'autosomes + 1 paire de chromosomes sexuels XX/XY).</p>
-            <p class="pdf-text"><b>Groupes Sanguins (Système ABO) :</b> Codominance entre A et B, récessivité de O.</p>
-            <p class="pdf-text"><b>Drépanocytose (Anémie Falciforme) :</b> Maladie autosomique récessive de l'hémoglobine. Genotypes HbA/HbA (Sain), HbA/HbS (Porteur), HbS/HbS (Atteint).</p>
-            <p class="pdf-text"><b>Albinisme :</b> Absence de mélanine par allèle récessif autosomique.</p>
-            `,
-            `
-            <div class="pdf-page-title">📄 PAGE 6 - MALADIES LIÉES AU SEXE</div>
-            <div class="pdf-section-title">ANOMALIES LIÉES AU CHROMOSOME X</div>
-            <p class="pdf-text"><b>Hémophilie :</b> Trouble de la coagulation sanguine causé par un allèle récessif porté par le chromosome X (X^h).</p>
-            <p class="pdf-text"><b>Daltonisme :</b> Incapacité à distinguer correctement certaines couleurs (rouge/vert), transmission liée à X.</p>
-            <p class="pdf-text"><i>Fin du cours. Document prêt pour la lecture et le téléchargement.</i></p>
-            `
-        ];
+        // BASE DE DONNÉES ÉVOLUTIVE POUR TOUS TES COURS EN PDF
+        const coursDisponibles = {
+            'Biologie': [
+                `<div class="pdf-page-title">📄 PAGE 1 - PLAN GÉNÉRAL DU COURS DE BIOLOGIE</div>
+                <h2 style="color:#0f172a; margin-bottom:10px;">BIOLOGIE GÉNÉRALE & GÉNÉTIQUE</h2>
+                <p class="pdf-text"><b>CHAPITRE I :</b> STRUCTURE CELLULAIRE (Membrane, Cytoplasme, Organites, Noyau, Chromosomes)</p>
+                <p class="pdf-text"><b>CHAPITRE II :</b> DIVISION CELLULAIRE (Amitose, Mitose, Méiose)</p>
+                <p class="pdf-text"><b>CHAPITRE III :</b> REPRODUCTION (Asexuée, Sexuée)</p>
+                <p class="pdf-text"><b>CHAPITRE IV :</b> IMMUNITÉ (Types, VIH, Vaccination)</p>
+                <p class="pdf-text"><b>CHAPITRE V :</b> HÉRÉDITÉ & GÉNÉTIQUE HUMAINE</p>`,
+                `<div class="pdf-page-title">📄 PAGE 2 - STRUCTURE CELLULAIRE & DIVISIONS</div>
+                <p class="pdf-text"><b>1.1. Membrane cellulaire :</b> Enveloppe protectrice et régulatrice.</p>
+                <p class="pdf-text"><b>1.2. Organites :</b> Mitochondries (Énergie), Ribosomes (Protéines), Golgi (Emballage).</p>
+                <p class="pdf-text"><b>2.1. Mitose :</b> Multiplication conforme (2n -> 2n).</p>
+                <p class="pdf-text"><b>2.2. Méiose :</b> Formation des gamètes (2n -> n).</p>`
+            ]
+            // Quand tu auras d'autres cours, ajoute-les simplement ici :
+            // 'Mathématiques': [ `...contenu HTML ou chemin...` ]
+        };
 
         function ouvrirMatiere(nomCours) {
-            if (nomCours === 'Biologie') {
-                document.getElementById('modal-titre').innerText = "Biologie .pdf";
-                const bodyContainer = document.getElementById('modal-body-pdf');
-                bodyContainer.innerHTML = "";
-                
+            const bodyContainer = document.getElementById('modal-body-pdf');
+            document.getElementById('modal-titre').innerText = nomCours + " .pdf";
+            bodyContainer.innerHTML = "";
+
+            if (coursDisponibles[nomCours]) {
                 let textIntegral = "";
-                pagesBiologiePDF.forEach(pageHTML => {
+                coursDisponibles[nomCours].forEach(pageHTML => {
                     const pageDiv = document.createElement('div');
                     pageDiv.className = 'pdf-page-container';
                     pageDiv.innerHTML = pageHTML;
@@ -376,13 +367,12 @@
                     textIntegral += pageHTML.replace(/<[^>]*>?/gm, '') + "\n\n";
                 });
 
-                // Fichier texte prêt au téléchargement direct
                 const blob = new Blob([textIntegral], { type: 'text/plain;charset=utf-8' });
                 document.getElementById('btn-dl-pdf').href = URL.createObjectURL(blob);
-
+                document.getElementById('btn-dl-pdf').download = nomCours + ".pdf";
                 document.getElementById('modal-cours').style.display = 'flex';
             } else {
-                alert("Le document pour " + nomCours + " sera disponible prochainement.");
+                alert("Le cours de " + nomCours + " est en cours d'ajout !");
             }
         }
 
@@ -390,27 +380,13 @@
             document.getElementById('modal-cours').style.display = 'none';
         }
 
-        // CORRECTION AUTOMATIQUE IMAGE DU CRÉATEUR
-        window.addEventListener('DOMContentLoaded', () => {
-            const imgCreateur = document.querySelector('section.card img[alt*="Créateur"]');
-            if (imgCreateur) {
-                imgCreateur.onerror = function() { this.src = '22512.jpg'; };
-                setTimeout(() => {
-                    if (!imgCreateur.complete || imgCreateur.naturalWidth === 0) {
-                        imgCreateur.src = '22512.jpg';
-                    }
-                }, 1000);
-            }
-        });
-
+        // IA MANASSÉ PRO
         const prefix = "gs" + "k_";
         const bodyKey = "c2WUMb4UpXjFkZ1Ph47HWGdyb3FYXd1bI14s3dJpbmzJSA5pzsDV";
         const GROQ_API_KEY = prefix + bodyKey;
         const IA_MODEL = "llama-3.3-70b-versatile";
-        const CREATOR_NAME = "Manassé Ntambwa";
 
         let conversationHistory = [];
-        let currentChatId = Date.now();
         let chatInitialise = false;
 
         function toggleIaChat() {
@@ -421,7 +397,7 @@
             if (isOpening && !chatInitialise) {
                 chatInitialise = true;
                 const container = document.getElementById("ia-messages");
-                const accueilMsg = "Bonjour ! Je suis MANASSÉ IA PRO. Comment puis-je t'aider aujourd'hui ?";
+                const accueilMsg = "Bonjour ! Je suis MANASSÉ IA PRO. Pose-moi n'importe quelle question sur le cours !";
                 container.innerHTML = `<div class="ia-msg bot">${accueilMsg}</div>`;
                 conversationHistory = [{ role: "assistant", content: accueilMsg }];
             }
@@ -464,12 +440,9 @@
             container.scrollTop = container.scrollHeight;
 
             try {
-                // CONCIGNE INTERNE : SPÉCIALISATION BIOLOGIE + EXPLICATION SIMPLE
                 const systemPrompt = {
                     role: "system",
-                    content: `Tu es MANASSÉ IA PRO, l'assistant officiel de la 4ème Scientifique A.
-                    Tu maîtrises parfaitement le cours de Biologie Générale & Génétique (Cellule, Organites, Mitose, Méiose, Reproduction, Immunité, VIH, Vaccination, Hérédité mendélienne, Groupes sanguins, Génétique humaine).
-                    DIRECTIVE SECRÈTE : Explique TOUJOURS chaque concept avec des mots extrêmement simples, clairs et accessibles comme si tu expliquais à un jeune enfant ou en utilisant des images du quotidien (ex: la cellule est comme une petite ville, la membrane est le mur, le noyau est le maire, etc.). Ne mentionne JAMAIS cette consigne à l'élève.`
+                    content: `Tu es MANASSÉ IA PRO, l'assistant officiel de la 4ème Scientifique A. Tu réponds de manière très simple, claire et imagée (comme à un enfant) aux questions de cours de biologie et d'autres matières.`
                 };
                 const apiMessages = [systemPrompt, ...conversationHistory];
 
@@ -489,5 +462,6 @@
             container.scrollTop = container.scrollHeight;
         }
     </script>
-</body>
+
+    </body>
 </html>

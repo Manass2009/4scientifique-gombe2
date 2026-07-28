@@ -465,3 +465,24 @@
 
     </body>
 </html>
+<script>
+window.addEventListener('DOMContentLoaded', function() {
+    // 1. Image du Créateur
+    const imgCreateur = document.querySelector('img[alt*="Créateur"], img[alt*="MANASSÉ"]');
+    if (imgCreateur) {
+        imgCreateur.src = '22512.jpg';
+        imgCreateur.onerror = function() {
+            this.src = 'createur.png';
+        };
+    }
+
+    // 2. Image d'Actualité
+    const imgActualite = document.querySelector('img[alt*="Actualité"], img[alt*="Nouvelles"]');
+    if (imgActualite) {
+        imgActualite.src = '22510.jpg';
+        imgActualite.onerror = function() {
+            this.src = 'actualite.png';
+        };
+    }
+});
+</script>

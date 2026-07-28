@@ -10,11 +10,11 @@
             --primary-light: #eff6ff;
             --gold: #f59e0b;
             --gold-hover: #d97706;
-            --bg-site: #ffffff;
-            --card-bg: #ffffff;
+            --bg-site: #eef2f6; /* Couleurs adoucies */
+            --card-bg: #f8fafc;
             --text-dark: #0f172a;
             --text-muted: #475569;
-            --border-color: #e2e8f0;
+            --border-color: #cbd5e1;
             --success: #10b981;
             --danger: #ef4444;
         }
@@ -27,7 +27,7 @@
         }
 
         body {
-            background-color: #f8fafc;
+            background-color: var(--bg-site);
             color: var(--text-dark);
             padding-bottom: 90px;
         }
@@ -76,7 +76,7 @@
         }
 
         .btn-sortir {
-            background: #f1f5f9;
+            background: #e2e8f0;
             border: none;
             padding: 6px 12px;
             border-radius: 8px;
@@ -128,7 +128,7 @@
         }
 
         .card {
-            background: #ffffff;
+            background: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 16px;
             padding: 18px;
@@ -146,7 +146,7 @@
             overflow: hidden;
             border-radius: 12px;
             margin-bottom: 14px;
-            background: #e2e8f0;
+            background: #cbd5e1;
             cursor: pointer;
         }
 
@@ -264,7 +264,7 @@
             margin-top: 2px;
         }
 
-        /* ZONE QUIZ INFINI */
+        /* ZONE QUIZ & EXERCICES */
         .quiz-selector-zone {
             display: flex;
             flex-direction: column;
@@ -358,6 +358,21 @@
             line-height: 1.4;
         }
 
+        .btn-audio-speak {
+            background: #e0f2fe;
+            color: #0369a1;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-top: 8px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
         .btn-next-question {
             display: none;
             width: 100%;
@@ -369,6 +384,21 @@
             border-radius: 10px;
             font-weight: 800;
             font-size: 0.95rem;
+            cursor: pointer;
+        }
+
+        /* IMAGE FIXE EN BAS DU QUIZ */
+        .quiz-footer-image-card {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .quiz-footer-img {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
             cursor: pointer;
         }
 
@@ -508,6 +538,7 @@
             border-radius: 12px;
             max-width: 85%;
             line-height: 1.4;
+            position: relative;
         }
 
         .ia-msg.user {
@@ -524,6 +555,20 @@
             align-self: flex-start;
             border: 1px solid #333333;
             border-bottom-left-radius: 2px;
+        }
+
+        .btn-read-aloud {
+            background: #333;
+            color: #f59e0b;
+            border: 1px solid #444;
+            border-radius: 4px;
+            padding: 2px 6px;
+            font-size: 0.7rem;
+            margin-top: 6px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
         }
 
         .ia-input-zone {
@@ -555,7 +600,7 @@
             cursor: pointer;
         }
 
-        /* MODAL DOCUMENTS / PLEIN ÉCRAN */
+        /* MODAL DOCUMENTS ET LECTURE */
         .fullscreen-modal {
             display: none;
             position: fixed;
@@ -582,6 +627,17 @@
             display: flex;
             gap: 8px;
             align-items: center;
+        }
+
+        .btn-fs-speak {
+            background: #10b981;
+            color: #ffffff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 800;
+            cursor: pointer;
         }
 
         .btn-fs-download {
@@ -755,7 +811,7 @@
 
         <div id="tab-quiz" class="tab-content">
             <div class="card">
-                <p style="color:var(--gold); font-weight:700; font-size:0.85rem;">🧠 ENTRAÎNEMENT INFINI</p>
+                <p style="color:var(--gold); font-weight:700; font-size:0.85rem;">🧠 ENTRAÎNEMENT INFINI PAR MANASSÉ IA</p>
                 <h2 style="margin-top:2px; font-size:1.3rem;">Questions-Réponses par IA</h2>
                 <p style="color: var(--text-muted); font-size: 0.85rem; margin-top:4px;">Choisissez votre cours pour commencer la série de questions infinie :</p>
 
@@ -772,7 +828,12 @@
                 </div>
 
                 <div id="quiz-container">
-                    <p style="text-align:center; color:var(--text-muted); font-size:0.9rem; padding:20px;">Sélectionnez une matière et appuyez sur Lancer le Quiz.</p>
+                    <p style="text-align:center; color:var(--text-muted); font-size:0.9rem; padding:15px;">Sélectionnez une matière et appuyez sur Lancer le Quiz.</p>
+                </div>
+
+                <div class="quiz-footer-image-card">
+                    <img src="22601.jpg" onerror="this.onerror=null; this.src='22605.jpg'; this.onerror=function(){this.src='22608.jpg';};" alt="Image de classe" class="quiz-footer-img" onclick="openImageModal(this.src)">
+                    <p style="font-size:0.8rem; color:var(--text-muted); margin-top:6px; font-weight:600;">📍 Promotion 4ème Scientifique A - Institut de la Gombe 2</p>
                 </div>
             </div>
         </div>
@@ -813,7 +874,11 @@
         </div>
 
         <div id="ia-messages" class="ia-messages">
-            <div class="ia-msg bot">Bonjour et bienvenue ! Je suis MANASSÉ IA PRO, l'assistant virtuel créé par Manassé Ntambwa. Comment puis-je t'aider aujourd'hui ? Pose-moi ta question !</div>
+            <div class="ia-msg bot">
+                Bonjour et bienvenue ! Je suis MANASSÉ IA PRO, l'assistant virtuel créé par Manassé Ntambwa. Comment puis-je t'aider aujourd'hui ? Pose-moi ta question !
+                <br>
+                <button class="btn-read-aloud" onclick="speakText('Bonjour et bienvenue ! Je suis MANASSÉ IA PRO, l\'assistant virtuel créé par Manassé Ntambwa. Comment puis-je t\'aider aujourd\'hui ? Pose-moi ta question !')">🔊 Écouter</button>
+            </div>
         </div>
 
         <div class="ia-input-zone" id="ia-input-zone">
@@ -826,6 +891,7 @@
         <div class="fullscreen-header">
             <span id="fs-title" style="font-weight:700; font-size:1rem;">Document</span>
             <div class="fullscreen-actions">
+                <button id="fs-speak-btn" class="btn-fs-speak" onclick="speakCurrentDocument()">🔊 Lire à voix haute</button>
                 <a id="fs-open-btn" href="#" target="_blank" class="btn-fs-download" style="background:#e0f2fe; color:#0369a1;">Agrandir 🔗</a>
                 <a id="fs-download-btn" href="#" download class="btn-fs-download">Télécharger ⬇️</a>
                 <button class="btn-fs-close" onclick="closeFullscreen()">✖</button>
@@ -835,6 +901,25 @@
     </div>
 
     <script>
+        // FONCTION DE SYNTHÈSE VOCALE (LECTURE À VOIX HAUTE PAR L'IA)
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel(); // Arrête la lecture en cours si déjà active
+                const cleanText = text.replace(/<[^>]*>?/gm, ''); // Supprime les balises HTML
+                const utterance = new SpeechSynthesisUtterance(cleanText);
+                utterance.lang = 'fr-FR';
+                utterance.rate = 1.0;
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert("La lecture vocale n'est pas supportée par votre navigateur.");
+            }
+        }
+
+        let currentDocTitle = "";
+        function speakCurrentDocument() {
+            speakText("Vous lisez actuellement le cours de : " + currentDocTitle);
+        }
+
         // ONGLETS
         function switchTab(tabId, btn) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
@@ -843,13 +928,13 @@
             btn.classList.add('active');
         }
 
-        // OUVERTURE DU COURS DE BIOLOGIE (SUPPORT HTML & PDF)
+        // BIOLOGIE & DOCUMENTS
         function openBioCourse() {
-            // Tente d'ouvrir Biologie .html ou le fichier PDF
             openCourseDocument('Biologie .html', 'Biologie');
         }
 
         function openCourseDocument(docUrl, title) {
+            currentDocTitle = title;
             const modal = document.getElementById('fullscreen-modal');
             const fsTitle = document.getElementById('fs-title');
             const fsDownload = document.getElementById('fs-download-btn');
@@ -886,6 +971,7 @@
         }
 
         function closeFullscreen() {
+            if ('speechSynthesis' in window) window.speechSynthesis.cancel();
             document.getElementById('fullscreen-modal').style.display = 'none';
             document.getElementById('fs-body').innerHTML = '';
         }
@@ -899,6 +985,7 @@
         // MOTEUR DE QUIZ INFINI (QUESTION PAR QUESTION)
         let currentQuizSubject = "";
         let currentQuestionCount = 0;
+        let lastExplanationText = "";
 
         function startInfiniteQuiz() {
             currentQuizSubject = document.getElementById('quiz-subject-select').value;
@@ -908,16 +995,16 @@
 
         async function loadNextSingleQuestion() {
             const container = document.getElementById('quiz-container');
-            container.innerHTML = `<p style="text-align:center; color:var(--primary); font-weight:700; padding:20px;">🤖 MANASSÉ IA génère la question ${currentQuestionCount + 1} (${currentQuizSubject})...</p>`;
+            container.innerHTML = `<p style="text-align:center; color:var(--primary); font-weight:700; padding:15px;">🤖 MANASSÉ IA génère la question ${currentQuestionCount + 1} (${currentQuizSubject})...</p>`;
 
             try {
-                const prompt = `Génère UNE SEULE question de type QCM à 4 options sur le cours de ${currentQuizSubject} du programme de 4ème Scientifique A.
-Réponds EXCLUSIVEMENT sous la forme d'un objet JSON strict, sans balise de code markdown, sans texte supplémentaire :
+                const prompt = `Génère UNE SEULE question QCM de niveau 4ème Scientifique A en République Démocratique du Congo pour le cours de ${currentQuizSubject}.
+Formate EXCLUSIVEMENT en JSON valide sans balise markdown :
 {
-  "question": "Intitulé clair de la question ?",
+  "question": "Texte de la question ?",
   "options": ["Option A", "Option B", "Option C", "Option D"],
   "correctIndex": 0,
-  "explanation": "Explication pédagogique courte et précise."
+  "explanation": "Explication claire de la bonne réponse."
 }`;
 
                 const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
@@ -941,12 +1028,13 @@ Réponds EXCLUSIVEMENT sous la forme d'un objet JSON strict, sans balise de code
                 renderSingleQuestion(qData);
 
             } catch (e) {
-                container.innerHTML = `<p style="text-align:center; color:var(--danger); font-weight:700; padding:20px;">Erreur lors du chargement de la question. Veuillez réesayer.</p>`;
+                container.innerHTML = `<p style="text-align:center; color:var(--danger); font-weight:700; padding:15px;">Erreur de connexion. Veuillez réessayer.</p>`;
             }
         }
 
         function renderSingleQuestion(q) {
             const container = document.getElementById('quiz-container');
+            lastExplanationText = q.explanation;
             
             let optionsHtml = '';
             q.options.forEach((opt, oIndex) => {
@@ -959,7 +1047,8 @@ Réponds EXCLUSIVEMENT sous la forme d'un objet JSON strict, sans balise de code
                     <div class="quiz-question">Question ${currentQuestionCount} [${currentQuizSubject}] : ${q.question}</div>
                     <div class="quiz-options">${optionsHtml}</div>
                     <div id="single-exp" class="quiz-explanation">
-                        <b>Explication :</b> ${q.explanation}
+                        <b>Explication :</b> ${q.explanation}<br>
+                        <button class="btn-audio-speak" onclick="speakText(lastExplanationText)">🔊 Écouter l'explication</button>
                     </div>
                     <button id="btn-next-q" class="btn-next-question" onclick="loadNextSingleQuestion()">Question suivante ➡️</button>
                 </div>
@@ -1014,7 +1103,7 @@ Réponds EXCLUSIVEMENT sous la forme d'un objet JSON strict, sans balise de code
             currentChatId = Date.now().toString();
             currentMessages = [];
             const container = document.getElementById('ia-messages');
-            container.innerHTML = `<div class="ia-msg bot">Bonjour et bienvenue ! Je suis MANASSÉ IA PRO, l'assistant virtuel créé par Manassé Ntambwa. Comment puis-je t'aider aujourd'hui ? Pose-moi ta question !</div>`;
+            container.innerHTML = `<div class="ia-msg bot">Bonjour et bienvenue ! Je suis MANASSÉ IA PRO, l'assistant virtuel créé par Manassé Ntambwa. Comment puis-je t'aider aujourd'hui ? Pose-moi ta question !<br><button class="btn-read-aloud" onclick="speakText('Bonjour et bienvenue ! Je suis MANASSÉ IA PRO, l\'assistant virtuel créé par Manassé Ntambwa. Comment puis-je t\'aider aujourd\'hui ? Pose-moi ta question !')">🔊 Écouter</button></div>`;
             toggleIAMenuView();
         }
 
@@ -1069,7 +1158,8 @@ Réponds EXCLUSIVEMENT sous la forme d'un objet JSON strict, sans balise de code
 
             currentMessages.forEach(m => {
                 let cls = m.role === 'user' ? 'user' : 'bot';
-                container.innerHTML += `<div class="ia-msg ${cls}">${m.content}</div>`;
+                let audioBtn = m.role === 'assistant' ? `<br><button class="btn-read-aloud" onclick="speakText('${m.content.replace(/'/g, "\\'")}')">🔊 Écouter</button>` : '';
+                container.innerHTML += `<div class="ia-msg ${cls}">${m.content}${audioBtn}</div>`;
             });
 
             toggleIAMenuView();
@@ -1095,9 +1185,9 @@ Réponds EXCLUSIVEMENT sous la forme d'un objet JSON strict, sans balise de code
                 lower.includes("qui t'a conçu") || lower.includes("qui t'a developpé") ||
                 lower.includes("qui t'a fait")) {
 
-                const reply = "J'ai été conçu et créé par <b>Manassé Ntambwa</b> pour t'accompagner dans toutes tes révisions et t'aider à réussir ton année.";
+                const reply = "J'ai été conçu et créé par Manassé Ntambwa pour t'accompagner dans toutes tes révisions et t'aider à réussir ton année.";
                 setTimeout(() => {
-                    container.innerHTML += `<div class="ia-msg bot">${reply}</div>`;
+                    container.innerHTML += `<div class="ia-msg bot">${reply}<br><button class="btn-read-aloud" onclick="speakText('${reply.replace(/'/g, "\\'")}')">🔊 Écouter</button></div>`;
                     currentMessages.push({ role: 'assistant', content: reply });
                     saveCurrentChat();
                     container.scrollTop = container.scrollHeight;
@@ -1112,10 +1202,7 @@ Réponds EXCLUSIVEMENT sous la forme d'un objet JSON strict, sans balise de code
             try {
                 const systemPrompt = {
                     role: "system",
-                    content: `Tu es MANASSÉ IA PRO, un enseignant virtuel expert et très intelligent pour les élèves de la classe de 4ème Scientifique A de l'Institut de la Gombe 2.
-- Tu as été conçu et développé uniquement par Manassé Ntambwa.
-- Sois très poli, courtois, pédagogue et concis.
-- Réponds toujours clairement avec de superbes explications d'enseignant.`
+                    content: `Tu es MANASSÉ IA PRO, un enseignant virtuel expert et très intelligent pour la classe de 4ème Scientifique A de l'Institut de la Gombe 2. Tu as été conçu exclusivement par Manassé Ntambwa.`
                 };
 
                 const apiMessages = [systemPrompt, ...currentMessages];
@@ -1132,9 +1219,10 @@ Réponds EXCLUSIVEMENT sous la forme d'un objet JSON strict, sans balise de code
                 const data = await response.json();
                 let reply = data.choices[0].message.content;
 
-                reply = reply.replace(/\n/g, '<br>');
+                let formattedReply = reply.replace(/\n/g, '<br>');
+                let speakableText = reply.replace(/'/g, "\\'").replace(/\n/g, ' ');
 
-                document.getElementById(botMsgId).innerHTML = reply;
+                document.getElementById(botMsgId).innerHTML = `${formattedReply}<br><button class="btn-read-aloud" onclick="speakText('${speakableText}')">🔊 Écouter</button>`;
                 currentMessages.push({ role: 'assistant', content: reply });
                 saveCurrentChat();
             } catch (e) {

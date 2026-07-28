@@ -486,3 +486,26 @@ window.addEventListener('DOMContentLoaded', function() {
     }
 });
 </script>
+<script>
+window.addEventListener('DOMContentLoaded', function() {
+    // 1. CORRECTION DE LA PHOTO DU CRÉATEUR
+    const imgCreateur = document.querySelector('img[alt*="Créateur"], img[alt*="MANASSÉ"], img[alt*="Manassé"]');
+    if (imgCreateur) {
+        // Lien direct vers le fichier exact sur ton GitHub
+        imgCreateur.src = 'créateur.jpg';
+        
+        // Sécurité si le navigateur bloque l'accent "é"
+        imgCreateur.onerror = function() {
+            this.src = '22512.jpg';
+        };
+    }
+
+    // 2. RECONFIGURATION DU PROMPT DE L'IA (CRÉATEUR UNIQUE : MANASSÉ NTAMBWA)
+    if (typeof systemPrompt !== 'undefined') {
+        systemPrompt.content = `Tu es MANASSÉ IA PRO, l'assistant officiel de la 4ème Scientifique A. 
+IMPORTANT : Tu as été entièrement créé et conçu par Manassé Ntambwa. 
+Si on te demande qui t'a créé, comment tu as été conçu ou quelle est ton origine, tu dois obligatoirement répondre que tu as été créé par Manassé Ntambwa uniquement pour aider la classe de 4ème Scientifique A à réviser et comprendre ses cours. Ne mentionne aucune autre équipe, entreprise ou laboratoire. 
+Pour le reste des questions de cours, tu réponds de manière simple, claire et adaptée aux élèves.`;
+    }
+});
+</script>

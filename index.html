@@ -66,6 +66,20 @@
         .feature-text strong { color: #0f172a; font-size: 0.9rem; }
         .feature-text span { color: #64748b; font-size: 0.85rem; }
 
+        /* GRILLE DES COURS (STYLE IDENTIQUE AUX CAPTURES) */
+        .cours-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 15px; }
+        .cours-box { background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 16px 12px; text-align: center; transition: transform 0.2s; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+        .cours-box:active { transform: scale(0.97); }
+        .cours-icon { font-size: 2rem; margin-bottom: 8px; }
+        .cours-title { font-size: 0.95rem; font-weight: bold; color: #0f172a; margin-bottom: 4px; }
+        .cours-sub { font-size: 0.75rem; color: #1a73e8; font-weight: 500; }
+
+        .btn-ajouter-cours {
+            background-color: #1a73e8; color: white; border: none; padding: 12px 16px;
+            border-radius: 12px; font-weight: bold; font-size: 0.88rem; cursor: pointer; margin-top: 18px; width: 100%;
+            box-shadow: 0 4px 10px rgba(26, 115, 232, 0.2);
+        }
+
         /* STYLE DU BOUTON FLOTTANT ET DE LA BOÎTE IA FUTURISTE */
         #ia-futurist-btn {
             position: fixed; bottom: 25px; right: 25px; width: 155px; height: 48px; border-radius: 30px;
@@ -115,6 +129,12 @@
     <main>
         <div id="tab-fil" class="tab-content active">
             <section class="card">
+                <a href="Actualités.png" target="_blank">
+                    <img src="Actualités.png" alt="Actualité de la classe" class="card-img" style="margin-bottom: 5px; max-height: 320px; object-fit: cover;">
+                </a>
+            </section>
+
+            <section class="card">
                 <div class="feature-item">
                     <div class="feature-icon">📚</div>
                     <div class="feature-text">
@@ -142,8 +162,8 @@
             </section>
 
             <section class="card">
-                <a href="MNL.png" target="_blank">
-                    <img src="MNL.png" alt="Manassé Ntambwa" class="card-img" style="margin-bottom: 15px; max-height: 320px; object-fit: cover;">
+                <a href="MNL.jpg" target="_blank">
+                    <img src="MNL.jpg" alt="Manassé Ntambwa" class="card-img" style="margin-bottom: 15px; max-height: 320px; object-fit: cover;">
                 </a>
 
                 <div class="tag">👑 FONDATEUR & CONCEPTEUR</div>
@@ -159,22 +179,58 @@
 
         <div id="tab-cours" class="tab-content">
             <section class="card">
-                <h2 class="card-title">Espace Cours</h2>
-                <p class="card-text">Sélectionne un cours pour afficher les chapitres.</p>
+                <div class="tag">📚 PROGRAMME D'ÉTUDES</div>
+                <h2 class="card-title">Matières Scientifiques</h2>
+                <p class="card-text">Accédez aux synthèses, exercices et résumés de cours enregistrés pour la classe :</p>
+                
+                <div class="cours-grid" id="grille-cours">
+                    <div class="cours-box" onclick="ouvrirMatiere('Algèbre')">
+                        <div class="cours-icon">📐</div>
+                        <div class="cours-title">Algèbre</div>
+                        <div class="cours-sub">0 document</div>
+                    </div>
+                    <div class="cours-box" onclick="ouvrirMatiere('Analyse')">
+                        <div class="cours-icon">📈</div>
+                        <div class="cours-title">Analyse</div>
+                        <div class="cours-sub">0 document</div>
+                    </div>
+                    <div class="cours-box" onclick="ouvrirMatiere('Géométrie')">
+                        <div class="cours-icon">📏</div>
+                        <div class="cours-title">Géométrie</div>
+                        <div class="cours-sub">0 document</div>
+                    </div>
+                    <div class="cours-box" onclick="ouvrirMatiere('Physique')">
+                        <div class="cours-icon">⚡</div>
+                        <div class="cours-title">Physique</div>
+                        <div class="cours-sub">0 document</div>
+                    </div>
+                    <div class="cours-box" onclick="ouvrirMatiere('Chimie')">
+                        <div class="cours-icon">🧪</div>
+                        <div class="cours-title">Chimie</div>
+                        <div class="cours-sub">0 document</div>
+                    </div>
+                    <div class="cours-box" onclick="ouvrirMatiere('Biologie')">
+                        <div class="cours-icon">🧬</div>
+                        <div class="cours-title">Biologie</div>
+                        <div class="cours-sub">0 document</div>
+                    </div>
+                </div>
+
+                <button class="btn-ajouter-cours" onclick="ajouterNouveauCours()">➕ Ajouter un nouveau cours</button>
             </section>
         </div>
 
         <div id="tab-communiques" class="tab-content">
             <section class="card">
                 <h2 class="card-title">Communiqués officiels</h2>
-                <p class="card-text">Aucun communiqué pour le moment.</p>
+                <p class="card-text">Aucun nouveau communiqué pour le moment. Restez connectés !</p>
             </section>
         </div>
 
         <div id="tab-galerie" class="tab-content">
             <section class="card">
                 <h2 class="card-title">Galerie de la classe</h2>
-                <p class="card-text">Souvenirs et moments forts.</p>
+                <p class="card-text">Immortalisons nos souvenirs d'étude en 4ème Scientifique A.</p>
             </section>
         </div>
     </main>
@@ -218,12 +274,39 @@
             alert("Déconnexion de la session.");
         }
 
+        function ouvrirMatiere(nomCours) {
+            alert("Ouverture des documents pour : " + nomCours);
+        }
+
+        // Fonction pour ajouter un nouveau cours directement
+        function ajouterNouveauCours() {
+            let nom = prompt("Entrer le nom du nouveau cours :");
+            let emoji = prompt("Entrer un emoji (ex: 💻, 📖, 🌍) :");
+            if (nom) {
+                const grille = document.getElementById("grille-cours");
+                let nouvelleBox = document.createElement("div");
+                nouvelleBox.className = "cours-box";
+                nouvelleBox.onclick = () => ouvrirMatiere(nom);
+                nouvelleBox.innerHTML = `
+                    <div class="cours-icon">${emoji || '📚'}</div>
+                    <div class="cours-title">${nom}</div>
+                    <div class="cours-sub">0 document</div>
+                `;
+                grille.appendChild(nouvelleBox);
+                alert("Le cours de " + nom + " a été ajouté avec succès !");
+            }
+        }
+
         // --- CONFIGURATION DE L'IA ---
         const prefix = "gs" + "k_";
         const bodyKey = "c2WUMb4UpXjFkZ1Ph47HWGdyb3FYXd1bI14s3dJpbmzJSA5pzsDV";
         const GROQ_API_KEY = prefix + bodyKey;
         const IA_MODEL = "llama-3.3-70b-versatile";
         const CREATOR_NAME = "Manassé Ntambwa";
+
+        // Nettoyage de l'ancienne mémoire bloquée
+        localStorage.removeItem("userName");
+        localStorage.removeItem("ia_user_uid");
 
         // ID unique et privé pour chaque utilisateur (localStorage)
         function obtenirIdUtilisateurPrive() {
@@ -330,11 +413,11 @@
             const text = input.value.trim();
             if (!text) return;
 
-            // Vérification si la question concerne le créateur
+            // Vérification si la question concerne le créateur (toutes variantes)
             let q = text.toLowerCase();
             if (
                 (q.includes("qui") || q.includes("quel")) && 
-                (q.includes("créé") || q.includes("conçu") || q.includes("fait") || q.includes("inventé") || q.includes("développé") || q.includes("fabriqué") || q.includes("créateur"))
+                (q.includes("créé") || q.includes("conçu") || q.includes("fait") || q.includes("inventé") || q.includes("développé") || q.includes("fabriqué") || q.includes("généré") || q.includes("créateur"))
             ) {
                 container.innerHTML += `<div class="ia-msg user">${text}</div>`;
                 let reponseCreateur = `J'ai été créé et conçu par ${CREATOR_NAME} pour assister les élèves de la 4ème Scientifique A de l'Institut de la Gombe 2.`;

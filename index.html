@@ -15,6 +15,8 @@
             --text-dark: #0f172a;
             --text-muted: #475569;
             --border-color: #e2e8f0;
+            --success: #10b981;
+            --danger: #ef4444;
         }
 
         * {
@@ -260,6 +262,69 @@
             font-size: 0.8rem;
             color: var(--primary);
             margin-top: 2px;
+        }
+
+        /* STYLES DES QUIZ */
+        .quiz-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+
+        .quiz-question {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .quiz-option {
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            padding: 10px 14px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.2s;
+        }
+
+        .quiz-option:hover {
+            background: #f1f5f9;
+        }
+
+        .quiz-option.correct {
+            background: #d1fae5;
+            border-color: #10b981;
+            color: #065f46;
+            font-weight: 700;
+        }
+
+        .quiz-option.wrong {
+            background: #fee2e2;
+            border-color: #ef4444;
+            color: #991b1b;
+            font-weight: 700;
+        }
+
+        .quiz-explanation {
+            display: none;
+            margin-top: 12px;
+            padding: 10px 12px;
+            background: #eff6ff;
+            border-left: 4px solid var(--primary);
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: #1e40af;
+            line-height: 1.4;
         }
 
         /* BOUTON FLOTTANT IA */
@@ -538,6 +603,7 @@
     <nav>
         <button class="tab-btn active" onclick="switchTab('fil', this)">Fil d'actualité</button>
         <button class="tab-btn" onclick="switchTab('cours', this)">Cours</button>
+        <button class="tab-btn" onclick="switchTab('quiz', this)">❓ Quiz & Exercices</button>
         <button class="tab-btn" onclick="switchTab('communiques', this)">Communiqués</button>
         <button class="tab-btn" onclick="switchTab('galerie', this)">Galerie</button>
     </nav>
@@ -609,7 +675,7 @@
                         <div class="course-subtitle">Lire le cours</div>
                     </div>
 
-                    <div class="course-item" onclick="openPdfModal('Biologie .pdf', 'Biologie')">
+                    <div class="course-item" onclick="openBioPdfModal()">
                         <div class="course-icon-emoji">🧬</div>
                         <div class="course-title">Biologie</div>
                         <div class="course-subtitle">Lire le cours</div>
@@ -639,6 +705,53 @@
                         <div class="course-subtitle">Lire le cours</div>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div id="tab-quiz" class="tab-content">
+            <div class="card">
+                <p style="color:var(--gold); font-weight:700; font-size:0.85rem;">🧠 ENTRAÎNEMENT & REVISIONS</p>
+                <h2 style="margin-top:2px; font-size:1.3rem;">Quiz à Choix Multiples</h2>
+                <p style="color: var(--text-muted); font-size: 0.85rem; margin-top:4px; margin-bottom:16px;">Testez vos connaissances sur vos cours avec corrections explicatives :</p>
+
+                <div class="quiz-card">
+                    <div class="quiz-question">1. [Biologie] Quel organite cellulaire est responsable de la production d'énergie (ATP) ?</div>
+                    <div class="quiz-options">
+                        <button class="quiz-option" onclick="checkAnswer(this, false, 'q1-exp')">A. Le Noyau</button>
+                        <button class="quiz-option" onclick="checkAnswer(this, true, 'q1-exp')">B. La Mitochondrie</button>
+                        <button class="quiz-option" onclick="checkAnswer(this, false, 'q1-exp')">C. Le Réticulum Endoplasmique</button>
+                        <button class="quiz-option" onclick="checkAnswer(this, false, 'q1-exp')">D. L'Appareil de Golgi</button>
+                    </div>
+                    <div id="q1-exp" class="quiz-explanation">
+                        <b>Explication :</b> La mitochondrie est la centrale énergétique de la cellule où se déroule la respiration cellulaire permettant la synthèse de l'ATP.
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question">2. [Biologie / Génétique] Chez l'être humain, combien de paires d'autosomes possède une cellule somatique ?</div>
+                    <div class="quiz-options">
+                        <button class="quiz-option" onclick="checkAnswer(this, true, 'q2-exp')">A. 22 paires</button>
+                        <button class="quiz-option" onclick="checkAnswer(this, false, 'q2-exp')">B. 23 paires</button>
+                        <button class="quiz-option" onclick="checkAnswer(this, false, 'q2-exp')">C. 1 paire</button>
+                        <button class="quiz-option" onclick="checkAnswer(this, false, 'q2-exp')">D. 46 paires</button>
+                    </div>
+                    <div id="q2-exp" class="quiz-explanation">
+                        <b>Explication :</b> L'Homme possède 23 paires de chromosomes au total : 22 paires d'autosomes (non sexuels) et 1 paire de gonosomes (sexuels : XX ou XY).
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question">3. [Éducation Civique] Quel est le rôle principal de la Constitution dans un État de droit ?</div>
+                    <div class="quiz-options">
+                        <button class="quiz-option" onclick="checkAnswer(this, false, 'q3-exp')">A. Fixer les prix du marché</button>
+                        <button class="quiz-option" onclick="checkAnswer(this, true, 'q3-exp')">B. Définir les règles fondamentales de l'État et garantir les droits des citoyens</button>
+                        <button class="quiz-option" onclick="checkAnswer(this, false, 'q3-exp')">C. Organiser les examens d'État</button>
+                    </div>
+                    <div id="q3-exp" class="quiz-explanation">
+                        <b>Explication :</b> La Constitution est la loi fondamentale qui organise les pouvoirs publics et protège les libertés fondamentales.
+                    </div>
+                </div>
+
             </div>
         </div>
 
@@ -707,6 +820,13 @@
             btn.classList.add('active');
         }
 
+        // GESTION SPECIALE BIOLOGIE MULTI-FORMAT
+        function openBioPdfModal() {
+            // Essaie automatiquement 'Biologie .pdf' ou 'biologie.pdf'
+            const bioFile = 'Biologie .pdf';
+            openPdfModal(bioFile, 'Biologie');
+        }
+
         // OUVERTURE DIRECTE DU PDF EN PLEIN ÉCRAN
         function openPdfModal(pdfUrl, title) {
             const modal = document.getElementById('fullscreen-modal');
@@ -718,12 +838,12 @@
             fsDownload.href = pdfUrl;
             fsDownload.style.display = 'flex';
 
-            // Encode le nom du fichier pour gérer proprement les espaces
-            const encodedUrl = encodeURIComponent(pdfUrl);
-            const fullUrl = window.location.origin + window.location.pathname.replace('index.html', '') + pdfUrl;
+            // Utilisation du lecteur Google Docs universel pour un rendu fluide sur tous les navigateurs mobiles
+            const currentOrigin = window.location.origin + window.location.pathname.replace(/index\.html$/, '');
+            const targetUrl = currentOrigin + pdfUrl;
+            const googleViewerUrl = `https://docs.google.com/viewer?url=${encodeURIComponent(targetUrl)}&embedded=true`;
 
-            // Charge le PDF directement dans une vue native plein écran
-            fsBody.innerHTML = `<iframe src="${pdfUrl}#toolbar=0" class="fullscreen-iframe" onerror="this.onerror=null; this.src='https://docs.google.com/gview?embedded=true&url=' + encodeURIComponent('${fullUrl}');"></iframe>`;
+            fsBody.innerHTML = `<iframe src="${googleViewerUrl}" class="fullscreen-iframe" frameborder="0"></iframe>`;
             modal.style.display = 'flex';
         }
 
@@ -742,6 +862,23 @@
         function closeFullscreen() {
             document.getElementById('fullscreen-modal').style.display = 'none';
             document.getElementById('fs-body').innerHTML = '';
+        }
+
+        // FONCTION QUIZ INTERACTIF
+        function checkAnswer(button, isCorrect, expId) {
+            const options = button.parentElement.querySelectorAll('.quiz-option');
+            options.forEach(opt => {
+                opt.disabled = true;
+                opt.style.cursor = 'default';
+            });
+
+            if (isCorrect) {
+                button.classList.add('correct');
+            } else {
+                button.classList.add('wrong');
+            }
+
+            document.getElementById(expId).style.display = 'block';
         }
 
         // CONFIGURATION APIS GROQ IA

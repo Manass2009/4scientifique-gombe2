@@ -262,7 +262,7 @@
             margin-top: 2px;
         }
 
-        /* IA BOUTON FLOTTANT */
+        /* BOUTON FLOTTANT IA */
         .ia-fab {
             position: fixed;
             bottom: 20px;
@@ -282,7 +282,7 @@
             z-index: 99;
         }
 
-        /* FENÊTRE IA PRO */
+        /* FENÊTRE IA */
         .ia-modal {
             display: none;
             position: fixed;
@@ -609,7 +609,7 @@
                         <div class="course-subtitle">Lire le cours</div>
                     </div>
 
-                    <div class="course-item" onclick="openPdfModal('Biologie.pdf', 'Biologie')">
+                    <div class="course-item" onclick="openPdfModal('Biologie .pdf', 'Biologie')">
                         <div class="course-icon-emoji">🧬</div>
                         <div class="course-title">Biologie</div>
                         <div class="course-subtitle">Lire le cours</div>
@@ -678,7 +678,7 @@
         </div>
 
         <div id="ia-messages" class="ia-messages">
-            <div class="ia-msg bot">Bonjour ! Je suis MANASSÉ IA PRO, ton enseignant virtuel. Pose-moi une question sur tes cours de Biologie ou d'autres matières !</div>
+            <div class="ia-msg bot">Bonjour et bienvenue ! Je suis MANASSÉ IA PRO, l'assistant virtuel créé par Manassé Ntambwa. Comment puis-je t'aider aujourd'hui ? Pose-moi ta question !</div>
         </div>
 
         <div class="ia-input-zone" id="ia-input-zone">
@@ -707,7 +707,7 @@
             btn.classList.add('active');
         }
 
-        // OUVERTURE DIRECTE DU PDF EN PLEIN ÉCRAN AVEC LECTEUR GOOGLE DRIVE EN SECOURS AUTOMATIQUE
+        // OUVERTURE DIRECTE DU PDF AVEC SUPPORT INTERNE ET SECOURS
         function openPdfModal(pdfUrl, title) {
             const modal = document.getElementById('fullscreen-modal');
             const fsTitle = document.getElementById('fs-title');
@@ -718,11 +718,8 @@
             fsDownload.href = pdfUrl;
             fsDownload.style.display = 'flex';
 
-            // Lien absolu complet pour assurer le chargement direct du document
-            const fullPdfUrl = window.location.origin + '/' + pdfUrl;
-
-            // Affichage direct du document PDF via Google Docs Viewer pour une lecture fluide sans blocage mobile
-            fsBody.innerHTML = `<iframe src="https://docs.google.com/gview?embedded=true&url=${encodeURIComponent(fullPdfUrl)}" class="fullscreen-iframe"></iframe>`;
+            // Charge directement dans un iframe avec intégration HTML5 fluide
+            fsBody.innerHTML = `<iframe src="${pdfUrl}" class="fullscreen-iframe" onerror="this.onerror=null; this.src='https://docs.google.com/gview?embedded=true&url=' + encodeURIComponent(window.location.origin + '/' + '${pdfUrl}');"></iframe>`;
             modal.style.display = 'flex';
         }
 
@@ -779,7 +776,7 @@
             currentChatId = Date.now().toString();
             currentMessages = [];
             const container = document.getElementById('ia-messages');
-            container.innerHTML = `<div class="ia-msg bot">Bonjour ! Je suis MANASSÉ IA PRO. Pose-moi une question sur tes cours !</div>`;
+            container.innerHTML = `<div class="ia-msg bot">Bonjour et bienvenue ! Je suis MANASSÉ IA PRO, l'assistant virtuel créé par Manassé Ntambwa. Comment puis-je t'aider aujourd'hui ? Pose-moi ta question !</div>`;
             toggleIAMenuView();
         }
 
@@ -861,7 +858,7 @@
                 lower.includes("qui t'a conçu") || lower.includes("qui t'a developpé") ||
                 lower.includes("qui t'a fait")) {
 
-                const reply = "J'ai été conçu et créé par <b>Manassé Ntambwa</b> pour aider les élèves de la 4ème Scientifique A à réviser et réussir leurs cours.";
+                const reply = "J'ai été conçu et créé par <b>Manassé Ntambwa</b> pour t'accompagner dans toutes tes révisions et t'aider à réussir ton année.";
                 setTimeout(() => {
                     container.innerHTML += `<div class="ia-msg bot">${reply}</div>`;
                     currentMessages.push({ role: 'assistant', content: reply });
@@ -871,7 +868,7 @@
                 return;
             }
 
-            // APPPEL DE L'IA ENSEIGNANTE
+            // APPPEL DE L'IA ENSEIGNANTE SPÉCIALISÉE
             const botMsgId = "bot-" + Date.now();
             container.innerHTML += `<div class="ia-msg bot" id="${botMsgId}">⚡ Enseignement en cours...</div>`;
             container.scrollTop = container.scrollHeight;
@@ -879,11 +876,11 @@
             try {
                 const systemPrompt = {
                     role: "system",
-                    content: `Tu es MANASSÉ IA PRO, l'enseignant virtuel de la classe de 4ème Scientifique A de l'Institut de la Gombe 2.
-- Tu as été créé uniquement par Manassé Ntambwa.
-- Tu es un professeur patient, très intelligent, clair et pédagogique.
-- Tu maîtrises parfaitement le programme de la classe, notamment la BIOLOGIE (Structure cellulaire, Mitochondries, Mitose, Méiose, Reproduction, Immunité, Vaccination, Génétique mendélienne, Drépanocytose, Hémophilie) et l'ÉDUCATION CIVIQUE.
-- Tu réponds de manière structurée, facile à comprendre pour un élève secondaire.`
+                    content: `Tu es MANASSÉ IA PRO, un enseignant virtuel expert et très intelligent pour les élèves de la classe de 4ème Scientifique A de l'Institut de la Gombe 2.
+- Tu as été conçu et développé uniquement par Manassé Ntambwa.
+- Sois très poli, courtois, pédagogue et concis.
+- Ne cite jamais tes matières préférées de manière spontanée dans l'accueil, mais sois un expert pédagogique capable de tout expliquer en détail dès qu'un élève te pose une question de cours (Biologie, Éducation Civique, Physique, Chimie, etc.).
+- Réponds toujours clairement avec de superbes explications d'enseignant.`
                 };
 
                 const apiMessages = [systemPrompt, ...currentMessages];
@@ -906,7 +903,7 @@
                 currentMessages.push({ role: 'assistant', content: reply });
                 saveCurrentChat();
             } catch (e) {
-                document.getElementById(botMsgId).innerText = "Désolé, une petite erreur de connexion est survenue. Réessaie !";
+                document.getElementById(botMsgId).innerText = "Désolé, une erreur de connexion s'est produite. Peux-tu réessayer ?";
             }
             container.scrollTop = container.scrollHeight;
         }

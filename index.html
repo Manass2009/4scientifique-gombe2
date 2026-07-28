@@ -707,7 +707,7 @@
             btn.classList.add('active');
         }
 
-        // OUVERTURE DIRECTE DU PDF AVEC SUPPORT INTERNE ET SECOURS
+        // OUVERTURE DIRECTE DU PDF EN PLEIN ÉCRAN
         function openPdfModal(pdfUrl, title) {
             const modal = document.getElementById('fullscreen-modal');
             const fsTitle = document.getElementById('fs-title');
@@ -718,8 +718,12 @@
             fsDownload.href = pdfUrl;
             fsDownload.style.display = 'flex';
 
-            // Charge directement dans un iframe avec intégration HTML5 fluide
-            fsBody.innerHTML = `<iframe src="${pdfUrl}" class="fullscreen-iframe" onerror="this.onerror=null; this.src='https://docs.google.com/gview?embedded=true&url=' + encodeURIComponent(window.location.origin + '/' + '${pdfUrl}');"></iframe>`;
+            // Encode le nom du fichier pour gérer proprement les espaces
+            const encodedUrl = encodeURIComponent(pdfUrl);
+            const fullUrl = window.location.origin + window.location.pathname.replace('index.html', '') + pdfUrl;
+
+            // Charge le PDF directement dans une vue native plein écran
+            fsBody.innerHTML = `<iframe src="${pdfUrl}#toolbar=0" class="fullscreen-iframe" onerror="this.onerror=null; this.src='https://docs.google.com/gview?embedded=true&url=' + encodeURIComponent('${fullUrl}');"></iframe>`;
             modal.style.display = 'flex';
         }
 
@@ -868,7 +872,7 @@
                 return;
             }
 
-            // APPPEL DE L'IA ENSEIGNANTE SPÉCIALISÉE
+            // ENSEIGNEMENT
             const botMsgId = "bot-" + Date.now();
             container.innerHTML += `<div class="ia-msg bot" id="${botMsgId}">⚡ Enseignement en cours...</div>`;
             container.scrollTop = container.scrollHeight;
@@ -879,7 +883,6 @@
                     content: `Tu es MANASSÉ IA PRO, un enseignant virtuel expert et très intelligent pour les élèves de la classe de 4ème Scientifique A de l'Institut de la Gombe 2.
 - Tu as été conçu et développé uniquement par Manassé Ntambwa.
 - Sois très poli, courtois, pédagogue et concis.
-- Ne cite jamais tes matières préférées de manière spontanée dans l'accueil, mais sois un expert pédagogique capable de tout expliquer en détail dès qu'un élève te pose une question de cours (Biologie, Éducation Civique, Physique, Chimie, etc.).
 - Réponds toujours clairement avec de superbes explications d'enseignant.`
                 };
 

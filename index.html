@@ -478,3 +478,21 @@
     </script>
 </body>
 </html>
+<script>
+    // Correction automatique pour forcer l'affichage de l'image du créateur
+    window.addEventListener('DOMContentLoaded', () => {
+        const imgCreateur = document.querySelector('section.card img[alt*="Créateur"]');
+        if (imgCreateur) {
+            // Teste si l'image charge correctement, sinon bascule sur le fichier de secours
+            imgCreateur.onerror = function() {
+                this.src = '22512.jpg';
+            };
+            // Sécurité supplémentaire : si l'image est bloquée ou met du temps
+            setTimeout(() => {
+                if (!imgCreateur.complete || imgCreateur.naturalWidth === 0) {
+                    imgCreateur.src = '22512.jpg';
+                }
+            }, 1000);
+        }
+    });
+</script>

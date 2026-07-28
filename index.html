@@ -66,7 +66,7 @@
         .feature-text strong { color: #0f172a; font-size: 0.9rem; }
         .feature-text span { color: #64748b; font-size: 0.85rem; }
 
-        /* GRILLE DES COURS (Exactement comme sur ton image 22128.jpg) */
+        /* GRILLE DES COURS */
         .cours-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 15px; }
         .cours-box { 
             background-color: #ffffff; 
@@ -137,24 +137,18 @@
     <main>
         <div id="tab-fil" class="tab-content active">
             
-            <section class="card">
+            <section class="card" style="text-align: center;">
                 <a href="MNL.jpg" target="_blank">
-                    <img src="MNL.jpg" alt="Manassé Ntambwa" class="card-img" style="max-height: 340px; object-fit: cover;">
+                    <img src="MNL.jpg" alt="Manassé Ntambwa" class="card-img" style="max-height: 380px; object-fit: contain; width: 100%; border-radius: 12px;">
                 </a>
-                <div class="tag">👑 FONDATEUR & CONCEPTEUR</div>
-                <h1 class="card-title">MANASSÉ NTAMBWA LUSHIKU</h1>
-                <p class="card-text">
+                <div class="tag" style="margin-top: 12px;">👑 FONDATEUR & CONCEPTEUR</div>
+                <h1 class="card-title" style="text-align: center;">MANASSÉ NTAMBWA LUSHIKU</h1>
+                <p class="card-text" style="text-align: center;">
                     Élève et passionné de technologie, j'ai conçu et développé ce site pour moderniser notre classe et centraliser toutes nos ressources scolaires. Mon objectif est que chaque élève de la 4ème Scientifique A dispose d'un outil simple, rapide et accessible sur téléphone pour réviser, suivre les nouvelles et réussir haut la main.
                 </p>
-                <p style="color: #1a73e8; font-weight: 500; font-size: 0.88rem;">
+                <p style="color: #1a73e8; font-weight: 500; font-size: 0.88rem; text-align: center;">
                     👉 Touche la photo pour l'agrandir
                 </p>
-            </section>
-
-            <section class="card">
-                <a href="Actualités.png" target="_blank">
-                    <img src="Actualités.png" alt="Actualité de la classe" class="card-img" style="max-height: 340px; object-fit: cover;">
-                </a>
             </section>
 
             <section class="card">
@@ -182,6 +176,15 @@
                         <strong>Entraide & Progrès :</strong> <span>Un outil conçu pour avancer ensemble vers la réussite.</span>
                     </div>
                 </div>
+            </section>
+
+            <section class="card" style="text-align: center;">
+                <a href="Actualités.png" target="_blank">
+                    <img src="Actualités.png" alt="Actualité de la classe" class="card-img" style="max-height: 380px; object-fit: contain; width: 100%; border-radius: 12px;">
+                </a>
+                <div class="tag" style="margin-top: 12px;">📢 ACTUALITÉS</div>
+                <h2 class="card-title" style="text-align: center;">Dernières Nouvelles</h2>
+                <p class="card-text" style="text-align: center;">Retrouve ici l'actualité et les annonces officielles de notre classe.</p>
             </section>
 
         </div>
@@ -295,7 +298,6 @@
             alert("Ouverture des documents pour : " + nomCours);
         }
 
-        // SECTION CODE INTERNE (Réservée au code source pour l'administration des cours si besoin, absente visuellement pour les élèves)
         function ajouterCoursAdmin(nom, sousTitre, emoji) {
             const grille = document.getElementById("grille-cours");
             let nouvelleBox = document.createElement("div");

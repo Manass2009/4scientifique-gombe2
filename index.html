@@ -691,7 +691,7 @@
     <header>
         <div class="header-top">
             <div class="title-grp">
-                <h1>4ème Scientifique </h1>
+                <h1>4ème Scientifique</h1>
                 <p>Institut de la Gombe 2</p>
             </div>
             <div class="user-badge">
@@ -783,7 +783,6 @@
                     </div>
 
                     <div class="course-item" onclick="openCourseDocument('Physiquee.pdf', 'Physique')">
-                         <div class="course-icon-emoji" style="display:none;"></div>
                         <div class="course-icon-emoji">⚙️</div>
                         <div class="course-title">Physique</div>
                         <div class="course-subtitle">Lire le cours</div>
@@ -876,9 +875,9 @@
 
         <div id="ia-messages" class="ia-messages">
             <div class="ia-msg bot">
-                Bonjour et bienvenue ! Je suis MANASSÉ IA , l'assistant virtuel créé par Manassé Ntambwa. Comment puis-je t'aider aujourd'hui ? Pose-moi ta question !
+                Bonjour et bienvenue ! Je suis MANASSÉ IA, l'assistant virtuel créé par Manassé Ntambwa. Comment puis-je t'aider aujourd'hui ? Pose-moi ta question !
                 <br>
-                <button class="btn-read-aloud" onclick="speakText('Bonjour et bienvenue ! Je suis MANASSÉ IA , l\'assistant virtuel créé par Manassé Ntambwa. Comment puis-je t\'aider aujourd\'hui ? Pose-moi ta question !')">🔊 Écouter</button>
+                <button class="btn-read-aloud" onclick="speakText('Bonjour et bienvenue ! Je suis MANASSÉ IA, l\'assistant virtuel créé par Manassé Ntambwa. Comment puis-je t\'aider aujourd\'hui ? Pose-moi ta question !')">🔊 Écouter</button>
             </div>
         </div>
 
@@ -905,16 +904,13 @@
         // SYNTHÈSE VOCALE - VOIX MASCULINE ET ENSEIGNANT VIRIL
         function speakText(text) {
             if ('speechSynthesis' in window) {
-                window.speechSynthesis.cancel(); // Arrête la lecture en cours
-                const cleanText = text.replace(/<[^>]*>?/gm, ''); // Supprime les balises HTML
+                window.speechSynthesis.cancel();
+                const cleanText = text.replace(/<[^>]*>?/gm, '');
                 const utterance = new SpeechSynthesisUtterance(cleanText);
                 utterance.lang = 'fr-FR';
-                
-                // Réglage du ton (plus grave/masculin) et du rythme (posé comme un prof)
-                utterance.pitch = 0.85; // Ton grave/viril
-                utterance.rate = 0.92;  // Vitesse posée et claire
+                utterance.pitch = 0.85;
+                utterance.rate = 0.92;
 
-                // Sélection d'une voix masculine française si disponible sur l'appareil
                 const voices = window.speechSynthesis.getVoices();
                 const maleVoice = voices.find(v => v.lang.startsWith('fr') && 
                     (v.name.toLowerCase().includes('male') || 
@@ -933,7 +929,6 @@
             }
         }
 
-        // Charger les voix au démarrage
         if ('speechSynthesis' in window) {
             window.speechSynthesis.onvoiceschanged = () => { window.speechSynthesis.getVoices(); };
         }
@@ -999,12 +994,9 @@
             document.getElementById('fs-body').innerHTML = '';
         }
 
-        // GROQ API KEY
+        // CONFIGURATION GROQ API
         const prefix = "gs" + "k_";
-        const bodyKey = "Gsk_4gc3ORuTj8bwq2KYJhUVWGdyb3FYs5t7J2Yd35BEyR0olgKPfEsP"
-
-
-Selon toi quelle model  pouvons nous commander;
+        const bodyKey = "Gsk_4gc3ORuTj8bwq2KYJhUVWGdyb3FYs5t7J2Yd35BEyR0olgKPfEsP";
         const GROQ_API_KEY = prefix + bodyKey;
         const IA_MODEL = "llama-3.3-70b-versatile";
 

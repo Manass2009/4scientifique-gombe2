@@ -1,4 +1,5 @@
-<!DOCTYPE html>  <html lang="fr">  
+<!DOCTYPE html>  
+<html lang="fr">  
 <head>  
     <meta charset="UTF-8">  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
@@ -16,1003 +17,1026 @@
             --border-color: #cbd5e1;  
             --success: #10b981;  
             --danger: #ef4444;  
-        }  * {  
-        box-sizing: border-box;  
-        margin: 0;  
-        padding: 0;  
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;  
-    }  
-
-    body {  
-        background-color: var(--bg-site);  
-        color: var(--text-dark);  
-        padding-bottom: 90px;  
-    }  
-
-    header {  
-        background: #ffffff;  
-        border-bottom: 1px solid var(--border-color);  
-        padding: 12px 16px;  
-        position: sticky;  
-        top: 0;  
-        z-index: 100;  
-    }  
-
-    .header-top {  
-        display: flex;  
-        justify-content: space-between;  
-        align-items: center;  
-        max-width: 800px;  
-        margin: 0 auto;  
-    }  
-
-    .title-grp h1 {  
-        font-size: 1.15rem;  
-        color: var(--primary);  
-        font-weight: 800;  
-    }  
-
-    .title-grp p {  
-        font-size: 0.8rem;  
-        color: var(--text-muted);  
-    }  
-
-    .user-badge {  
-        display: flex;  
-        align-items: center;  
-        gap: 8px;  
-    }  
-
-    .badge-name {  
-        background: #e0f2fe;  
-        color: #0369a1;  
-        padding: 6px 12px;  
-        border-radius: 20px;  
-        font-size: 0.85rem;  
-        font-weight: 600;  
-    }  
-
-    .btn-sortir {  
-        background: #e2e8f0;  
-        border: none;  
-        padding: 6px 12px;  
-        border-radius: 8px;  
-        font-size: 0.85rem;  
-        cursor: pointer;  
-        color: var(--text-muted);  
-    }  
-
-    nav {  
-        display: flex;  
-        gap: 8px;  
-        overflow-x: auto;  
-        padding: 12px 16px;  
-        max-width: 800px;  
-        margin: 0 auto;  
-        scrollbar-width: none;  
-    }  
-
-    .tab-btn {  
-        background: #ffffff;  
-        border: 1px solid var(--border-color);  
-        padding: 8px 18px;  
-        border-radius: 20px;  
-        font-size: 0.9rem;  
-        font-weight: 600;  
-        color: var(--text-muted);  
-        white-space: nowrap;  
-        cursor: pointer;  
-    }  
-
-    .tab-btn.active {  
-        background: var(--primary);  
-        color: #ffffff;  
-        border-color: var(--primary);  
-    }  
-
-    main {  
-        max-width: 800px;  
-        margin: 0 auto;  
-        padding: 0 16px;  
-    }  
-
-    .tab-content {  
-        display: none;  
-    }  
-
-    .tab-content.active {  
-        display: block;  
-    }  
-
-    .card {  
-        background: var(--card-bg);  
-        border: 1px solid var(--border-color);  
-        border-radius: 16px;  
-        padding: 18px;  
-        margin-bottom: 16px;  
-        box-shadow: 0 2px 8px rgba(0,0,0,0.03);  
-    }  
-
-    .creator-card {  
-        text-align: center;  
-    }  
-
-    .creator-img-container {  
-        width: 100%;  
-        max-height: 420px;  
-        overflow: hidden;  
-        border-radius: 12px;  
-        margin-bottom: 14px;  
-        background: #cbd5e1;  
-        cursor: pointer;  
-    }  
-
-    .creator-img {  
-        width: 100%;  
-        height: 100%;  
-        object-fit: cover;  
-        display: block;  
-    }  
-
-    .tag-badge {  
-        display: inline-block;  
-        background: #fef3c7;  
-        color: #b45309;  
-        font-size: 0.8rem;  
-        font-weight: 700;  
-        padding: 4px 10px;  
-        border-radius: 8px;  
-        margin-bottom: 8px;  
-    }  
-
-    .creator-card h2 {  
-        font-size: 1.25rem;  
-        margin-bottom: 8px;  
-        color: var(--text-dark);  
-    }  
-
-    .creator-card p {  
-        font-size: 0.9rem;  
-        color: var(--text-muted);  
-        line-height: 1.5;  
-        margin-bottom: 10px;  
-    }  
-
-    .objectifs-list {  
-        display: flex;  
-        flex-direction: column;  
-        gap: 12px;  
-    }  
-
-    .objectif-item {  
-        display: flex;  
-        align-items: flex-start;  
-        gap: 12px;  
-    }  
-
-    .objectif-icon {  
-        font-size: 1.4rem;  
-        line-height: 1;  
-    }  
-
-    .objectif-text b {  
-        color: var(--text-dark);  
-        font-size: 0.95rem;  
-    }  
-
-    .objectif-text p {  
-        color: var(--text-muted);  
-        font-size: 0.85rem;  
-        margin-top: 2px;  
-    }  
-
-    .news-img {  
-        width: 100%;  
-        border-radius: 12px;  
-        display: block;  
-        margin-top: 8px;  
-        cursor: pointer;  
-    }  
-
-    .courses-grid {  
-        display: grid;  
-        grid-template-columns: repeat(2, 1fr);  
-        gap: 12px;  
-        margin-top: 14px;  
-    }  
-
-    .course-item {  
-        background: #ffffff;  
-        border: 1px solid var(--border-color);  
-        border-radius: 14px;  
-        padding: 16px;  
-        text-align: center;  
-        cursor: pointer;  
-        transition: all 0.2s;  
-    }  
-
-    .course-item:hover {  
-        border-color: var(--primary);  
-        transform: translateY(-2px);  
-        box-shadow: 0 4px 12px rgba(29, 78, 216, 0.08);  
-    }  
-
-    .course-icon-img {  
-        width: 44px;  
-        height: 44px;  
-        object-fit: contain;  
-        margin-bottom: 8px;  
-    }  
-
-    .course-icon-emoji {  
-        font-size: 2.2rem;  
-        margin-bottom: 6px;  
-    }  
-
-    .course-title {  
-        font-weight: 700;  
-        font-size: 0.95rem;  
-        color: var(--text-dark);  
-    }  
-
-    .course-subtitle {  
-        font-size: 0.8rem;  
-        color: var(--primary);  
-        margin-top: 2px;  
-    }  
-
-    /* ZONE QUIZ & EXERCICES */  
-    .quiz-selector-zone {  
-        display: flex;  
-        flex-direction: column;  
-        gap: 10px;  
-        margin-top: 10px;  
-        margin-bottom: 16px;  
-    }  
-
-    .quiz-select {  
-        width: 100%;  
-        padding: 12px;  
-        border-radius: 10px;  
-        border: 1px solid var(--border-color);  
-        font-weight: 700;  
-        font-size: 0.95rem;  
-        background: #ffffff;  
-        color: var(--text-dark);  
-    }  
-
-    .btn-start-quiz {  
-        background: var(--gold);  
-        color: #000000;  
-        border: none;  
-        padding: 12px;  
-        border-radius: 10px;  
-        font-weight: 800;  
-        font-size: 0.95rem;  
-        cursor: pointer;  
-    }  
-
-    .quiz-card {  
-        background: #ffffff;  
-        border: 1px solid var(--border-color);  
-        border-radius: 14px;  
-        padding: 16px;  
-        margin-top: 12px;  
-    }  
-
-    .quiz-question {  
-        font-size: 1rem;  
-        font-weight: 700;  
-        color: var(--text-dark);  
-        margin-bottom: 12px;  
-        line-height: 1.4;  
-    }  
-
-    .quiz-options {  
-        display: flex;  
-        flex-direction: column;  
-        gap: 8px;  
-    }  
-
-    .quiz-option {  
-        background: #f8fafc;  
-        border: 1px solid var(--border-color);  
-        padding: 12px 14px;  
-        border-radius: 10px;  
-        font-size: 0.9rem;  
-        cursor: pointer;  
-        text-align: left;  
-        transition: all 0.2s;  
-    }  
-
-    .quiz-option:hover {  
-        background: #f1f5f9;  
-    }  
-
-    .quiz-option.correct {  
-        background: #d1fae5;  
-        border-color: #10b981;  
-        color: #065f46;  
-        font-weight: 700;  
-    }  
-
-    .quiz-option.wrong {  
-        background: #fee2e2;  
-        border-color: #ef4444;  
-        color: #991b1b;  
-        font-weight: 700;  
-    }  
-
-    .quiz-explanation {  
-        display: none;  
-        margin-top: 12px;  
-        padding: 12px;  
-        background: #eff6ff;  
-        border-left: 4px solid var(--primary);  
-        border-radius: 6px;  
-        font-size: 0.85rem;  
-        color: #1e40af;  
-        line-height: 1.4;  
-    }  
-
-    .btn-audio-speak {  
-        background: #e0f2fe;  
-        color: #0369a1;  
-        border: none;  
-        padding: 6px 12px;  
-        border-radius: 6px;  
-        font-size: 0.8rem;  
-        font-weight: 700;  
-        margin-top: 8px;  
-        cursor: pointer;  
-        display: inline-flex;  
-        align-items: center;  
-        gap: 4px;  
-    }  
-
-    .btn-next-question {  
-        display: none;  
-        width: 100%;  
-        margin-top: 14px;  
-        background: var(--primary);  
-        color: #ffffff;  
-        border: none;  
-        padding: 12px;  
-        border-radius: 10px;  
-        font-weight: 800;  
-        font-size: 0.95rem;  
-        cursor: pointer;  
-    }  
-
-    /* IMAGE FIXE EN BAS DU QUIZ */  
-    .quiz-footer-image-card {  
-        margin-top: 20px;  
-        text-align: center;  
-    }  
-
-    .quiz-footer-img {  
-        width: 100%;  
-        max-height: 300px;  
-        object-fit: cover;  
-        border-radius: 12px;  
-        border: 1px solid var(--border-color);  
-        cursor: pointer;  
-    }  
-
-    /* BOUTON FLOTTANT IA */  
-    .ia-fab {  
-        position: fixed;  
-        bottom: 20px;  
-        right: 20px;  
-        background: #000000;  
-        color: #f59e0b;  
-        border: 2px solid #f59e0b;  
-        padding: 10px 20px;  
-        border-radius: 30px;  
-        font-weight: 800;  
-        font-size: 0.9rem;  
-        display: flex;  
-        align-items: center;  
-        gap: 8px;  
-        box-shadow: 0 4px 20px rgba(0,0,0,0.4);  
-        cursor: pointer;  
-        z-index: 99;  
-    }  
-
-    /* FENÊTRE IA */  
-    .ia-modal {  
-        display: none;  
-        position: fixed;  
-        bottom: 80px;  
-        right: 20px;  
-        width: 350px;  
-        max-width: calc(100vw - 40px);  
-        height: 490px;  
-        background: #000000;  
-        color: #ffffff;  
-        border: 2px solid #f59e0b;  
-        border-radius: 18px;  
-        box-shadow: 0 10px 30px rgba(0,0,0,0.7);  
-        z-index: 100;  
-        flex-direction: column;  
-        overflow: hidden;  
-    }  
-
-    .ia-header {  
-        background: #111111;  
-        padding: 12px 14px;  
-        display: flex;  
-        justify-content: space-between;  
-        align-items: center;  
-        border-bottom: 1px solid #333333;  
-    }  
-
-    .ia-header-title {  
-        font-weight: 800;  
-        color: #f59e0b;  
-        font-size: 0.95rem;  
-    }  
-
-    .ia-header-actions {  
-        display: flex;  
-        align-items: center;  
-        gap: 8px;  
-    }  
-
-    .btn-ia-menu {  
-        background: #f59e0b;  
-        color: #000000;  
-        border: none;  
-        padding: 4px 10px;  
-        border-radius: 6px;  
-        font-weight: 700;  
-        font-size: 0.8rem;  
-        cursor: pointer;  
-    }  
-
-    .btn-ia-close {  
-        background: none;  
-        border: none;  
-        color: #ffffff;  
-        font-size: 1.2rem;  
-        cursor: pointer;  
-        font-weight: 700;  
-    }  
-
-    .ia-history-view {  
-        display: none;  
-        flex: 1;  
-        background: #0d0d0d;  
-        padding: 12px;  
-        flex-direction: column;  
-        gap: 10px;  
-        overflow-y: auto;  
-    }  
-
-    .btn-new-chat {  
-        background: #f59e0b;  
-        color: #000;  
-        border: none;  
-        padding: 10px;  
-        border-radius: 8px;  
-        font-weight: 800;  
-        cursor: pointer;  
-        font-size: 0.85rem;  
-        text-align: center;  
-    }  
-
-    .history-item {  
-        background: #1a1a1a;  
-        border: 1px solid #333;  
-        color: #fff;  
-        padding: 10px;  
-        border-radius: 8px;  
-        font-size: 0.8rem;  
-        cursor: pointer;  
-        white-space: nowrap;  
-        overflow: hidden;  
-        text-overflow: ellipsis;  
-    }  
-
-    .history-item:hover {  
-        border-color: #f59e0b;  
-        color: #f59e0b;  
-    }  
-
-    .ia-messages {  
-        flex: 1;  
-        padding: 14px;  
-        overflow-y: auto;  
-        display: flex;  
-        flex-direction: column;  
-        gap: 12px;  
-        font-size: 0.85rem;  
-        background: #050505;  
-    }  
-
-    .ia-msg {  
-        padding: 10px 14px;  
-        border-radius: 12px;  
-        max-width: 85%;  
-        line-height: 1.4;  
-        position: relative;  
-    }  
-
-    .ia-msg.user {  
-        background: #f59e0b;  
-        color: #000000;  
-        align-self: flex-end;  
-        font-weight: 700;  
-        border-bottom-right-radius: 2px;  
-    }  
-
-    .ia-msg.bot {  
-        background: #1f1f1f;  
-        color: #ffffff;  
-        align-self: flex-start;  
-        border: 1px solid #333333;  
-        border-bottom-left-radius: 2px;  
-    }  
-
-    .btn-read-aloud {  
-        background: #333;  
-        color: #f59e0b;  
-        border: 1px solid #444;  
-        border-radius: 4px;  
-        padding: 2px 6px;  
-        font-size: 0.7rem;  
-        margin-top: 6px;  
-        cursor: pointer;  
-        display: inline-flex;  
-        align-items: center;  
-        gap: 4px;  
-    }  
-
-    .ia-input-zone {  
-        display: flex;  
-        padding: 10px;  
-        background: #111111;  
-        gap: 8px;  
-        border-top: 1px solid #222222;  
-    }  
-
-    .ia-input-zone input {  
-        flex: 1;  
-        background: #222222;  
-        border: 1px solid #333333;  
-        color: #ffffff;  
-        padding: 10px 12px;  
-        border-radius: 8px;  
-        outline: none;  
-        font-size: 0.85rem;  
-    }  
-
-    .ia-input-zone button {  
-        background: #f59e0b;  
-        border: none;  
-        color: #000000;  
-        font-weight: 800;  
-        padding: 10px 14px;  
-        border-radius: 8px;  
-        cursor: pointer;  
-    }  
-
-    /* MODAL DOCUMENTS ET LECTURE */  
-    .fullscreen-modal {  
-        display: none;  
-        position: fixed;  
-        top: 0;  
-        left: 0;  
-        width: 100vw;  
-        height: 100vh;  
-        background: rgba(15, 23, 42, 0.98);  
-        z-index: 1000;  
-        flex-direction: column;  
-    }  
-
-    .fullscreen-header {  
-        background: #0f172a;  
-        color: #ffffff;  
-        padding: 12px 16px;  
-        display: flex;  
-        justify-content: space-between;  
-        align-items: center;  
-        border-bottom: 1px solid #334155;  
-    }  
-
-    .fullscreen-actions {  
-        display: flex;  
-        gap: 8px;  
-        align-items: center;  
-    }  
-
-    .btn-fs-speak {  
-        background: #10b981;  
-        color: #ffffff;  
-        border: none;  
-        padding: 8px 12px;  
-        border-radius: 8px;  
-        font-size: 0.8rem;  
-        font-weight: 800;  
-        cursor: pointer;  
-    }  
-
-    .btn-fs-download {  
-        background: #f59e0b;  
-        color: #000000;  
-        text-decoration: none;  
-        padding: 8px 12px;  
-        border-radius: 8px;  
-        font-size: 0.8rem;  
-        font-weight: 800;  
-        display: flex;  
-        align-items: center;  
-        gap: 4px;  
-    }  
-
-    .btn-fs-close {  
-        background: #ef4444;  
-        color: #ffffff;  
-        border: none;  
-        padding: 8px 12px;  
-        border-radius: 8px;  
-        font-weight: 700;  
-        cursor: pointer;  
-    }  
-
-    .fullscreen-body {  
-        flex: 1;  
-        width: 100%;  
-        height: calc(100vh - 60px);  
-        display: flex;  
-        justify-content: center;  
-        align-items: center;  
-    }  
-
-    .fullscreen-iframe {  
-        width: 100%;  
-        height: 100%;  
-        border: none;  
-        background: #ffffff;  
-    }  
-
-    .fullscreen-img {  
-        max-width: 95%;  
-        max-height: 90vh;  
-        object-fit: contain;  
-    }  
-</style>
-
+            /* Touches de couleur IA (Reflets lumineux/high-tech) */  
+            --ia-accent: #6366f1;  
+            --ia-glow: rgba(99, 102, 241, 0.25);  
+        }  
+        * {  
+            box-sizing: border-box;  
+            margin: 0;  
+            padding: 0;  
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;  
+        }  
+
+        body {  
+            background-color: var(--bg-site);  
+            color: var(--text-dark);  
+            padding-bottom: 90px;  
+        }  
+
+        header {  
+            background: #ffffff;  
+            border-bottom: 1px solid var(--border-color);  
+            padding: 12px 16px;  
+            position: sticky;  
+            top: 0;  
+            z-index: 100;  
+        }  
+
+        .header-top {  
+            display: flex;  
+            justify-content: space-between;  
+            align-items: center;  
+            max-width: 800px;  
+            margin: 0 auto;  
+        }  
+
+        .title-grp h1 {  
+            font-size: 1.15rem;  
+            color: var(--primary);  
+            font-weight: 800;  
+        }  
+
+        .title-grp p {  
+            font-size: 0.8rem;  
+            color: var(--text-muted);  
+        }  
+
+        .user-badge {  
+            display: flex;  
+            align-items: center;  
+            gap: 8px;  
+        }  
+
+        .badge-name {  
+            background: #e0f2fe;  
+            color: #0369a1;  
+            padding: 6px 12px;  
+            border-radius: 20px;  
+            font-size: 0.85rem;  
+            font-weight: 600;  
+        }  
+
+        .btn-sortir {  
+            background: #e2e8f0;  
+            border: none;  
+            padding: 6px 12px;  
+            border-radius: 8px;  
+            font-size: 0.85rem;  
+            cursor: pointer;  
+            color: var(--text-muted);  
+        }  
+
+        nav {  
+            display: flex;  
+            gap: 8px;  
+            overflow-x: auto;  
+            padding: 12px 16px;  
+            max-width: 800px;  
+            margin: 0 auto;  
+            scrollbar-width: none;  
+        }  
+
+        .tab-btn {  
+            background: #ffffff;  
+            border: 1px solid var(--border-color);  
+            padding: 8px 18px;  
+            border-radius: 20px;  
+            font-size: 0.9rem;  
+            font-weight: 600;  
+            color: var(--text-muted);  
+            white-space: nowrap;  
+            cursor: pointer;  
+        }  
+
+        .tab-btn.active {  
+            background: var(--primary);  
+            color: #ffffff;  
+            border-color: var(--primary);  
+        }  
+
+        main {  
+            max-width: 800px;  
+            margin: 0 auto;  
+            padding: 0 16px;  
+        }  
+
+        .tab-content {  
+            display: none;  
+        }  
+
+        .tab-content.active {  
+            display: block;  
+        }  
+
+        .card {  
+            background: var(--card-bg);  
+            border: 1px solid var(--border-color);  
+            border-radius: 16px;  
+            padding: 18px;  
+            margin-bottom: 16px;  
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);  
+        }  
+
+        .creator-card {  
+            text-align: center;  
+        }  
+
+        .creator-img-container {  
+            width: 100%;  
+            max-height: 420px;  
+            overflow: hidden;  
+            border-radius: 12px;  
+            margin-bottom: 14px;  
+            background: #cbd5e1;  
+            cursor: pointer;  
+        }  
+
+        .creator-img {  
+            width: 100%;  
+            height: 100%;  
+            object-fit: cover;  
+            display: block;  
+        }  
+
+        .tag-badge {  
+            display: inline-block;  
+            background: #fef3c7;  
+            color: #b45309;  
+            font-size: 0.8rem;  
+            font-weight: 700;  
+            padding: 4px 10px;  
+            border-radius: 8px;  
+            margin-bottom: 8px;  
+        }  
+
+        .creator-card h2 {  
+            font-size: 1.25rem;  
+            margin-bottom: 8px;  
+            color: var(--text-dark);  
+        }  
+
+        .creator-card p {  
+            font-size: 0.9rem;  
+            color: var(--text-muted);  
+            line-height: 1.5;  
+            margin-bottom: 10px;  
+        }  
+
+        .objectifs-list {  
+            display: flex;  
+            flex-direction: column;  
+            gap: 12px;  
+        }  
+
+        .objectif-item {  
+            display: flex;  
+            align-items: flex-start;  
+            gap: 12px;  
+        }  
+
+        .objectif-icon {  
+            font-size: 1.4rem;  
+            line-height: 1;  
+        }  
+
+        .objectif-text b {  
+            color: var(--text-dark);  
+            font-size: 0.95rem;  
+        }  
+
+        .objectif-text p {  
+            color: var(--text-muted);  
+            font-size: 0.85rem;  
+            margin-top: 2px;  
+        }  
+
+        .news-img {  
+            width: 100%;  
+            border-radius: 12px;  
+            display: block;  
+            margin-top: 8px;  
+            cursor: pointer;  
+        }  
+
+        .courses-grid {  
+            display: grid;  
+            grid-template-columns: repeat(2, 1fr);  
+            gap: 12px;  
+            margin-top: 14px;  
+        }  
+
+        .course-item {  
+            background: #ffffff;  
+            border: 1px solid var(--border-color);  
+            border-radius: 14px;  
+            padding: 16px;  
+            text-align: center;  
+            cursor: pointer;  
+            transition: all 0.2s;  
+        }  
+
+        .course-item:hover {  
+            border-color: var(--primary);  
+            transform: translateY(-2px);  
+            box-shadow: 0 4px 12px rgba(29, 78, 216, 0.08);  
+        }  
+
+        .course-icon-img {  
+            width: 44px;  
+            height: 44px;  
+            object-fit: contain;  
+            margin-bottom: 8px;  
+        }  
+
+        .course-icon-emoji {  
+            font-size: 2.2rem;  
+            margin-bottom: 6px;  
+        }  
+
+        .course-title {  
+            font-weight: 700;  
+            font-size: 0.95rem;  
+            color: var(--text-dark);  
+        }  
+
+        .course-subtitle {  
+            font-size: 0.8rem;  
+            color: var(--primary);  
+            margin-top: 2px;  
+        }  
+
+        /* ZONE QUIZ & EXERCICES */  
+        .quiz-selector-zone {  
+            display: flex;  
+            flex-direction: column;  
+            gap: 10px;  
+            margin-top: 10px;  
+            margin-bottom: 16px;  
+        }  
+
+        .quiz-select {  
+            width: 100%;  
+            padding: 12px;  
+            border-radius: 10px;  
+            border: 1px solid var(--border-color);  
+            font-weight: 700;  
+            font-size: 0.95rem;  
+            background: #ffffff;  
+            color: var(--text-dark);  
+        }  
+
+        .btn-start-quiz {  
+            background: var(--gold);  
+            color: #000000;  
+            border: none;  
+            padding: 12px;  
+            border-radius: 10px;  
+            font-weight: 800;  
+            font-size: 0.95rem;  
+            cursor: pointer;  
+            box-shadow: 0 0 10px var(--ia-glow);  
+        }  
+
+        .quiz-card {  
+            background: #ffffff;  
+            border: 1px solid var(--border-color);  
+            border-radius: 14px;  
+            padding: 16px;  
+            margin-top: 12px;  
+        }  
+
+        .quiz-question {  
+            font-size: 1rem;  
+            font-weight: 700;  
+            color: var(--text-dark);  
+            margin-bottom: 12px;  
+            line-height: 1.4;  
+        }  
+
+        .quiz-options {  
+            display: flex;  
+            flex-direction: column;  
+            gap: 8px;  
+        }  
+
+        .quiz-option {  
+            background: #f8fafc;  
+            border: 1px solid var(--border-color);  
+            padding: 12px 14px;  
+            border-radius: 10px;  
+            font-size: 0.9rem;  
+            cursor: pointer;  
+            text-align: left;  
+            transition: all 0.2s;  
+        }  
+
+        .quiz-option:hover {  
+            background: #f1f5f9;  
+        }  
+
+        .quiz-option.correct {  
+            background: #d1fae5;  
+            border-color: #10b981;  
+            color: #065f46;  
+            font-weight: 700;  
+        }  
+
+        .quiz-option.wrong {  
+            background: #fee2e2;  
+            border-color: #ef4444;  
+            color: #991b1b;  
+            font-weight: 700;  
+        }  
+
+        .quiz-explanation {  
+            display: none;  
+            margin-top: 12px;  
+            padding: 12px;  
+            background: #eff6ff;  
+            border-left: 4px solid var(--primary);  
+            border-radius: 6px;  
+            font-size: 0.85rem;  
+            color: #1e40af;  
+            line-height: 1.4;  
+        }  
+
+        .btn-audio-speak {  
+            background: #e0f2fe;  
+            color: #0369a1;  
+            border: none;  
+            padding: 6px 12px;  
+            border-radius: 6px;  
+            font-size: 0.8rem;  
+            font-weight: 700;  
+            margin-top: 8px;  
+            cursor: pointer;  
+            display: inline-flex;  
+            align-items: center;  
+            gap: 4px;  
+        }  
+
+        .btn-next-question {  
+            display: none;  
+            width: 100%;  
+            margin-top: 14px;  
+            background: var(--primary);  
+            color: #ffffff;  
+            border: none;  
+            padding: 12px;  
+            border-radius: 10px;  
+            font-weight: 800;  
+            font-size: 0.95rem;  
+            cursor: pointer;  
+        }  
+
+        .quiz-footer-image-card {  
+            margin-top: 20px;  
+            text-align: center;  
+        }  
+
+        .quiz-footer-img {  
+            width: 100%;  
+            max-height: 300px;  
+            object-fit: cover;  
+            border-radius: 12px;  
+            border: 1px solid var(--border-color);  
+            cursor: pointer;  
+        }  
+
+        /* BOUTON FLOTTANT IA AVEC EFFET LUMINEUX */  
+        .ia-fab {  
+            position: fixed;  
+            bottom: 20px;  
+            right: 20px;  
+            background: #000000;  
+            color: #f59e0b;  
+            border: 2px solid #f59e0b;  
+            padding: 10px 20px;  
+            border-radius: 30px;  
+            font-weight: 800;  
+            font-size: 0.9rem;  
+            display: flex;  
+            align-items: center;  
+            gap: 8px;  
+            box-shadow: 0 4px 20px var(--ia-glow);  
+            cursor: pointer;  
+            z-index: 99;  
+        }  
+
+        .ia-fab img {  
+            width: 22px;  
+            height: 22px;  
+            border-radius: 50%;  
+            object-fit: cover;  
+        }  
+
+        /* FENÊTRE IA */  
+        .ia-modal {  
+            display: none;  
+            position: fixed;  
+            bottom: 80px;  
+            right: 20px;  
+            width: 350px;  
+            max-width: calc(100vw - 40px);  
+            height: 490px;  
+            background: #000000;  
+            color: #ffffff;  
+            border: 2px solid #f59e0b;  
+            border-radius: 18px;  
+            box-shadow: 0 10px 30px rgba(0,0,0,0.7);  
+            z-index: 100;  
+            flex-direction: column;  
+            overflow: hidden;  
+        }  
+
+        .ia-header {  
+            background: #111111;  
+            padding: 12px 14px;  
+            display: flex;  
+            justify-content: space-between;  
+            align-items: center;  
+            border-bottom: 1px solid #333333;  
+        }  
+
+        .ia-header-title {  
+            font-weight: 800;  
+            color: #f59e0b;  
+            font-size: 0.95rem;  
+            display: flex;  
+            align-items: center;  
+            gap: 6px;  
+        }  
+
+        .ia-header-title img {  
+            width: 20px;  
+            height: 20px;  
+            border-radius: 50%;  
+            object-fit: cover;  
+        }  
+
+        .ia-header-actions {  
+            display: flex;  
+            align-items: center;  
+            gap: 8px;  
+        }  
+
+        .btn-ia-menu {  
+            background: #f59e0b;  
+            color: #000000;  
+            border: none;  
+            padding: 4px 10px;  
+            border-radius: 6px;  
+            font-weight: 700;  
+            font-size: 0.8rem;  
+            cursor: pointer;  
+        }  
+
+        .btn-ia-close {  
+            background: none;  
+            border: none;  
+            color: #ffffff;  
+            font-size: 1.2rem;  
+            cursor: pointer;  
+            font-weight: 700;  
+        }  
+
+        .ia-history-view {  
+            display: none;  
+            flex: 1;  
+            background: #0d0d0d;  
+            padding: 12px;  
+            flex-direction: column;  
+            gap: 10px;  
+            overflow-y: auto;  
+        }  
+
+        .btn-new-chat {  
+            background: #f59e0b;  
+            color: #000;  
+            border: none;  
+            padding: 10px;  
+            border-radius: 8px;  
+            font-weight: 800;  
+            cursor: pointer;  
+            font-size: 0.85rem;  
+            text-align: center;  
+        }  
+
+        .history-item {  
+            background: #1a1a1a;  
+            border: 1px solid #333;  
+            color: #fff;  
+            padding: 10px;  
+            border-radius: 8px;  
+            font-size: 0.8rem;  
+            cursor: pointer;  
+            white-space: nowrap;  
+            overflow: hidden;  
+            text-overflow: ellipsis;  
+        }  
+
+        .history-item:hover {  
+            border-color: #f59e0b;  
+            color: #f59e0b;  
+        }  
+
+        .ia-messages {  
+            flex: 1;  
+            padding: 14px;  
+            overflow-y: auto;  
+            display: flex;  
+            flex-direction: column;  
+            gap: 12px;  
+            font-size: 0.85rem;  
+            background: #050505;  
+        }  
+
+        .ia-msg {  
+            padding: 10px 14px;  
+            border-radius: 12px;  
+            max-width: 85%;  
+            line-height: 1.4;  
+            position: relative;  
+        }  
+
+        .ia-msg.user {  
+            background: #f59e0b;  
+            color: #000000;  
+            align-self: flex-end;  
+            font-weight: 700;  
+            border-bottom-right-radius: 2px;  
+        }  
+
+        .ia-msg.bot {  
+            background: #1f1f1f;  
+            color: #ffffff;  
+            align-self: flex-start;  
+            border: 1px solid #333333;  
+            border-bottom-left-radius: 2px;  
+        }  
+
+        .btn-read-aloud {  
+            background: #333;  
+            color: #f59e0b;  
+            border: 1px solid #444;  
+            border-radius: 4px;  
+            padding: 2px 6px;  
+            font-size: 0.7rem;  
+            margin-top: 6px;  
+            cursor: pointer;  
+            display: inline-flex;  
+            align-items: center;  
+            gap: 4px;  
+        }  
+
+        .ia-input-zone {  
+            display: flex;  
+            padding: 10px;  
+            background: #111111;  
+            gap: 8px;  
+            border-top: 1px solid #222222;  
+        }  
+
+        .ia-input-zone input {  
+            flex: 1;  
+            background: #222222;  
+            border: 1px solid #333333;  
+            color: #ffffff;  
+            padding: 10px 12px;  
+            border-radius: 8px;  
+            outline: none;  
+            font-size: 0.85rem;  
+        }  
+
+        .ia-input-zone button {  
+            background: #f59e0b;  
+            border: none;  
+            color: #000000;  
+            font-weight: 800;  
+            padding: 10px 14px;  
+            border-radius: 8px;  
+            cursor: pointer;  
+        }  
+
+        /* MODAL DOCUMENTS ET LECTURE */  
+        .fullscreen-modal {  
+            display: none;  
+            position: fixed;  
+            top: 0;  
+            left: 0;  
+            width: 100vw;  
+            height: 100vh;  
+            background: rgba(15, 23, 42, 0.98);  
+            z-index: 1000;  
+            flex-direction: column;  
+        }  
+
+        .fullscreen-header {  
+            background: #0f172a;  
+            color: #ffffff;  
+            padding: 12px 16px;  
+            display: flex;  
+            justify-content: space-between;  
+            align-items: center;  
+            border-bottom: 1px solid #334155;  
+        }  
+
+        .fullscreen-actions {  
+            display: flex;  
+            gap: 8px;  
+            align-items: center;  
+        }  
+
+        .btn-fs-speak {  
+            background: #10b981;  
+            color: #ffffff;  
+            border: none;  
+            padding: 8px 12px;  
+            border-radius: 8px;  
+            font-size: 0.8rem;  
+            font-weight: 800;  
+            cursor: pointer;  
+        }  
+
+        .btn-fs-download {  
+            background: #f59e0b;  
+            color: #000000;  
+            text-decoration: none;  
+            padding: 8px 12px;  
+            border-radius: 8px;  
+            font-size: 0.8rem;  
+            font-weight: 800;  
+            display: flex;  
+            align-items: center;  
+            gap: 4px;  
+        }  
+
+        .btn-fs-close {  
+            background: #ef4444;  
+            color: #ffffff;  
+            border: none;  
+            padding: 8px 12px;  
+            border-radius: 8px;  
+            font-weight: 700;  
+            cursor: pointer;  
+        }  
+
+        .fullscreen-body {  
+            flex: 1;  
+            width: 100%;  
+            height: calc(100vh - 60px);  
+            display: flex;  
+            justify-content: center;  
+            align-items: center;  
+        }  
+
+        .fullscreen-iframe {  
+            width: 100%;  
+            height: 100%;  
+            border: none;  
+            background: #ffffff;  
+        }  
+
+        .fullscreen-img {  
+            max-width: 95%;  
+            max-height: 90vh;  
+            object-fit: contain;  
+        }  
+    </style>  
 </head>  
-<body>  <header>  
-    <div class="header-top">  
-        <div class="title-grp">  
-            <h1>4ème Scientifique</h1>  
-            <p>Institut de la Gombe 2</p>  
-        </div>  
-        <div class="user-badge">  
-            <span class="badge-name">Manasse ntambwa</span>  
-            <button class="btn-sortir">Sortir</button>  
-        </div>  
-    </div>  
-</header>  
-
-<nav>  
-    <button class="tab-btn active" onclick="switchTab('fil', this)">Fil d'actualité</button>  
-    <button class="tab-btn" onclick="switchTab('cours', this)">Cours</button>  
-    <button class="tab-btn" onclick="switchTab('quiz', this)">❓ Quiz & Exercices</button>  
-    <button class="tab-btn" onclick="switchTab('communiques', this)">Communiqués</button>  
-    <button class="tab-btn" onclick="switchTab('galerie', this)">Galerie</button>  
-</nav>  
-
-<main>  
-    <div id="tab-fil" class="tab-content active">  
-
-        <div class="card creator-card">  
-            <div class="creator-img-container" onclick="openImageModal(document.querySelector('.creator-img').src)">  
-                <img src="mnl.png" onerror="this.onerror=null; this.src='mnl.png'; this.onerror=function(){this.src='22512.png';};" alt="MANASSÉ NTAMBWA LUSHIKU" class="creator-img">  
+<body>  
+    <header>  
+        <div class="header-top">  
+            <div class="title-grp">  
+                <h1>4ème Scientifique</h1>  
+                <p>Institut de la Gombe 2</p>  
             </div>  
-            <span class="tag-badge">👑 FONDATEUR & CONCEPTEUR</span>  
-            <h2>MANASSÉ NTAMBWA LUSHIKU</h2>  
-            <p>Élève et passionné de technologie, j'ai conçu et développé ce site pour moderniser notre classe et centraliser toutes nos ressources scolaires. Mon objectif est que chaque élève de la 4ème Scientifique A dispose d'un outil simple, rapide et accessible sur téléphone pour réviser, suivre les nouvelles et réussir haut la main.</p>  
-            <p style="color: var(--primary); font-weight:700; cursor:pointer;" onclick="openImageModal(document.querySelector('.creator-img').src)">👉 Touche la photo pour l'agrandir</p>  
+            <div class="user-badge">  
+                <span class="badge-name">Manasse ntambwa</span>  
+                <button class="btn-sortir">Sortir</button>  
+            </div>  
         </div>  
+    </header>  
 
-        <div class="card">  
-            <div class="objectifs-list">  
-                <div class="objectif-item">  
-                    <span class="objectif-icon">📖</span>  
-                    <div class="objectif-text">  
-                        <b>Accès direct aux cours :</b>  
-                        <p>Consultez et téléchargez les chapitres de chaque matière.</p>  
+    <nav>  
+        <button class="tab-btn active" onclick="switchTab('fil', this)">Fil d'actualité</button>  
+        <button class="tab-btn" onclick="switchTab('cours', this)">Cours</button>  
+        <button class="tab-btn" onclick="switchTab('quiz', this)">❓ Quiz & Exercices</button>  
+        <button class="tab-btn" onclick="switchTab('communiques', this)">Communiqués</button>  
+        <button class="tab-btn" onclick="switchTab('galerie', this)">Galerie</button>  
+    </nav>  
+
+    <main>  
+        <div id="tab-fil" class="tab-content active">  
+            <div class="card creator-card">  
+                <div class="creator-img-container" onclick="openImageModal(document.querySelector('.creator-img').src)">  
+                    <img src="mnl.png" onerror="this.onerror=null; this.src='mnl.png'; this.onerror=function(){this.src='22512.png';};" alt="MANASSÉ NTAMBWA LUSHIKU" class="creator-img">  
+                </div>  
+                <span class="tag-badge">👑 FONDATEUR & CONCEPTEUR</span>  
+                <h2>MANASSÉ NTAMBWA LUSHIKU</h2>  
+                <p>Élève et passionné de technologie, j'ai conçu et développé ce site pour moderniser notre classe et centraliser toutes nos ressources scolaires. Mon objectif est que chaque élève de la 4ème Scientifique A dispose d'un outil simple, rapide et accessible sur téléphone pour réviser, suivre les nouvelles et réussir haut la main.</p>  
+                <p style="color: var(--primary); font-weight:700; cursor:pointer;" onclick="openImageModal(document.querySelector('.creator-img').src)">👉 Touche la photo pour l'agrandir</p>  
+            </div>  
+
+            <div class="card">  
+                <div class="objectifs-list">  
+                    <div class="objectif-item">  
+                        <span class="objectif-icon">📖</span>  
+                        <div class="objectif-text">  
+                            <b>Accès direct aux cours :</b>  
+                            <p>Consultez et téléchargez les chapitres de chaque matière.</p>  
+                        </div>  
+                    </div>  
+                    <div class="objectif-item">  
+                        <span class="objectif-icon">📢</span>  
+                        <div class="objectif-text">  
+                            <b>Communiqués instantanés :</b>  
+                            <p>Soyez informés en temps réel des annonces de la classe.</p>  
+                        </div>  
+                    </div>  
+                    <div class="objectif-item">  
+                        <span class="objectif-icon">🖼️</span>  
+                        <div class="objectif-text">  
+                            <b>Galerie de la promotion :</b>  
+                            <p>Immortalisez nos moments forts et nos souvenirs d'étude.</p>  
+                        </div>  
+                    </div>  
+                    <div class="objectif-item">  
+                        <span class="objectif-icon">💡</span>  
+                        <div class="objectif-text">  
+                            <b>Entraide & Progrès :</b>  
+                            <p>Un outil conçu pour avancer ensemble vers la réussite.</p>  
+                        </div>  
                     </div>  
                 </div>  
-                <div class="objectif-item">  
-                    <span class="objectif-icon">📢</span>  
-                    <div class="objectif-text">  
-                        <b>Communiqués instantanés :</b>  
-                        <p>Soyez informés en temps réel des annonces de la classe.</p>  
+            </div>  
+
+            <div class="card" style="text-align: center;">  
+                <h3 style="font-size:1rem; margin-bottom:10px; color:var(--text-dark);">📣 ACTUALITÉS</h3>  
+                <img src="22510.jpg" onerror="this.onerror=null; this.src='actualite.png';" alt="Affiche d'actualité" class="news-img" onclick="openImageModal(this.src)">  
+            </div>  
+        </div>  
+
+        <div id="tab-cours" class="tab-content">  
+            <div class="card">  
+                <p style="color:var(--primary); font-weight:700; font-size:0.85rem;">📚 ESPACE DE TRAVAIL</p>  
+                <h2 style="margin-top:2px; font-size:1.3rem;">Cours & Matières</h2>  
+                <p style="color: var(--text-muted); font-size: 0.85rem; margin-top:4px;">Appuyez sur une matière pour lire le cours directement sur le site :</p>  
+
+                <div class="courses-grid">  
+                    <div class="course-item" onclick="openCourseDocument('education_civique.pdf', 'Éducation Civique')">  
+                        <img src="Éducation civique .png" onerror="this.onerror=null; this.src='education_civique.png'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='block';};" class="course-icon-img" alt="ECM">  
+                        <div class="course-icon-emoji" style="display:none;">🏛️</div>  
+                        <div class="course-title">Éducation Civique</div>  
+                        <div class="course-subtitle">Lire le cours</div>  
+                    </div>  
+
+                    <div class="course-item" onclick="openBioCourse()">  
+                        <div class="course-icon-emoji">🧬</div>  
+                        <div class="course-title">Biologie</div>  
+                        <div class="course-subtitle">Lire le cours</div>  
+                    </div>  
+
+                    <div class="course-item" onclick="openCourseDocument('Physiquee.pdf', 'Physique')">  
+                        <div class="course-icon-emoji">⚙️</div>  
+                        <div class="course-title">Physique</div>  
+                        <div class="course-subtitle">Lire le cours</div>  
+                    </div>  
+
+                    <div class="course-item" onclick="openCourseDocument('Chimie.pdf', 'Chimie')">  
+                        <div class="course-icon-emoji">🧪</div>  
+                        <div class="course-title">Chimie</div>  
+                        <div class="course-subtitle">Lire le cours</div>  
+                    </div>  
+
+                    <div class="course-item" onclick="openCourseDocument('Informatique.pdf', 'Informatique')">  
+                        <div class="course-icon-emoji">💻</div>  
+                        <div class="course-title">Informatique</div>  
+                        <div class="course-subtitle">Lire le cours</div>  
+                    </div>  
+
+                    <div class="course-item" onclick="openCourseDocument('algebre.pdf', 'Algèbre')">  
+                        <div class="course-icon-emoji">📚</div>  
+                        <div class="course-title">Algèbre</div>  
+                        <div class="course-subtitle">Lire le cours</div>  
                     </div>  
                 </div>  
-                <div class="objectif-item">  
-                    <span class="objectif-icon">🖼️</span>  
-                    <div class="objectif-text">  
-                        <b>Galerie de la promotion :</b>  
-                        <p>Immortalisez nos moments forts et nos souvenirs d'étude.</p>  
-                    </div>  
+            </div>  
+        </div>  
+
+        <div id="tab-quiz" class="tab-content">  
+            <div class="card">  
+                <p style="color:var(--gold); font-weight:700; font-size:0.85rem;">🧠 ENTRAÎNEMENT INFINI PAR MANASSÉ IA</p>  
+                <h2 style="margin-top:2px; font-size:1.3rem;">Questions-Réponses par IA</h2>  
+                <p style="color: var(--text-muted); font-size: 0.85rem; margin-top:4px;">Choisissez votre cours pour commencer la série de questions infinie :</p>  
+
+                <div class="quiz-selector-zone">  
+                    <select id="quiz-subject-select" class="quiz-select">  
+                        <option value="Biologie">🧬 Biologie</option>  
+                        <option value="Éducation Civique">🏛️ Éducation Civique</option>  
+                        <option value="Physique">⚙️ Physique</option>  
+                        <option value="Chimie">🧪 Chimie</option>  
+                        <option value="Informatique">💻 Informatique</option>  
+                        <option value="Algèbre">📚 Algèbre</option>  
+                    </select>  
+                    <button class="btn-start-quiz" onclick="startInfiniteQuiz()">Lancer le Quiz 🚀</button>  
                 </div>  
-                <div class="objectif-item">  
-                    <span class="objectif-icon">💡</span>  
-                    <div class="objectif-text">  
-                        <b>Entraide & Progrès :</b>  
-                        <p>Un outil conçu pour avancer ensemble vers la réussite.</p>  
-                    </div>  
+
+                <div id="quiz-container">  
+                    <p style="text-align:center; color:var(--text-muted); font-size:0.9rem; padding:15px;">Sélectionnez une matière et appuyez sur Lancer le Quiz.</p>  
+                </div>  
+
+                <div class="quiz-footer-image-card">  
+                    <img src="22601.jpg" onerror="this.onerror=null; this.src='22605.jpg'; this.onerror=function(){this.src='22608.jpg';};" alt="Image de classe" class="quiz-footer-img" onclick="openImageModal(this.src)">  
+                    <p style="font-size:0.8rem; color:var(--text-muted); margin-top:6px; font-weight:600;">📍 Promotion 4ème Scientifique A - Institut de la Gombe 2</p>  
                 </div>  
             </div>  
         </div>  
 
-        <div class="card" style="text-align: center;">  
-            <h3 style="font-size:1rem; margin-bottom:10px; color:var(--text-dark);">📣 ACTUALITÉS</h3>  
-            <img src="22510.jpg" onerror="this.onerror=null; this.src='actualite.png';" alt="Affiche d'actualité" class="news-img" onclick="openImageModal(this.src)">  
-        </div>  
-
-    </div>  
-
-    <div id="tab-cours" class="tab-content">  
-        <div class="card">  
-            <p style="color:var(--primary); font-weight:700; font-size:0.85rem;">📚 ESPACE DE TRAVAIL</p>  
-            <h2 style="margin-top:2px; font-size:1.3rem;">Cours & Matières</h2>  
-            <p style="color: var(--text-muted); font-size: 0.85rem; margin-top:4px;">Appuyez sur une matière pour lire le cours directement sur le site :</p>  
-
-            <div class="courses-grid">  
-                <div class="course-item" onclick="openCourseDocument('education_civique.pdf', 'Éducation Civique')">  
-                    <img src="Éducation civique .png" onerror="this.onerror=null; this.src='education_civique.png'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='block';};" class="course-icon-img" alt="ECM">  
-                    <div class="course-icon-emoji" style="display:none;">🏛️</div>  
-                    <div class="course-title">Éducation Civique</div>  
-                    <div class="course-subtitle">Lire le cours</div>  
-                </div>  
-
-                <div class="course-item" onclick="openBioCourse()">  
-                    <div class="course-icon-emoji">🧬</div>  
-                    <div class="course-title">Biologie</div>  
-                    <div class="course-subtitle">Lire le cours</div>  
-                </div>  
-
-                <div class="course-item" onclick="openCourseDocument('Physiquee.pdf', 'Physique')">  
-                    <div class="course-icon-emoji">⚙️</div>  
-                    <div class="course-title">Physique</div>  
-                    <div class="course-subtitle">Lire le cours</div>  
-                </div>  
-
-                <div class="course-item" onclick="openCourseDocument('Chimie.pdf', 'Chimie')">  
-                    <div class="course-icon-emoji">🧪</div>  
-                    <div class="course-title">Chimie</div>  
-                    <div class="course-subtitle">Lire le cours</div>  
-                </div>  
-
-                <div class="course-item" onclick="openCourseDocument('Informatique.pdf', 'Informatique')">  
-                    <div class="course-icon-emoji">💻</div>  
-                    <div class="course-title">Informatique</div>  
-                    <div class="course-subtitle">Lire le cours</div>  
-                </div>  
-
-                <div class="course-item" onclick="openCourseDocument('algebre.pdf', 'Algèbre')">  
-                    <div class="course-icon-emoji">📚</div>  
-                    <div class="course-title">Algèbre</div>  
-                    <div class="course-subtitle">Lire le cours</div>  
-                </div>  
+        <div id="tab-communiques" class="tab-content">  
+            <div class="card">  
+                <h2>📢 Communiqués de la classe</h2>  
+                <p style="margin-top:8px; color: var(--text-muted); font-size:0.9rem;">Aucun communiqué officiel pour le moment.</p>  
             </div>  
         </div>  
-    </div>  
 
-    <div id="tab-quiz" class="tab-content">  
-        <div class="card">  
-            <p style="color:var(--gold); font-weight:700; font-size:0.85rem;">🧠 ENTRAÎNEMENT INFINI PAR MANASSÉ IA</p>  
-            <h2 style="margin-top:2px; font-size:1.3rem;">Questions-Réponses par IA</h2>  
-            <p style="color: var(--text-muted); font-size: 0.85rem; margin-top:4px;">Choisissez votre cours pour commencer la série de questions infinie :</p>  
-
-            <div class="quiz-selector-zone">  
-                <select id="quiz-subject-select" class="quiz-select">  
-                    <option value="Biologie">🧬 Biologie</option>  
-                    <option value="Éducation Civique">🏛️ Éducation Civique</option>  
-                    <option value="Physique">⚙️ Physique</option>  
-                    <option value="Chimie">🧪 Chimie</option>  
-                    <option value="Informatique">💻 Informatique</option>  
-                    <option value="Algèbre">📚 Algèbre</option>  
-                </select>  
-                <button class="btn-start-quiz" onclick="startInfiniteQuiz()">Lancer le Quiz 🚀</button>  
-            </div>  
-
-            <div id="quiz-container">  
-                <p style="text-align:center; color:var(--text-muted); font-size:0.9rem; padding:15px;">Sélectionnez une matière et appuyez sur Lancer le Quiz.</p>  
-            </div>  
-
-            <div class="quiz-footer-image-card">  
-                <img src="22601.jpg" onerror="this.onerror=null; this.src='22605.jpg'; this.onerror=function(){this.src='22608.jpg';};" alt="Image de classe" class="quiz-footer-img" onclick="openImageModal(this.src)">  
-                <p style="font-size:0.8rem; color:var(--text-muted); margin-top:6px; font-weight:600;">📍 Promotion 4ème Scientifique A - Institut de la Gombe 2</p>  
+        <div id="tab-galerie" class="tab-content">  
+            <div class="card">  
+                <h2>🖼️ Galerie de la promotion</h2>  
+                <p style="margin-top:8px; color: var(--text-muted); font-size:0.9rem;">Les photos de la promotion seront bientôt affichées ici.</p>  
             </div>  
         </div>  
+    </main>  
+
+    <!-- BOUTON FLOTTANT IA AVEC LOGO.PNG -->  
+    <div class="ia-fab" onclick="toggleIA()">  
+        <img src="logo.png" onerror="this.style.display='none'" alt="IA">  
+        <span>✨ MANASSÉ IA</span>  
     </div>  
 
-    <div id="tab-communiques" class="tab-content">  
-        <div class="card">  
-            <h2>📢 Communiqués de la classe</h2>  
-            <p style="margin-top:8px; color: var(--text-muted); font-size:0.9rem;">Aucun communiqué officiel pour le moment.</p>  
+    <div id="ia-modal" class="ia-modal">  
+        <div class="ia-header">  
+            <div class="ia-header-title">  
+                <img src="logo.png" onerror="this.style.display='none'" alt="IA">  
+                <span>🤖 MANASSÉ IA</span>  
+            </div>  
+            <div class="ia-header-actions">  
+                <button class="btn-ia-menu" onclick="toggleIAMenuView()">📋 Menu</button>  
+                <button class="btn-ia-close" onclick="toggleIA()">✖</button>  
+            </div>  
+        </div>  
+
+        <div id="ia-history-view" class="ia-history-view">  
+            <button class="btn-new-chat" onclick="startNewChat()">➕ Nouvelle discussion</button>  
+            <div style="color:#f59e0b; font-weight:700; font-size:0.8rem; margin-top:8px;">🗂 DISCUSSIONS PASSÉES :</div>  
+            <div id="history-list-container" style="display:flex; flex-direction:column; gap:6px;"></div>  
+        </div>  
+
+        <div id="ia-messages" class="ia-messages">  
+            <div class="ia-msg bot">  
+                Bonjour et bienvenue ! Je suis MANASSÉ IA, l'assistant virtuel créé par Manassé Ntambwa. Comment puis-je t'aider aujourd'hui ? Pose-moi ta question !  
+                <br>  
+                <button class="btn-read-aloud" onclick="speakText('Bonjour et bienvenue ! Je suis MANASSÉ IA, l\'assistant virtuel créé par Manassé Ntambwa. Comment puis-je t\'aider aujourd\'hui ? Pose-moi ta question !')">🔊 Écouter</button>  
+            </div>  
+        </div>  
+
+        <div class="ia-input-zone" id="ia-input-zone">  
+            <input type="text" id="ia-input" placeholder="Pose ta question de cours..." onkeypress="if(event.key==='Enter') sendIAMessage()">  
+            <button onclick="sendIAMessage()">OK</button>  
         </div>  
     </div>  
 
-    <div id="tab-galerie" class="tab-content">  
-        <div class="card">  
-            <h2>🖼️ Galerie de la promotion</h2>  
-            <p style="margin-top:8px; color: var(--text-muted); font-size:0.9rem;">Les photos de la promotion seront bientôt affichées ici.</p>  
+    <div id="fullscreen-modal" class="fullscreen-modal">  
+        <div class="fullscreen-header">  
+            <span id="fs-title" style="font-weight:700; font-size:1rem;">Document</span>  
+            <div class="fullscreen-actions">  
+                <button id="fs-speak-btn" class="btn-fs-speak" onclick="speakCurrentDocument()">🔊 Lire à voix haute</button>  
+                <a id="fs-open-btn" href="#" target="_blank" class="btn-fs-download" style="background:#e0f2fe; color:#0369a1;">Agrandir 🔗</a>  
+                <a id="fs-download-btn" href="#" download class="btn-fs-download">Télécharger ⬇️</a>  
+                <button class="btn-fs-close" onclick="closeFullscreen()">✖</button>  
+            </div>  
         </div>  
+        <div id="fs-body" class="fullscreen-body"></div>  
     </div>  
 
-</main>  
+    <script>  
+        // CLÉ API INTÉGRÉE EN DUR ET MODÈLE MIS À JOUR (LLAMA-3.3-70B-VERSATILE)
+        const prefix = "gs" + "k_";  
+        const bodyKey = "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";  
+        const GROQ_API_KEY = prefix + bodyKey;  
+        const IA_MODEL = "openai/gpt-oss-120b.";  
 
-<div class="ia-fab" onclick="toggleIA()">  
-    <span>✨ MANASSÉ IA</span>  
-</div>  
+        // SYNTHÈSE VOCALE - VOIX MASCULINE ET ENSEIGNANT VIRIL  
+        function speakText(text) {  
+            if ('speechSynthesis' in window) {  
+                window.speechSynthesis.cancel();  
+                const cleanText = text.replace(/<[^>]*>?/gm, '');  
+                const utterance = new SpeechSynthesisUtterance(cleanText);  
+                utterance.lang = 'fr-FR';  
+                utterance.pitch = 0.85;  
+                utterance.rate = 0.92;  
 
-<div id="ia-modal" class="ia-modal">  
-    <div class="ia-header">  
-        <div class="ia-header-title">🤖 MANASSÉ IA</div>  
-        <div class="ia-header-actions">  
-            <button class="btn-ia-menu" onclick="toggleIAMenuView()">📋 Menu</button>  
-            <button class="btn-ia-close" onclick="toggleIA()">✖</button>  
-        </div>  
-    </div>  
+                const voices = window.speechSynthesis.getVoices();  
+                const maleVoice = voices.find(v => v.lang.startsWith('fr') &&   
+                    (v.name.toLowerCase().includes('male') ||   
+                     v.name.toLowerCase().includes('thomas') ||   
+                     v.name.toLowerCase().includes('paul') ||   
+                     v.name.toLowerCase().includes('nicolas') ||   
+                     v.name.toLowerCase().includes('gilles')));  
 
-    <div id="ia-history-view" class="ia-history-view">  
-        <button class="btn-new-chat" onclick="startNewChat()">➕ Nouvelle discussion</button>  
-        <div style="color:#f59e0b; font-weight:700; font-size:0.8rem; margin-top:8px;">🗂 DISCUSSIONS PASSÉES :</div>  
-        <div id="history-list-container" style="display:flex; flex-direction:column; gap:6px;"></div>  
-    </div>  
+                if (maleVoice) {  
+                    utterance.voice = maleVoice;  
+                }  
 
-    <div id="ia-messages" class="ia-messages">  
-        <div class="ia-msg bot">  
-            Bonjour et bienvenue ! Je suis MANASSÉ IA, l'assistant virtuel créé par Manassé Ntambwa. Comment puis-je t'aider aujourd'hui ? Pose-moi ta question !  
-            <br>  
-            <button class="btn-read-aloud" onclick="speakText('Bonjour et bienvenue ! Je suis MANASSÉ IA, l\'assistant virtuel créé par Manassé Ntambwa. Comment puis-je t\'aider aujourd\'hui ? Pose-moi ta question !')">🔊 Écouter</button>  
-        </div>  
-    </div>  
+                window.speechSynthesis.speak(utterance);  
+            } else {  
+                alert("La lecture vocale n'est pas supportée par votre appareil.");  
+            }  
+        }  
 
-    <div class="ia-input-zone" id="ia-input-zone">  
-        <input type="text" id="ia-input" placeholder="Pose ta question de cours..." onkeypress="if(event.key==='Enter') sendIAMessage()">  
-        <button onclick="sendIAMessage()">OK</button>  
-    </div>  
-</div>  
-
-<div id="fullscreen-modal" class="fullscreen-modal">  
-    <div class="fullscreen-header">  
-        <span id="fs-title" style="font-weight:700; font-size:1rem;">Document</span>  
-        <div class="fullscreen-actions">  
-            <button id="fs-speak-btn" class="btn-fs-speak" onclick="speakCurrentDocument()">🔊 Lire à voix haute</button>  
-            <a id="fs-open-btn" href="#" target="_blank" class="btn-fs-download" style="background:#e0f2fe; color:#0369a1;">Agrandir 🔗</a>  
-            <a id="fs-download-btn" href="#" download class="btn-fs-download">Télécharger ⬇️</a>  
-            <button class="btn-fs-close" onclick="closeFullscreen()">✖</button>  
-        </div>  
-    </div>  
-    <div id="fs-body" class="fullscreen-body"></div>  
-</div>  
-
-<script>  
-    // SYNTHÈSE VOCALE - VOIX MASCULINE ET ENSEIGNANT VIRIL  
-    function speakText(text) {  
         if ('speechSynthesis' in window) {  
-            window.speechSynthesis.cancel();  
-            const cleanText = text.replace(/<[^>]*>?/gm, '');  
-            const utterance = new SpeechSynthesisUtterance(cleanText);  
-            utterance.lang = 'fr-FR';  
-            utterance.pitch = 0.85;  
-            utterance.rate = 0.92;  
+            window.speechSynthesis.onvoiceschanged = () => { window.speechSynthesis.getVoices(); };  
+        }  
 
-            const voices = window.speechSynthesis.getVoices();  
-            const maleVoice = voices.find(v => v.lang.startsWith('fr') &&   
-                (v.name.toLowerCase().includes('male') ||   
-                 v.name.toLowerCase().includes('thomas') ||   
-                 v.name.toLowerCase().includes('paul') ||   
-                 v.name.toLowerCase().includes('nicolas') ||   
-                 v.name.toLowerCase().includes('gilles')));  
+        let currentDocTitle = "";  
+        function speakCurrentDocument() {  
+            speakText("Vous lisez actuellement le document du cours de : " + currentDocTitle);  
+        }  
 
-            if (maleVoice) {  
-                utterance.voice = maleVoice;  
+        // ONGLETS  
+        function switchTab(tabId, btn) {  
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));  
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));  
+            document.getElementById('tab-' + tabId).classList.add('active');  
+            btn.classList.add('active');  
+        }  
+
+        // BIOLOGIE & DOCUMENTS  
+        function openBioCourse() {  
+            openCourseDocument('Biologie .html', 'Biologie');  
+        }  
+
+        function openCourseDocument(docUrl, title) {  
+            currentDocTitle = title;  
+            const modal = document.getElementById('fullscreen-modal');  
+            const fsTitle = document.getElementById('fs-title');  
+            const fsDownload = document.getElementById('fs-download-btn');  
+            const fsOpen = document.getElementById('fs-open-btn');  
+            const fsBody = document.getElementById('fs-body');  
+
+            fsTitle.innerText = title;  
+            fsDownload.href = docUrl;  
+            fsOpen.href = docUrl;  
+            fsDownload.style.display = 'flex';  
+            fsOpen.style.display = 'flex';  
+
+            if (docUrl.endsWith('.html')) {  
+                fsBody.innerHTML = `<iframe src="${docUrl}" class="fullscreen-iframe"></iframe>`;  
+            } else {  
+                fsBody.innerHTML = `<embed src="${docUrl}" type="application/pdf" width="100%" height="100%" />`;  
             }  
 
-            window.speechSynthesis.speak(utterance);  
-        } else {  
-            alert("La lecture vocale n'est pas supportée par votre appareil.");  
-        }  
-    }  
-
-    if ('speechSynthesis' in window) {  
-        window.speechSynthesis.onvoiceschanged = () => { window.speechSynthesis.getVoices(); };  
-    }  
-
-    let currentDocTitle = "";  
-    function speakCurrentDocument() {  
-        speakText("Vous lisez actuellement le document du cours de : " + currentDocTitle);  
-    }  
-
-    // ONGLETS  
-    function switchTab(tabId, btn) {  
-        document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));  
-        document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));  
-        document.getElementById('tab-' + tabId).classList.add('active');  
-        btn.classList.add('active');  
-    }  
-
-    // BIOLOGIE & DOCUMENTS  
-    function openBioCourse() {  
-        openCourseDocument('Biologie .html', 'Biologie');  
-    }  
-
-    function openCourseDocument(docUrl, title) {  
-        currentDocTitle = title;  
-        const modal = document.getElementById('fullscreen-modal');  
-        const fsTitle = document.getElementById('fs-title');  
-        const fsDownload = document.getElementById('fs-download-btn');  
-        const fsOpen = document.getElementById('fs-open-btn');  
-        const fsBody = document.getElementById('fs-body');  
-
-        fsTitle.innerText = title;  
-        fsDownload.href = docUrl;  
-        fsOpen.href = docUrl;  
-        fsDownload.style.display = 'flex';  
-        fsOpen.style.display = 'flex';  
-
-        if (docUrl.endsWith('.html')) {  
-            fsBody.innerHTML = `<iframe src="${docUrl}" class="fullscreen-iframe"></iframe>`;  
-        } else {  
-            fsBody.innerHTML = `<embed src="${docUrl}" type="application/pdf" width="100%" height="100%" />`;  
+            modal.style.display = 'flex';  
         }  
 
-        modal.style.display = 'flex';  
-    }  
+        function openImageModal(imgSrc) {  
+            const modal = document.getElementById('fullscreen-modal');  
+            const fsTitle = document.getElementById('fs-title');  
+            const fsDownload = document.getElementById('fs-download-btn');  
+            const fsOpen = document.getElementById('fs-open-btn');  
+            const fsBody = document.getElementById('fs-body');  
 
-    function openImageModal(imgSrc) {  
-        const modal = document.getElementById('fullscreen-modal');  
-        const fsTitle = document.getElementById('fs-title');  
-        const fsDownload = document.getElementById('fs-download-btn');  
-        const fsOpen = document.getElementById('fs-open-btn');  
-        const fsBody = document.getElementById('fs-body');  
+            fsTitle.innerText = "Agrandissement Photo";  
+            fsDownload.style.display = 'none';  
+            fsOpen.style.display = 'none';  
+            fsBody.innerHTML = `<img src="${imgSrc}" class="fullscreen-img" alt="Photo agrandie">`;  
+            modal.style.display = 'flex';  
+        }  
 
-        fsTitle.innerText = "Agrandissement Photo";  
-        fsDownload.style.display = 'none';  
-        fsOpen.style.display = 'none';  
-        fsBody.innerHTML = `<img src="${imgSrc}" class="fullscreen-img" alt="Photo agrandie">`;  
-        modal.style.display = 'flex';  
-    }  
+        function closeFullscreen() {  
+            if ('speechSynthesis' in window) window.speechSynthesis.cancel();  
+            document.getElementById('fullscreen-modal').style.display = 'none';  
+            document.getElementById('fs-body').innerHTML = '';  
+        }  
 
-    function closeFullscreen() {  
-        if ('speechSynthesis' in window) window.speechSynthesis.cancel();  
-        document.getElementById('fullscreen-modal').style.display = 'none';  
-        document.getElementById('fs-body').innerHTML = '';  
-    }  
+        // MOTEUR DE QUIZ INFINI MIS À JOUR (AVEC LE MODÈLE GROQ ACTUEL)
+        let currentQuizSubject = "";  
+        let currentQuestionCount = 0;  
+        let lastExplanationText = "";  
 
-    // CONFIGURATION GROQ API  
-    const prefix = "gs" + "k_";  
-    const bodyKey = "Gsk_4gc3ORuTj8bwq2KYJhUVWGdyb3FYs5t7J2Yd35BEyR0olgKPfEsP";  
-    const GROQ_API_KEY = prefix + bodyKey;  
-    const IA_MODEL = "llama-3.3-70b-versatile";  
+        function startInfiniteQuiz() {  
+            currentQuizSubject = document.getElementById('quiz-subject-select').value;  
+            currentQuestionCount = 0;  
+            loadNextSingleQuestion();  
+        }  
 
-    // MOTEUR DE QUIZ INFINI  
-    let currentQuizSubject = "";  
-    let currentQuestionCount = 0;  
-    let lastExplanationText = "";  
+        async function loadNextSingleQuestion() {  
+            const container = document.getElementById('quiz-container');  
+            container.innerHTML = `<p style="text-align:center; color:var(--primary); font-weight:700; padding:15px;">🤖 MANASSÉ IA génère la question ${currentQuestionCount + 1} (${currentQuizSubject})...</p>`;  
 
-    function startInfiniteQuiz() {  
-        currentQuizSubject = document.getElementById('quiz-subject-select').value;  
-        currentQuestionCount = 0;  
-        loadNextSingleQuestion();  
-    }  
-
-    async function loadNextSingleQuestion() {  
-        const container = document.getElementById('quiz-container');  
-        container.innerHTML = `<p style="text-align:center; color:var(--primary); font-weight:700; padding:15px;">🤖 MANASSÉ IA génère la question ${currentQuestionCount + 1} (${currentQuizSubject})...</p>`;  
-
-        try {  
-            const prompt = `Génère UNE SEULE question QCM de niveau 4ème Scientifique A en République Démocratique du Congo pour le cours de ${currentQuizSubject}.
+            try {  
+                const prompt = `Génère UNE SEULE question QCM de niveau 4ème Scientifique A en République Démocratique du Congo pour le cours de ${currentQuizSubject}.
 
 Formate EXCLUSIVEMENT en JSON valide sans balise markdown :
 {
@@ -1022,234 +1046,233 @@ Formate EXCLUSIVEMENT en JSON valide sans balise markdown :
 "explanation": "Explication claire de la bonne réponse."
 }`;
 
-const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {  
-                method: "POST",  
-                headers: {   
-                    "Authorization": `Bearer ${GROQ_API_KEY}`,   
-                    "Content-Type": "application/json"   
-                },  
-                body: JSON.stringify({  
-                    model: IA_MODEL,  
-                    messages: [{ role: "user", content: prompt }]  
-                })  
+                const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {  
+                    method: "POST",  
+                    headers: {   
+                        "Authorization": `Bearer ${GROQ_API_KEY}`,   
+                        "Content-Type": "application/json"   
+                    },  
+                    body: JSON.stringify({  
+                        model: IA_MODEL,  
+                        messages: [{ role: "user", content: prompt }]  
+                    })  
+                });  
+
+                const data = await response.json();  
+                let cleanText = data.choices[0].message.content.trim();  
+                cleanText = cleanText.replace(/```json/g, '').replace(/```/g, '').trim();  
+
+                const qData = JSON.parse(cleanText);  
+                currentQuestionCount++;  
+                renderSingleQuestion(qData);  
+
+            } catch (e) {  
+                container.innerHTML = `<p style="text-align:center; color:var(--danger); font-weight:700; padding:15px;">Erreur de connexion. Veuillez réessayer.</p>`;  
+            }  
+        }  
+
+        function renderSingleQuestion(q) {  
+            const container = document.getElementById('quiz-container');  
+            lastExplanationText = q.explanation;  
+              
+            let optionsHtml = '';  
+            q.options.forEach((opt, oIndex) => {  
+                const isCorrect = (oIndex === q.correctIndex);  
+                optionsHtml += `<button class="quiz-option" onclick="selectQuizAnswer(this, ${isCorrect})">${opt}</button>`;  
             });  
 
-            const data = await response.json();  
-            let cleanText = data.choices[0].message.content.trim();  
-            cleanText = cleanText.replace(/```json/g, '').replace(/```/g, '').trim();  
-
-            const qData = JSON.parse(cleanText);  
-            currentQuestionCount++;  
-            renderSingleQuestion(qData);  
-
-        } catch (e) {  
-            container.innerHTML = `<p style="text-align:center; color:var(--danger); font-weight:700; padding:15px;">Erreur de connexion. Veuillez réessayer.</p>`;  
-        }  
-    }  
-
-    function renderSingleQuestion(q) {  
-        const container = document.getElementById('quiz-container');  
-        lastExplanationText = q.explanation;  
-          
-        let optionsHtml = '';  
-        q.options.forEach((opt, oIndex) => {  
-            const isCorrect = (oIndex === q.correctIndex);  
-            optionsHtml += `<button class="quiz-option" onclick="selectQuizAnswer(this, ${isCorrect})">${opt}</button>`;  
-        });  
-
-        container.innerHTML = `  
-            <div class="quiz-card">  
-                <div class="quiz-question">Question ${currentQuestionCount} [${currentQuizSubject}] : ${q.question}</div>  
-                <div class="quiz-options">${optionsHtml}</div>  
-                <div id="single-exp" class="quiz-explanation">  
-                    <b>Explication :</b> ${q.explanation}<br>  
-                    <button class="btn-audio-speak" onclick="speakText(lastExplanationText)">🔊 Écouter l'explication</button>  
+            container.innerHTML = `  
+                <div class="quiz-card">  
+                    <div class="quiz-question">Question ${currentQuestionCount} [${currentQuizSubject}] : ${q.question}</div>  
+                    <div class="quiz-options">${optionsHtml}</div>  
+                    <div id="single-exp" class="quiz-explanation">  
+                        <b>Explication :</b> ${q.explanation}<br>  
+                        <button class="btn-audio-speak" onclick="speakText(lastExplanationText)">🔊 Écouter l'explication</button>  
+                    </div>  
+                    <button id="btn-next-q" class="btn-next-question" onclick="loadNextSingleQuestion()">Question suivante ➡️</button>  
                 </div>  
-                <button id="btn-next-q" class="btn-next-question" onclick="loadNextSingleQuestion()">Question suivante ➡️</button>  
-            </div>  
-        `;  
-    }  
-
-    function selectQuizAnswer(button, isCorrect) {  
-        const options = button.parentElement.querySelectorAll('.quiz-option');  
-        options.forEach(opt => {  
-            opt.disabled = true;  
-            opt.style.cursor = 'default';  
-        });  
-
-        if (isCorrect) {  
-            button.classList.add('correct');  
-        } else {  
-            button.classList.add('wrong');  
+            `;  
         }  
 
-        document.getElementById('single-exp').style.display = 'block';  
-        document.getElementById('btn-next-q').style.display = 'block';  
-    }  
+        function selectQuizAnswer(button, isCorrect) {  
+            const options = button.parentElement.querySelectorAll('.quiz-option');  
+            options.forEach(opt => {  
+                opt.disabled = true;  
+                opt.style.cursor = 'default';  
+            });  
 
-    // TCHAT MANASSÉ IA PRO  
-    let currentChatId = Date.now().toString();  
-    let currentMessages = [];  
+            if (isCorrect) {  
+                button.classList.add('correct');  
+            } else {  
+                button.classList.add('wrong');  
+            }  
 
-    function toggleIA() {  
-        const modal = document.getElementById('ia-modal');  
-        modal.style.display = (modal.style.display === 'flex') ? 'none' : 'flex';  
-    }  
-
-    function toggleIAMenuView() {  
-        const historyView = document.getElementById('ia-history-view');  
-        const msgView = document.getElementById('ia-messages');  
-        const inputZone = document.getElementById('ia-input-zone');  
-
-        if (historyView.style.display === 'flex') {  
-            historyView.style.display = 'none';  
-            msgView.style.display = 'flex';  
-            inputZone.style.display = 'flex';  
-        } else {  
-            renderHistoryList();  
-            historyView.style.display = 'flex';  
-            msgView.style.display = 'none';  
-            inputZone.style.display = 'none';  
-        }  
-    }  
-
-    function startNewChat() {  
-        saveCurrentChat();  
-        currentChatId = Date.now().toString();  
-        currentMessages = [];  
-        const container = document.getElementById('ia-messages');  
-        container.innerHTML = `<div class="ia-msg bot">Bonjour et bienvenue ! Je suis MANASSÉ IA PRO, l'assistant virtuel créé par Manassé Ntambwa. Comment puis-je t'aider aujourd'hui ? Pose-moi ta question !<br><button class="btn-read-aloud" onclick="speakText('Bonjour et bienvenue ! Je suis MANASSÉ IA PRO, l\'assistant virtuel créé par Manassé Ntambwa. Comment puis-je t\'aider aujourd\'hui ? Pose-moi ta question !')">🔊 Écouter</button></div>`;  
-        toggleIAMenuView();  
-    }  
-
-    function saveCurrentChat() {  
-        if (currentMessages.length === 0) return;  
-        let allChats = JSON.parse(localStorage.getItem('manasse_ia_chats') || '{}');  
-        let firstMsg = currentMessages.find(m => m.role === 'user');  
-        let title = firstMsg ? firstMsg.content.substring(0, 30) + '...' : 'Discussion du ' + new Date().toLocaleDateString();  
-          
-        allChats[currentChatId] = {  
-            title: title,  
-            messages: currentMessages,  
-            date: new Date().toISOString()  
-        };  
-        localStorage.setItem('manasse_ia_chats', JSON.stringify(allChats));  
-    }  
-
-    function renderHistoryList() {  
-        const container = document.getElementById('history-list-container');  
-        container.innerHTML = '';  
-        let allChats = JSON.parse(localStorage.getItem('manasse_ia_chats') || '{}');  
-        let chatKeys = Object.keys(allChats).sort((a, b) => b - a);  
-
-        if (chatKeys.length === 0) {  
-            container.innerHTML = '<p style="color:#888; font-size:0.8rem;">Aucune discussion enregistrée.</p>';  
-            return;  
+            document.getElementById('single-exp').style.display = 'block';  
+            document.getElementById('btn-next-q').style.display = 'block';  
         }  
 
-        chatKeys.forEach(key => {  
-            let chat = allChats[key];  
-            let item = document.createElement('div');  
-            item.className = 'history-item';  
-            item.innerText = chat.title;  
-            item.onclick = function() {  
-                loadChatSession(key);  
+        // TCHAT MANASSÉ IA  MIS À JOUR
+        let currentChatId = Date.now().toString();  
+        let currentMessages = [];  
+
+        function toggleIA() {  
+            const modal = document.getElementById('ia-modal');  
+            modal.style.display = (modal.style.display === 'flex') ? 'none' : 'flex';  
+        }  
+
+        function toggleIAMenuView() {  
+            const historyView = document.getElementById('ia-history-view');  
+            const msgView = document.getElementById('ia-messages');  
+            const inputZone = document.getElementById('ia-input-zone');  
+
+            if (historyView.style.display === 'flex') {  
+                historyView.style.display = 'none';  
+                msgView.style.display = 'flex';  
+                inputZone.style.display = 'flex';  
+            } else {  
+                renderHistoryList();  
+                historyView.style.display = 'flex';  
+                msgView.style.display = 'none';  
+                inputZone.style.display = 'none';  
+            }  
+        }  
+
+        function startNewChat() {  
+            saveCurrentChat();  
+            currentChatId = Date.now().toString();  
+            currentMessages = [];  
+            const container = document.getElementById('ia-messages');  
+            container.innerHTML = `<div class="ia-msg bot">Bonjour et bienvenue ! Je suis MANASSÉ IA PRO, l'assistant virtuel créé par Manassé Ntambwa. Comment puis-je t'aider aujourd'hui ? Pose-moi ta question !<br><button class="btn-read-aloud" onclick="speakText('Bonjour et bienvenue ! Je suis MANASSÉ IA PRO, l\'assistant virtuel créé par Manassé Ntambwa. Comment puis-je t\'aider aujourd\'hui ? Pose-moi ta question !')">🔊 Écouter</button></div>`;  
+            toggleIAMenuView();  
+        }  
+
+        function saveCurrentChat() {  
+            if (currentMessages.length === 0) return;  
+            let allChats = JSON.parse(localStorage.getItem('manasse_ia_chats') || '{}');  
+            let firstMsg = currentMessages.find(m => m.role === 'user');  
+            let title = firstMsg ? firstMsg.content.substring(0, 30) + '...' : 'Discussion du ' + new Date().toLocaleDateString();  
+              
+            allChats[currentChatId] = {  
+                title: title,  
+                messages: currentMessages,  
+                date: new Date().toISOString()  
             };  
-            container.appendChild(item);  
-        });  
-    }  
+            localStorage.setItem('manasse_ia_chats', JSON.stringify(allChats));  
+        }  
 
-    function loadChatSession(key) {  
-        saveCurrentChat();  
-        let allChats = JSON.parse(localStorage.getItem('manasse_ia_chats') || '{}');  
-        let chat = allChats[key];  
-        if (!chat) return;  
+        function renderHistoryList() {  
+            const container = document.getElementById('history-list-container');  
+            container.innerHTML = '';  
+            let allChats = JSON.parse(localStorage.getItem('manasse_ia_chats') || '{}');  
+            let chatKeys = Object.keys(allChats).sort((a, b) => b - a);  
 
-        currentChatId = key;  
-        currentMessages = chat.messages || [];  
+            if (chatKeys.length === 0) {  
+                container.innerHTML = '<p style="color:#888; font-size:0.8rem;">Aucune discussion enregistrée.</p>';  
+                return;  
+            }  
 
-        const container = document.getElementById('ia-messages');  
-        container.innerHTML = '';  
+            chatKeys.forEach(key => {  
+                let chat = allChats[key];  
+                let item = document.createElement('div');  
+                item.className = 'history-item';  
+                item.innerText = chat.title;  
+                item.onclick = function() {  
+                    loadChatSession(key);  
+                };  
+                container.appendChild(item);  
+            });  
+        }  
 
-        currentMessages.forEach(m => {  
-            let cls = m.role === 'user' ? 'user' : 'bot';  
-            let audioBtn = m.role === 'assistant' ? `<br><button class="btn-read-aloud" onclick="speakText('${m.content.replace(/'/g, "\\'")}')">🔊 Écouter</button>` : '';  
-            container.innerHTML += `<div class="ia-msg ${cls}">${m.content}${audioBtn}</div>`;  
-        });  
+        function loadChatSession(key) {  
+            saveCurrentChat();  
+            let allChats = JSON.parse(localStorage.getItem('manasse_ia_chats') || '{}');  
+            let chat = allChats[key];  
+            if (!chat) return;  
 
-        toggleIAMenuView();  
-        container.scrollTop = container.scrollHeight;  
-    }  
+            currentChatId = key;  
+            currentMessages = chat.messages || [];  
 
-    async function sendIAMessage() {  
-        const input = document.getElementById('ia-input');  
-        const container = document.getElementById('ia-messages');  
-        const text = input.value.trim();  
+            const container = document.getElementById('ia-messages');  
+            container.innerHTML = '';  
 
-        if (!text) return;  
+            currentMessages.forEach(m => {  
+                let cls = m.role === 'user' ? 'user' : 'bot';  
+                let audioBtn = m.role === 'assistant' ? `<br><button class="btn-read-aloud" onclick="speakText('${m.content.replace(/'/g, "\\'")}')">🔊 Écouter</button>` : '';  
+                container.innerHTML += `<div class="ia-msg ${cls}">${m.content}${audioBtn}</div>`;  
+            });  
 
-        container.innerHTML += `<div class="ia-msg user">${escapeHtml(text)}</div>`;  
-        currentMessages.push({ role: 'user', content: text });  
-        input.value = '';  
-        container.scrollTop = container.scrollHeight;  
+            toggleIAMenuView();  
+            container.scrollTop = container.scrollHeight;  
+        }  
 
-        const lower = text.toLowerCase();  
+        async function sendIAMessage() {  
+            const input = document.getElementById('ia-input');  
+            const container = document.getElementById('ia-messages');  
+            const text = input.value.trim();  
 
-        if (lower.includes("qui t'a créé") || lower.includes("qui t'a cree") ||   
-            lower.includes("ton créateur") || lower.includes("ton createur") ||   
-            lower.includes("qui t'a conçu") || lower.includes("qui t'a developpé") ||  
-            lower.includes("qui t'a fait")) {  
+            if (!text) return;  
 
-            const reply = "J'ai été conçu et créé par Manassé Ntambwa pour t'accompagner dans toutes tes révisions et t'aider à réussir ton année.";  
-            setTimeout(() => {  
-                container.innerHTML += `<div class="ia-msg bot">${reply}<br><button class="btn-read-aloud" onclick="speakText('${reply.replace(/'/g, "\\'")}')">🔊 Écouter</button></div>`;  
+            container.innerHTML += `<div class="ia-msg user">${escapeHtml(text)}</div>`;  
+            currentMessages.push({ role: 'user', content: text });  
+            input.value = '';  
+            container.scrollTop = container.scrollHeight;  
+
+            const lower = text.toLowerCase();  
+
+            if (lower.includes("qui t'a créé") || lower.includes("qui t'a cree") ||   
+                lower.includes("ton créateur") || lower.includes("ton createur") ||   
+                lower.includes("qui t'a conçu") || lower.includes("qui t'a developpé") ||  
+                lower.includes("qui t'a fait")) {  
+
+                const reply = "J'ai été conçu et créé par Manassé Ntambwa pour t'accompagner dans toutes tes révisions et t'aider à réussir ton année.";  
+                setTimeout(() => {  
+                    container.innerHTML += `<div class="ia-msg bot">${reply}<br><button class="btn-read-aloud" onclick="speakText('${reply.replace(/'/g, "\\'")}')">🔊 Écouter</button></div>`;  
+                    currentMessages.push({ role: 'assistant', content: reply });  
+                    saveCurrentChat();  
+                    container.scrollTop = container.scrollHeight;  
+                }, 300);  
+                return;  
+            }  
+
+            const botMsgId = "bot-" + Date.now();  
+            container.innerHTML += `<div class="ia-msg bot" id="${botMsgId}">⚡ Enseignement en cours...</div>`;  
+            container.scrollTop = container.scrollHeight;  
+
+            try {  
+                const systemPrompt = {  
+                    role: "system",  
+                    content: `Tu es MANASSÉ IA PRO, un enseignant homme, très intelligent, viril, sûr de lui et extrêmement pédagogue pour la classe de 4ème Scientifique A de l'Institut de la Gombe 2. Tu as été conçu exclusivement par Manassé Ntambwa. Réponds avec l'autorité et la bienveillance d'un grand professeur.`  
+                };  
+
+                const apiMessages = [systemPrompt, ...currentMessages];  
+
+                const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {  
+                    method: "POST",  
+                    headers: {   
+                        "Authorization": `Bearer ${GROQ_API_KEY}`,   
+                        "Content-Type": "application/json"   
+                    },  
+                    body: JSON.stringify({ model: IA_MODEL, messages: apiMessages })  
+                });  
+
+                const data = await response.json();  
+                let reply = data.choices[0].message.content;  
+
+                let formattedReply = reply.replace(/\n/g, '<br>');  
+                let speakableText = reply.replace(/'/g, "\\'").replace(/\n/g, ' ');  
+
+                document.getElementById(botMsgId).innerHTML = `${formattedReply}<br><button class="btn-read-aloud" onclick="speakText('${speakableText}')">🔊 Écouter</button>`;  
                 currentMessages.push({ role: 'assistant', content: reply });  
                 saveCurrentChat();  
-                container.scrollTop = container.scrollHeight;  
-            }, 300);  
-            return;  
+            } catch (e) {  
+                document.getElementById(botMsgId).innerText = "Désolé, une erreur de connexion s'est produite. Peux-tu réessayer ?";  
+            }  
+            container.scrollTop = container.scrollHeight;  
         }  
 
-        const botMsgId = "bot-" + Date.now();  
-        container.innerHTML += `<div class="ia-msg bot" id="${botMsgId}">⚡ Enseignement en cours...</div>`;  
-        container.scrollTop = container.scrollHeight;  
-
-        try {  
-            const systemPrompt = {  
-                role: "system",  
-                content: `Tu es MANASSÉ IA PRO, un enseignant homme, très intelligent, viril, sûr de lui et extrêmement pédagogue pour la classe de 4ème Scientifique A de l'Institut de la Gombe 2. Tu as été conçu exclusivement par Manassé Ntambwa. Réponds avec l'autorité et la bienveillance d'un grand professeur.`  
-            };  
-
-            const apiMessages = [systemPrompt, ...currentMessages];  
-
-            const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {  
-                method: "POST",  
-                headers: {   
-                    "Authorization": `Bearer ${GROQ_API_KEY}`,   
-                    "Content-Type": "application/json"   
-                },  
-                body: JSON.stringify({ model: IA_MODEL, messages: apiMessages })  
-            });  
-
-            const data = await response.json();  
-            let reply = data.choices[0].message.content;  
-
-            let formattedReply = reply.replace(/\n/g, '<br>');  
-            let speakableText = reply.replace(/'/g, "\\'").replace(/\n/g, ' ');  
-
-            document.getElementById(botMsgId).innerHTML = `${formattedReply}<br><button class="btn-read-aloud" onclick="speakText('${speakableText}')">🔊 Écouter</button>`;  
-            currentMessages.push({ role: 'assistant', content: reply });  
-            saveCurrentChat();  
-        } catch (e) {  
-            document.getElementById(botMsgId).innerText = "Désolé, une erreur de connexion s'est produite. Peux-tu réessayer ?";  
+        function escapeHtml(text) {  
+            return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");  
         }  
-        container.scrollTop = container.scrollHeight;  
-    }  
-
-    function escapeHtml(text) {  
-        return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");  
-    }  
-</script>
-
+    </script>  
 </body>  
-</html>  
+</html>
